@@ -1,221 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Prasansha 🎉</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Happy Birthday Prasansha!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #ffe6f0;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
+      margin:0; padding:0;
+      font-family:'Montserrat',sans-serif;
+      text-align:center;
+      transition:background-color 0.5s;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background:#f0f0f0;
+      overflow-x:hidden;
     }
-
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.5em;
-      color: #e84393;
-      margin-top: 20px;
+    .container { max-width:800px; width:95%; padding:20px; position:relative; z-index:10; }
+    #gift-button, #memories-button, #show-memories-button {
+      padding:15px 30px; font-size:20px; color:#fff;
+      border:none; border-radius:50px; cursor:pointer;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+      font-weight:bold;
+      margin-top:20px;
+      transition:all 0.3s;
     }
-
-    .cake-container {
-      position: relative;
-      margin: 40px 0;
-      width: 150px;
-      height: 200px;
-    }
-
-    .cake {
-      width: 150px;
-      height: 100px;
-      background: #ff6b81;
-      border-radius: 10px 10px 5px 5px;
-      position: absolute;
-      bottom: 0;
-    }
-
-    .candle {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 30px;
-      background: #333;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .flame {
-      width: 10px;
-      height: 10px;
-      background: orange;
-      border-radius: 50%;
-      position: absolute;
-      top: -15px;
-      left: 0;
-      opacity: 0;
-      animation: flicker 0.2s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.2); }
-    }
-
-    .gift-box {
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 80px;
-      z-index: 10;
-      cursor: pointer;
-      transition: transform 1s ease-out, opacity 0.6s ease-in;
-    }
-
-    .gift-box.fallen {
-      transform: translateX(-50%) translateY(200px) rotate(45deg);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .gift-box .box {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #ff6b6b, #ff4757);
-      border-radius: 10px;
-      position: relative;
-    }
-
-    .gift-box .lid {
-      width: 100%;
-      height: 20px;
-      background: #c0392b;
-      position: absolute;
-      top: -20px;
-      left: 0;
-      border-radius: 5px 5px 0 0;
-    }
-
-    .click-label {
-      position: absolute;
-      top: 90px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
-      font-weight: bold;
-      color: #e84393;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .message {
-      max-width: 90%;
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      font-size: 1.1em;
-      color: #444;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-
-    #bg-music {
-      display: none;
-    }
-
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      .cake-container {
-        transform: scale(0.9);
-      }
-
-      .message {
-        font-size: 1em;
-        padding: 15px;
-      }
-    }
+    #gift-button { background:linear-gradient(45deg,#ff6b6b,#ff8e8e); }
+    #gift-button:hover { background:linear-gradient(45deg,#ff8e8e,#ff6b6b); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+    #memories-button,#show-memories-button { background:linear-gradient(45deg,#74b9ff,#0984e3); display:none; }
+    #memories-button:hover,#show-memories-button:hover { background:linear-gradient(45deg,#0984e3,#74b9ff); }
+    .cake-container { position:relative; display:none; margin:40px 0; z-index:5; }
+    .cake { width:200px; height:120px; background:linear-gradient(to bottom,#f9c5d1,#f8a5c2); border-radius:10px 10px 0 0; position:relative; margin:0 auto; box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+    .cake:before {/* top icing strip */position:absolute; content:''; top:-10px; left:-10px; width:220px; height:20px; background:linear-gradient(to right,#f999b7,#f67eaa); border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.1);}
+    .candle { width:10px;height:50px; background:linear-gradient(to bottom,#fff,#f0f0f0); position:absolute; top:-60px; left:50%; transform:translateX(-50%); border-radius:5px; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    .flame { width:15px;height:30px; background:radial-gradient(#ffef00,#ff9e00); position:absolute; top:-30px; left:50%; transform:translateX(-50%); opacity:0; border-radius:50% 50% 20% 20%; filter:blur(1px); box-shadow:0 0 20px #ff6600,0 0 40px #ff9900;}
+    .flame.burning { opacity:1; animation:flicker 0.5s infinite alternate; }
+    @keyframes flicker { 0% { opacity:1; transform:translateX(-50%) scale(1); } 100% { opacity:0.8; transform:translateX(-50%) scale(1.1); } }
+    .birthday-message { font-size:1.2em; color:#333; background:rgba(255,255,255,0.9); padding:25px; border-radius:15px; margin:30px 0; max-width:90%; box-shadow:0 5px 15px rgba(0,0,0,0.1); display:none; line-height:1.6; }
+    .memory-gallery { display:none; margin-top:30px; flex-wrap:wrap; justify-content:center; gap:20px; }
+    .memory-item { width:200px;height:200px;background:#f5f5f5;border-radius:15px;overflow:hidden; display:flex;justify-content:center;align-items:center;transition:all .3s;box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+    .memory-item:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:2; }
+    .memory-item img, .memory-item video { width:100%; height:100%; object-fit:cover; transition:transform .3s; }
+    h1 { font-family:'Dancing Script', cursive; font-size:2.5em; color:#e84393; text-shadow:2px 2px 4px rgba(0,0,0,0.1); margin:0; }
+    #bg-music { display:none; }
+    .balloon, .confetti, .floating-heart { position:absolute; z-index:1; }
+    .balloon { width:60px;height:80px;border-radius:50%; opacity:0; animation:float 8s ease-in-out infinite; box-shadow:inset -5px -5px 10px rgba(0,0,0,0.1); }
+    .balloon:before { content:''; position:absolute; bottom:-50px; left:50%; width:2px;height:50px;background:#333; transform:translateX(-50%); }
+    @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-50px) rotate(5deg);} }
+    .balloon.red{background:radial-gradient(circle at 30% 30%,#ff6b6b,#e84393);}
+    .balloon.blue{background:radial-gradient(circle at 30% 30%,#74b9ff,#0984e3);}
+    .balloon.green{background:radial-gradient(circle at 30% 30%,#55efc4,#00b894);}
+    .balloon.yellow{background:radial-gradient(circle at 30% 30%,#ffeaa7,#fdcb6e);}
+    .balloon.purple{background:radial-gradient(circle at 30% 30%,#a29bfe,#6c5ce7);}
+    .confetti { width:10px; height:10px; animation:confetti-fall 3s linear forwards; }
+    @keyframes confetti-fall { 0% { transform:translateY(-100vh); opacity:1; } 100% { transform:translateY(100vh); opacity:0; } }
+    .floating-heart { font-size:20px; color:#ff6b6b; animation:float-up 4s ease-in forwards; }
+    @keyframes float-up { 0% { transform:translateY(0); opacity:1; } 100% { transform:translateY(-100vh) rotate(360deg); opacity:0; } }
+    .party-overlay { position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(2px);z-index:3;display:none;pointer-events:none; }
+    .welcome-message { position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3em;font-family:'Dancing Script',cursive;color:#e84393;text-shadow:2px 2px 4px rgba(0,0,0,0.2);opacity:0;z-index:100;pointer-events:none; }
+    .fade-in { animation:fadeIn .5s forwards; } .fade-out { animation:fadeOut .5s forwards; }
+    @keyframes fadeIn { from { opacity:0; transform:translate(-50%,-50%) scale(.8); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }
+    @keyframes fadeOut{ from {opacity:1;} to {opacity:0;} }
   </style>
 </head>
 <body>
-
-  <h1>🎉 Happy Birthday Prasansha! 🎂</h1>
-
-  <div class="cake-container" id="cake-container">
-    <div class="gift-box" id="gift-box">
-      <div class="lid"></div>
-      <div class="box"></div>
-      <span class="click-label">Click it!</span>
+  <div class="container">
+    <h1 id="typing-text">👑 Happy Birthday Prasansha!</h1>
+    <div class="cake-container" id="cake-container">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="cake"></div>
     </div>
-    <div class="candle" id="candle"><div class="flame" id="flame"></div></div>
-    <div class="cake"></div>
+    <button id="gift-button">Open the Gift</button>
+    <button id="memories-button">Message</button>
+    <div class="birthday-message" id="birthday-message">
+      Happy Birthday Prasansha. I wish you are happy and healthy. And apology for my previous immature acts. Take love ❤️
+    </div>
+    <button id="show-memories-button">Memories</button>
+    <div class="memory-gallery" id="memory-gallery"></div>
   </div>
-
-  <div class="message">
-    Happy Birthday Prasansha. I wish you are happy and healthy. 💖<br />
-    And apology for my previous immature acts.<br />
-    Take love ❤️<br /><br />
-    Prasansha memory<br />
-    Prasansha memory<br />
-    Prasansha memory<br />
-    Prasansha memory<br />
-    Prasansha memory
-  </div>
-
-  <audio id="bg-music" autoplay loop>
-    <source src="https://docs.google.com/uc?export=download&id=YOUR_FILE_ID_HERE" type="audio/mpeg" />
-    Your browser does not support the audio element.
+  <div id="balloons-container"></div>
+  <div class="party-overlay" id="party-overlay"></div>
+  <div class="welcome-message" id="welcome-message-1">Hi Cutiepie</div>
+  <div class="welcome-message" id="welcome-message-2">Gulumulu</div>
+  <div class="welcome-message" id="welcome-message-3">I know it's unexpected</div>
+  
+  <audio id="bg-music" loop>
+    <source src="https://docs.google.com/uc?export=download&id=YOUR_AUDIO_FILE_ID" type="audio/mpeg"/>
   </audio>
-
+  
   <script>
-    const giftBox = document.getElementById('gift-box');
-    const candle = document.getElementById('candle');
-    const flame = document.getElementById('flame');
+    const giftButton = document.getElementById('gift-button');
+    const cakeContainer = document.getElementById('cake-container');
+    const candle = document.querySelector('.candle');
+    const flame = document.querySelector('.flame');
+    const memoriesButton = document.getElementById('memories-button');
+    const birthdayMessage = document.getElementById('birthday-message');
+    const showMemoriesButton = document.getElementById('show-memories-button');
+    const memoryGallery = document.getElementById('memory-gallery');
     const bgMusic = document.getElementById('bg-music');
-
-    giftBox.addEventListener('click', () => {
-      giftBox.classList.add('fallen');
-      setTimeout(() => {
-        giftBox.style.display = 'none';
-      }, 1000);
-    });
-
-    candle.addEventListener('click', () => {
-      flame.style.opacity = 1;
-    });
-
-    // Ensure music plays after user gesture
-    window.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.play().catch(() => {
-          console.log("Autoplay blocked.");
-        });
+    const balloonsContainer = document.getElementById('balloons-container');
+    const partyOverlay = document.getElementById('party-overlay');
+    const welcome1 = document.getElementById('welcome-message-1');
+    const welcome2 = document.getElementById('welcome-message-2');
+    const welcome3 = document.getElementById('welcome-message-3');
+    const typingText = document.getElementById('typing-text');
+    const fullText = '👑 Happy Birthday Prasansha!';
+    let charIndex = 0;
+    const memories = [
+      { type: 'image', url: 'https://via.placeholder.com/200?text=Prasansha+1' },
+      { type: 'image', url: 'https://via.placeholder.com/200?text=Prasansha+2' },
+      { type: 'image', url: 'https://via.placeholder.com/200?text=Prasansha+3' },
+      { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4' },
+      { type: 'image', url: 'https://via.placeholder.com/200?text=Prasansha+4' },
+      { type: 'image', url: 'https://via.placeholder.com/200?text=Prasansha+5' }
+    ];
+    
+    function showWelcomeMessages() {
+      document.querySelector('.container').style.opacity='0';
+      giftButton.style.display='none';
+      setTimeout(()=>{
+        welcome1.classList.add('fade-in');
+        setTimeout(()=>{
+          welcome1.classList.replace('fade-in','fade-out');
+          setTimeout(()=>{
+            welcome2.classList.add('fade-in');
+            setTimeout(()=>{
+              welcome2.classList.replace('fade-in','fade-out');
+              setTimeout(()=>{
+                welcome3.classList.add('fade-in');
+                setTimeout(()=>{
+                  welcome3.classList.replace('fade-in','fade-out');
+                  setTimeout(()=>{
+                    document.querySelector('.container').style.opacity='1';
+                    typeWriter();
+                  },500);
+                },1000);
+              },500);
+            },1000);
+          },500);
+        },1000);
+      },500);
+    }
+    function typeWriter() {
+      if(charIndex < fullText.length) {
+        typingText.textContent = fullText.slice(0,charIndex+1);
+        charIndex++;
+        setTimeout(typeWriter,120);
+      } else {
+        typingText.style.borderRight='none';
+        giftButton.style.display='inline-block';
       }
-    });
+    }
+    function createBalloons(c){ /* ... same as before ... */}
+    function createConfetti(){ /* ... */}
+    function createFloatingHearts(){ /* ... */}
+    function openGift(){
+      document.body.style.backgroundColor='#ffebee';
+      giftButton.style.display='none';
+      cakeContainer.style.display='block';
+      bgMusic.play().catch(()=>{});
+      createBalloons(15); createConfetti(); createFloatingHearts();
+      partyOverlay.style.display='block';
+      setInterval(()=>{createConfetti();createFloatingHearts()},3000);
+      setTimeout(()=>{memoriesButton.style.display='inline-block'},1000);
+    }
+    function lightCandle(){ flame.classList.add('burning'); createConfetti(); }
+    function showMessage(){ birthdayMessage.style.display='block'; memoriesButton.style.display='none'; showMemoriesButton.style.display='inline-block'; }
+    function showGallery(){
+      showMemoriesButton.style.display='none';
+      memoryGallery.style.display='flex';
+      memories.forEach(m=>{
+        const item=document.createElement('div');
+        item.className='memory-item';
+        if(m.type==='image'){
+          const img=document.createElement('img'); img.src=m.url;
+          item.appendChild(img);
+        } else {
+          const vid=document.createElement('video');
+          vid.src=m.url; vid.controls= true;
+          item.appendChild(vid);
+        }
+        memoryGallery.appendChild(item);
+      });
+    }
+    window.onload = showWelcomeMessages;
+    giftButton.onclick = openGift;
+    candle.onclick = lightCandle;
+    memoriesButton.onclick = showMessage;
+    showMemoriesButton.onclick = showGallery;
+    window.addEventListener('click', () => bgMusic.play().catch(()=>{}));
   </script>
-
 </body>
 </html>
