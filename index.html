@@ -33,7 +33,7 @@
     #gift-button:hover { background:linear-gradient(45deg,#ff8e8e,#ff6b6b); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
     #memories-button,#show-memories-button { background:linear-gradient(45deg,#74b9ff,#0984e3); display:none; }
     #memories-button:hover,#show-memories-button:hover { background:linear-gradient(45deg,#0984e3,#74b9ff); }
-    .cake-container { position:relative; display:none; margin:40px 0; z-index:5; }
+    .cake-container { position:relative; display:none; margin:40px 0; z-index:5; cursor:pointer; }
     .cake { width:200px; height:120px; background:linear-gradient(to bottom,#f9c5d1,#f8a5c2); border-radius:10px 10px 0 0; position:relative; margin:0 auto; box-shadow:0 10px 20px rgba(0,0,0,0.1);}
     .cake:before {/* top icing strip */position:absolute; content:''; top:-10px; left:-10px; width:220px; height:20px; background:linear-gradient(to right,#f999b7,#f67eaa); border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.1);}
     .candle { width:10px;height:50px; background:linear-gradient(to bottom,#fff,#f0f0f0); position:absolute; top:-60px; left:50%; transform:translateX(-50%); border-radius:5px; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
@@ -89,7 +89,7 @@
   <div class="welcome-message" id="welcome-message-3">I know it's unexpected</div>
   
   <audio id="bg-music" loop>
-    <source src="https://docs.google.com/uc?export=download&id=YOUR_AUDIO_FILE_ID" type="audio/mpeg"/>
+    <source src="https://1024terabox.com/s/10Y1WW5j4o3JrM2G52LYM4Q" type="audio/mpeg"/>
   </audio>
   
   <script>
@@ -155,21 +155,61 @@
         giftButton.style.display='inline-block';
       }
     }
-    function createBalloons(c){ /* ... same as before ... */}
-    function createConfetti(){ /* ... */}
-    function createFloatingHearts(){ /* ... */}
+
+    // Simple balloon confetti hearts creation placeholders
+    function createBalloons(count) {
+      for(let i=0; i<count; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        const colors = ['red','blue','green','yellow','purple'];
+        balloon.classList.add(colors[i % colors.length]);
+        balloon.style.left = (Math.random() * 100) + 'vw';
+        balloon.style.animationDelay = (Math.random() * 8) + 's';
+        balloon.style.opacity = 1;
+        balloonsContainer.appendChild(balloon);
+        setTimeout(() => balloonsContainer.removeChild(balloon), 8000);
+      }
+    }
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = (Math.random() * 100) + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      balloonsContainer.appendChild(confetti);
+      setTimeout(() => balloonsContainer.removeChild(confetti), 3000);
+    }
+    function createFloatingHearts() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.style.left = (Math.random() * 100) + 'vw';
+      balloonsContainer.appendChild(heart);
+      setTimeout(() => balloonsContainer.removeChild(heart), 4000);
+    }
+
     function openGift(){
       document.body.style.backgroundColor='#ffebee';
       giftButton.style.display='none';
       cakeContainer.style.display='block';
       bgMusic.play().catch(()=>{});
-      createBalloons(15); createConfetti(); createFloatingHearts();
+      createBalloons(15);
+      createConfetti();
+      createFloatingHearts();
       partyOverlay.style.display='block';
       setInterval(()=>{createConfetti();createFloatingHearts()},3000);
       setTimeout(()=>{memoriesButton.style.display='inline-block'},1000);
     }
-    function lightCandle(){ flame.classList.add('burning'); createConfetti(); }
-    function showMessage(){ birthdayMessage.style.display='block'; memoriesButton.style.display='none'; showMemoriesButton.style.display='inline-block'; }
+
+    function lightCandle(){
+      flame.classList.add('burning');
+      createConfetti();
+    }
+
+    function showMessage(){
+      birthdayMessage.style.display='block';
+      memoriesButton.style.display='none';
+      showMemoriesButton.style.display='inline-block';
+    }
+
     function showGallery(){
       showMemoriesButton.style.display='none';
       memoryGallery.style.display='flex';
@@ -187,9 +227,11 @@
         memoryGallery.appendChild(item);
       });
     }
+
     window.onload = showWelcomeMessages;
     giftButton.onclick = openGift;
-    candle.onclick = lightCandle;
+    // Now cake container itself lights the candle on click
+    cakeContainer.onclick = lightCandle;
     memoriesButton.onclick = showMessage;
     showMemoriesButton.onclick = showGallery;
     window.addEventListener('click', () => bgMusic.play().catch(()=>{}));
