@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -248,6 +249,29 @@
       opacity: 1;
     }
 
+    /* Added styles for wish button */
+    #wish-button {
+      display: none;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255,107,107,0.5);
+      margin: 20px auto;
+    }
+    #wish-button:hover {
+      background: linear-gradient(45deg, #ff6b6b, #ff3b3b);
+    }
+    #wish-message {
+      display: none;
+      color: #e84393;
+      font-weight: bold;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
@@ -261,9 +285,12 @@
     <button id="gift-button">Open the Gift</button>
     <button id="memories-button">Message</button>
     <div class="birthday-message" id="birthday-message">
-      "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha.And yes ,remmeber "NO DIET". You are beautiful as you are Take love ❤️";    </div>
+       "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha.And yes ,remmeber "NO DIET". You are beautiful as you are Take love ❤️"; </div>
     <button id="show-memories-button">Memories</button>
     <div class="memory-gallery" id="memory-gallery"></div>
+    <!-- Added wish button and message -->
+    <button id="wish-button">Make a Wish!</button>
+    <p id="wish-message"></p>
   </div>
   <div id="balloons-container"></div>
   <div class="party-overlay" id="party-overlay"></div>
@@ -294,13 +321,17 @@
   const showMemoriesButton = document.getElementById('show-memories-button');
   const memoryGallery = document.getElementById('memory-gallery');
   const bgMusic = document.getElementById('bg-music');
-  bgMusic.volume = 1; // volume ranges from 0.0 (mute) to 1.0 (full volume)
+  bgMusic.volume = 0.7; // volume ranges from 0.0 (mute) to 1.0 (full volume)
 
   const lightboxModal = document.getElementById('lightbox-modal');
 const lightboxContent = document.getElementById('lightbox-content');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxNext = document.getElementById('lightbox-next');
 const lightboxPrev = document.getElementById('lightbox-prev');
+
+// Added wish button elements
+const wishButton = document.getElementById('wish-button');
+const wishMessage = document.getElementById('wish-message');
 
 let currentIndex = 0;
 
@@ -386,6 +417,16 @@ function loadMemories() {
   });
 
   setupMemoryClicks();
+  
+  // Show wish button after memories are loaded
+  setTimeout(() => {
+    wishButton.style.display = 'inline-block';
+    wishButton.style.opacity = '0';
+    setTimeout(() => {
+      wishButton.style.transition = 'opacity 1s ease';
+      wishButton.style.opacity = '1';
+    }, 100);
+  }, 500);
 }
 
   const balloonsContainer = document.getElementById('balloons-container');
@@ -515,6 +556,52 @@ function loadMemories() {
     typeNext();
   }
 
+  // Added wish button functionality
+  wishButton.addEventListener('click', function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          // Success - got location
+          wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
+          wishMessage.style.display = 'block';
+          
+          // Create some visual feedback
+          for (let i = 0; i < 30; i++) {
+            setTimeout(() => createConfetti(), i * 100);
+          }
+          
+          // Hide button after clicking
+          wishButton.style.display = 'none';
+        },
+        function(error) {
+          // Error - couldn't get location
+          wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
+          wishMessage.style.display = 'block';
+          
+          // Create some visual feedback
+          for (let i = 0; i < 30; i++) {
+            setTimeout(() => createConfetti(), i * 100);
+          }
+          
+          // Hide button after clicking
+          wishButton.style.display = 'none';
+        }
+      );
+    } else {
+      // Geolocation not supported
+      wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
+      wishMessage.style.display = 'block';
+      
+      // Create some visual feedback
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => createConfetti(), i * 100);
+      }
+      
+      // Hide button after clicking
+      wishButton.style.display = 'none';
+    }
+  });
+
   giftButton.addEventListener('click', openGift);
   cakeContainer.addEventListener('click', () => {
     if (!flame.classList.contains('burning')) {
@@ -527,7 +614,7 @@ function loadMemories() {
     birthdayMessage.style.display = 'block';
     birthdayMessage.textContent = '';
 
-    const message = "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha.And yes ,remmeber "NO DIET". You are beautiful as you are Take love ❤️";
+    const message = "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha. Take love ❤️";
 
     typeText(birthdayMessage, message, 60, () => {
       showMemoriesButton.style.display = 'inline-block';
@@ -548,9 +635,6 @@ function loadMemories() {
     loadMemories();
   });
 });
-
-
-
   function loadMemories() {
     if (memoryGallery.children.length > 0) return; // Prevent duplicates
     memories.forEach(mem => {
