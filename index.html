@@ -8,6 +8,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     * { box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&display=swap');
+
+    .welcome-message {
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size:2.5em;
+      color:#e84393;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+      opacity:0;
+      z-index:100;
+      pointer-events:none;
+    }
+    h1 {
+      margin-bottom: 20px !important;
+    }
     body {
       margin:0; padding:0;
       font-family:'Montserrat',sans-serif;
@@ -32,8 +51,8 @@
     }
    
     #gift-button {
-      display: none;       /* initially hidden */
-      opacity: 0;          /* start fully transparent */
+      display: none;
+      opacity: 0;
       transition: opacity 1s ease;
       padding: 12px 25px;
       border: none;
@@ -94,7 +113,7 @@
     .cake-container {
       position: relative;
       display: none;
-      margin: 30px 0;
+      margin: 20px 0 30px 0;
       z-index: 5;
       cursor: pointer;
     }
@@ -126,19 +145,20 @@
       height:40px; 
       background:linear-gradient(to bottom,#fff,#f0f0f0);
       position:absolute; 
-      top:-50px; 
+      top:-45px;
       left:50%; 
       transform:translateX(-50%);
       border-radius:5px; 
       cursor:pointer; 
       box-shadow:0 2px 5px rgba(0,0,0,0.2);
     }
+
     .flame {
       width:12px;
       height:25px; 
       background:radial-gradient(#ffef00,#ff9e00);
       position:absolute; 
-      top:-25px; 
+      top:-25px;
       left:50%; 
       transform:translateX(-50%);
       opacity:0; 
@@ -267,19 +287,6 @@
       display:none;
       pointer-events:none;
     }
-    .welcome-message {
-      position:fixed;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      font-size:2.5em;
-      font-family:'Dancing Script',cursive;
-      color:#e84393;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-      opacity:0;
-      z-index:100;
-      pointer-events:none;
-    }
     .fade-in { animation:fadeIn 1s forwards; }
     .fade-out { animation:fadeOut 1s forwards; }
     @keyframes fadeIn {
@@ -308,7 +315,6 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* New animation for gift button */
     @keyframes bounceFadeIn {
       0% {
         opacity: 0;
@@ -330,9 +336,28 @@
       opacity: 1;
     }
 
-    /* Added styles for wish button */
-    #wish-button {
+    /* Updated wish section styles */
+    #wish-container {
       display: none;
+      margin: 20px auto;
+      max-width: 90%;
+    }
+    
+    #wish-text {
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid #444;
+      background: rgba(30,30,30,0.8);
+      color: #e0e0e0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      margin-bottom: 15px;
+      resize: none;
+      min-height: 100px;
+    }
+    
+    #submit-wish {
       padding: 12px 25px;
       border: none;
       border-radius: 25px;
@@ -342,32 +367,20 @@
       font-size: 1.1em;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(255,107,107,0.3);
-      margin: 15px auto;
+      margin: 0 auto;
+      display: block;
     }
-    #wish-button:hover {
+    
+    #submit-wish:hover {
       background: linear-gradient(45deg, #ff6b6b, #e84393);
     }
+    
     #wish-message {
       display: none;
       color: #ff6b6b;
       font-weight: bold;
       margin-top: 15px;
-    }
-    
-    /* Lightbox navigation buttons */
-    #lightbox-close, #lightbox-prev, #lightbox-next {
-      background: rgba(30,30,30,0.7);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.3s;
-    }
-    
-    #lightbox-close:hover, #lightbox-prev:hover, #lightbox-next:hover {
-      background: rgba(50,50,50,0.9);
+      text-align: center;
     }
     
     /* Mobile optimizations */
@@ -403,7 +416,7 @@
         width: 100px;
         height: 100px;
       }
-      #gift-button, #memories-button, #show-memories-button, #wish-button {
+      #gift-button, #memories-button, #show-memories-button, #submit-wish {
         padding: 10px 20px;
         font-size: 1em;
       }
@@ -424,15 +437,27 @@
        "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha.And yes ,remmeber "NO DIET". You are beautiful as you are Take love ❤️"; </div>
     <button id="show-memories-button">Memories</button>
     <div class="memory-gallery" id="memory-gallery"></div>
-    <!-- Added wish button and message -->
-    <button id="wish-button">Make a Wish!</button>
-    <p id="wish-message"></p>
+    
+    <!-- Updated wish section -->
+    <div id="wish-container">
+      <textarea id="wish-text" placeholder="Type your wish here..."></textarea>
+      <button id="submit-wish">Send Your Wish</button>
+      <p id="wish-message"></p>
+    </div>
   </div>
   <div id="balloons-container"></div>
   <div class="party-overlay" id="party-overlay"></div>
+  
+  <!-- Welcome messages -->
   <div class="welcome-message" id="welcome-message-1">Hi Cutiepie</div>
   <div class="welcome-message" id="welcome-message-2">Gulumulu</div>
-  <div class="welcome-message" id="welcome-message-3">I know it's unexpected</div>
+  <div class="welcome-message" id="welcome-message-3">My Sunshine</div>
+  <div class="welcome-message" id="welcome-message-4">Cupcake</div>
+  <div class="welcome-message" id="welcome-message-5">Snickerdoodle</div>
+  <div class="welcome-message" id="welcome-message-6">Dumpling</div>
+  <div class="welcome-message" id="welcome-message-7">My What-If</div>
+  <div class="welcome-message" id="welcome-message-8">I know it's unexpected</div>
+  
   <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
     <button id="lightbox-close" style="position:absolute;top:20px;right:20px; font-size:1.5em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">✖</button>
     <button id="lightbox-prev" style="position:absolute;top:50%;left:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">◀</button>
@@ -456,7 +481,7 @@
   const showMemoriesButton = document.getElementById('show-memories-button');
   const memoryGallery = document.getElementById('memory-gallery');
   const bgMusic = document.getElementById('bg-music');
-  bgMusic.volume = 0.5; // Lower volume for better mobile experience
+  bgMusic.volume = 0.5;
 
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxContent = document.getElementById('lightbox-content');
@@ -464,31 +489,42 @@
   const lightboxNext = document.getElementById('lightbox-next');
   const lightboxPrev = document.getElementById('lightbox-prev');
 
-  // Added wish button elements
-  const wishButton = document.getElementById('wish-button');
+  // Wish section elements
+  const wishContainer = document.getElementById('wish-container');
+  const wishText = document.getElementById('wish-text');
+  const submitWish = document.getElementById('submit-wish');
   const wishMessage = document.getElementById('wish-message');
+
+  // Get all welcome messages
+  const welcomeMessages = [
+    document.getElementById('welcome-message-1'),
+    document.getElementById('welcome-message-2'),
+    document.getElementById('welcome-message-3'),
+    document.getElementById('welcome-message-4'),
+    document.getElementById('welcome-message-5'),
+    document.getElementById('welcome-message-6'),
+    document.getElementById('welcome-message-7'),
+    document.getElementById('welcome-message-8')
+  ];
 
   let currentIndex = 0;
 
-  // Open lightbox with media at index
   function openLightbox(index) {
     currentIndex = index;
     showMedia(currentIndex);
     lightboxModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';  // Prevent background scroll
+    document.body.style.overflow = 'hidden';
   }
 
-  // Close lightbox
   function closeLightbox() {
     lightboxModal.style.display = 'none';
     lightboxContent.innerHTML = '';
     document.body.style.overflow = '';
   }
 
-  // Show media inside lightbox
   function showMedia(index) {
     const mem = memories[index];
-    lightboxContent.innerHTML = ''; // clear previous
+    lightboxContent.innerHTML = '';
 
     if(mem.type === 'image') {
       const img = document.createElement('img');
@@ -507,19 +543,16 @@
     }
   }
 
-  // Next media
   function nextMedia() {
     currentIndex = (currentIndex + 1) % memories.length;
     showMedia(currentIndex);
   }
 
-  // Previous media
   function prevMedia() {
     currentIndex = (currentIndex - 1 + memories.length) % memories.length;
     showMedia(currentIndex);
   }
 
-  // Add click listeners on thumbnails to open lightbox
   function setupMemoryClicks() {
     const items = memoryGallery.querySelectorAll('.memory-item');
     items.forEach((item, i) => {
@@ -532,9 +565,8 @@
   lightboxNext.onclick = nextMedia;
   lightboxPrev.onclick = prevMedia;
 
-  // Call this after memories loaded to setup clicks
   function loadMemories() {
-    if (memoryGallery.children.length > 0) return; // Prevent duplicates
+    if (memoryGallery.children.length > 0) return;
     memories.forEach(mem => {
       const div = document.createElement('div');
       div.className = 'memory-item';
@@ -546,7 +578,7 @@
       } else if (mem.type === 'video') {
         const vid = document.createElement('video');
         vid.src = mem.url;
-        vid.controls = false;  // controls off in thumbnail
+        vid.controls = false;
         vid.muted = true;
         vid.loop = true;
         vid.autoplay = true;
@@ -557,22 +589,19 @@
 
     setupMemoryClicks();
     
-    // Show wish button after memories are loaded
+    // Show wish container after memories are loaded
     setTimeout(() => {
-      wishButton.style.display = 'inline-block';
-      wishButton.style.opacity = '0';
+      wishContainer.style.display = 'block';
+      wishContainer.style.opacity = '0';
       setTimeout(() => {
-        wishButton.style.transition = 'opacity 1s ease';
-        wishButton.style.opacity = '1';
+        wishContainer.style.transition = 'opacity 1s ease';
+        wishContainer.style.opacity = '1';
       }, 100);
     }, 500);
   }
 
   const balloonsContainer = document.getElementById('balloons-container');
   const partyOverlay = document.getElementById('party-overlay');
-  const welcome1 = document.getElementById('welcome-message-1');
-  const welcome2 = document.getElementById('welcome-message-2');
-  const welcome3 = document.getElementById('welcome-message-3');
   const typingText = document.getElementById('typing-text');
   const fullText = '👑 Happy Birthday Prasansha!';
   let charIndex = 0;
@@ -591,11 +620,9 @@
     if (started) return;
     started = true;
     startOverlay.style.display = 'none';
-    // Try to play music with user interaction
     const playPromise = bgMusic.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Autoplay was prevented, show a mute button or handle it
         console.log("Autoplay prevented");
       });
     }
@@ -605,19 +632,23 @@
   function showWelcomeMessages() {
     document.querySelector('.container').style.opacity = '0';
 
-    welcome1.classList.add('fade-in');
-    setTimeout(() => welcome1.classList.replace('fade-in', 'fade-out'), 1000);
-
-    setTimeout(() => welcome2.classList.add('fade-in'), 2000);
-    setTimeout(() => welcome2.classList.replace('fade-in', 'fade-out'), 3000);
-
-    setTimeout(() => welcome3.classList.add('fade-in'), 4000);
-    setTimeout(() => welcome3.classList.replace('fade-in', 'fade-out'), 5000);
-
-    setTimeout(() => {
-      document.querySelector('.container').style.opacity = '1';
-      typeWriter();
-    }, 6000);
+    // Show messages sequentially with 1s intervals
+    welcomeMessages.forEach((message, index) => {
+      setTimeout(() => {
+        message.classList.add('fade-in');
+        setTimeout(() => {
+          message.classList.replace('fade-in', 'fade-out');
+          
+          // After last message, show content
+          if (index === welcomeMessages.length - 1) {
+            setTimeout(() => {
+              document.querySelector('.container').style.opacity = '1';
+              typeWriter();
+            }, 1000);
+          }
+        }, 1000);
+      }, index * 1500);
+    });
   }
 
   function typeWriter() {
@@ -627,8 +658,6 @@
       setTimeout(typeWriter, 120);
     } else {
       typingText.style.borderRight = 'none';
-
-      // Show gift button with animation after 1 second
       setTimeout(() => {
         giftButton.classList.add('show');
       }, 1000);
@@ -700,49 +729,19 @@
     typeNext();
   }
 
-  // Added wish button functionality
-  wishButton.addEventListener('click', function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          // Success - got location
-          wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
-          wishMessage.style.display = 'block';
-          
-          // Create some visual feedback
-          for (let i = 0; i < 20; i++) {
-            setTimeout(() => createConfetti(), i * 100);
-          }
-          
-          // Hide button after clicking
-          wishButton.style.display = 'none';
-        },
-        function(error) {
-          // Error - couldn't get location
-          wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
-          wishMessage.style.display = 'block';
-          
-          // Create some visual feedback
-          for (let i = 0; i < 20; i++) {
-            setTimeout(() => createConfetti(), i * 100);
-          }
-          
-          // Hide button after clicking
-          wishButton.style.display = 'none';
-        }
-      );
-    } else {
-      // Geolocation not supported
-      wishMessage.textContent = "Your wish has been sent to the universe. Hope it comes true quickly! ✨";
+  // Updated wish functionality
+  submitWish.addEventListener('click', function() {
+    const wish = wishText.value.trim();
+    if (wish) {
+      wishMessage.textContent = "Your wish has been sent to the universe my love.\nBe happy and healthy until we meet again";
       wishMessage.style.display = 'block';
+      wishText.value = '';
+      submitWish.style.display = 'none';
       
       // Create some visual feedback
       for (let i = 0; i < 20; i++) {
         setTimeout(() => createConfetti(), i * 100);
       }
-      
-      // Hide button after clicking
-      wishButton.style.display = 'none';
     }
   });
 
@@ -766,24 +765,20 @@
   });
 
   showMemoriesButton.addEventListener('click', () => {
-    birthdayMessage.style.display = 'block';  // Keep message visible
-    birthdayMessage.textContent = '';         // Clear old text
-    memoryGallery.style.display = 'none';     // Hide gallery initially
+    birthdayMessage.style.display = 'block';
+    birthdayMessage.textContent = '';
+    memoryGallery.style.display = 'none';
     
     const treasureMessage = "Here's some treasure I still have in my phone";
     
-    // Type the treasure message first
     typeText(birthdayMessage, treasureMessage, 60, () => {
-      // After typing completes, show the gallery
       memoryGallery.style.display = 'flex';
       loadMemories();
     });
   });
   
-  // Handle touch events for mobile
   document.addEventListener('touchstart', function() {}, {passive: true});
   
-  // Handle orientation changes
   window.addEventListener('orientationchange', function() {
     // You might want to recalculate some dimensions here if needed
   });
