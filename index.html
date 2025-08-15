@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Happy Birthday Prasansha!</title>
   <link href="https://fonts.cdnfonts.com/css/winky-rough" rel="stylesheet">
-
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     * { box-sizing: border-box; }
@@ -20,13 +18,19 @@
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      background:#f0f0f0;
+      background:#121212;
+      color: #e0e0e0;
       overflow-x:hidden;
       position: relative;
     }
-    .container { max-width:800px; width:95%; padding:20px; position:relative; z-index:10; }
+    .container { 
+      max-width:800px; 
+      width:95%; 
+      padding:20px; 
+      position:relative; 
+      z-index:10;
+    }
    
-
     #gift-button {
       display: none;       /* initially hidden */
       opacity: 0;          /* start fully transparent */
@@ -34,22 +38,23 @@
       padding: 12px 25px;
       border: none;
       border-radius: 25px;
-      background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+      background: linear-gradient(45deg, #ff6b6b, #e84393);
       color: white;
       font-weight: bold;
       font-size: 1.1em;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255,107,107,0.5);
+      box-shadow: 0 4px 15px rgba(255,107,107,0.3);
       user-select:none;
+      margin: 10px auto;
     }
 
     #gift-button:hover {
-      background: linear-gradient(45deg, #ff6b6b, #ff3b3b);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #e84393, #ff6b6b);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
     #memories-button, #show-memories-button {
-      background: linear-gradient(45deg, #74b9ff, #0984e3);
+      background: linear-gradient(45deg, #0984e3, #74b9ff);
       display: none;
       padding: 10px 22px;
       border: none;
@@ -57,50 +62,51 @@
       color: white;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 3px 12px rgba(9,132,227,0.5);
+      box-shadow: 0 3px 12px rgba(9,132,227,0.3);
       user-select:none;
+      margin: 10px auto;
     }
+    
     #lightbox-modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-#lightbox-content img, 
-#lightbox-content video {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
+    #lightbox-content img, 
+    #lightbox-content video {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
 
     #memories-button:hover, #show-memories-button:hover {
-      background: linear-gradient(45deg, #0984e3, #74b9ff);
+      background: linear-gradient(45deg, #74b9ff, #0984e3);
     }
 
     .cake-container {
       position: relative;
       display: none;
-      margin: 40px 0;
+      margin: 30px 0;
       z-index: 5;
       cursor: pointer;
     }
 
     .cake {
-      width: 200px;
-      height: 120px;
+      width: 180px;
+      height: 100px;
       background: linear-gradient(to bottom, #f9c5d1, #f8a5c2);
       border-radius: 10px 10px 0 0;
       position: relative;
       margin: 0 auto;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
     .cake:before {
@@ -108,66 +114,123 @@
       content: '';
       top: -10px;
       left: -10px;
-      width: 220px;
+      width: 200px;
       height: 20px;
       background: linear-gradient(to right, #f999b7, #f67eaa);
       border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
 
     .candle {
-      width:10px;height:50px; background:linear-gradient(to bottom,#fff,#f0f0f0);
-      position:absolute; top:-60px; left:50%; transform:translateX(-50%);
-      border-radius:5px; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      width:8px;
+      height:40px; 
+      background:linear-gradient(to bottom,#fff,#f0f0f0);
+      position:absolute; 
+      top:-50px; 
+      left:50%; 
+      transform:translateX(-50%);
+      border-radius:5px; 
+      cursor:pointer; 
+      box-shadow:0 2px 5px rgba(0,0,0,0.2);
     }
     .flame {
-      width:15px;height:30px; background:radial-gradient(#ffef00,#ff9e00);
-      position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-      opacity:0; border-radius:50% 50% 20% 20%; filter:blur(1px);
+      width:12px;
+      height:25px; 
+      background:radial-gradient(#ffef00,#ff9e00);
+      position:absolute; 
+      top:-25px; 
+      left:50%; 
+      transform:translateX(-50%);
+      opacity:0; 
+      border-radius:50% 50% 20% 20%; 
+      filter:blur(1px);
       box-shadow:0 0 20px #ff6600,0 0 40px #ff9900;
     }
-    .flame.burning { opacity:1; animation:flicker 0.5s infinite alternate; }
+    .flame.burning { 
+      opacity:1; 
+      animation:flicker 0.5s infinite alternate; 
+    }
     @keyframes flicker {
       0% { opacity:1; transform:translateX(-50%) scale(1); }
       100% { opacity:0.8; transform:translateX(-50%) scale(1.1); }
     }
     .birthday-message {
-      font-size:1.2em; color:#333; background:rgba(255,255,255,0.9);
-      padding:25px; border-radius:15px; margin:30px 0; max-width:90%;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1); display:none; line-height:1.6;
+      font-size:1.1em; 
+      color:#e0e0e0; 
+      background:rgba(30,30,30,0.8);
+      padding:20px; 
+      border-radius:15px; 
+      margin:20px 0; 
+      max-width:90%;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3); 
+      display:none; 
+      line-height:1.6;
       white-space: pre-wrap;
+      border: 1px solid #444;
     }
     .memory-gallery {
-      display:none; margin-top:30px; flex-wrap:wrap; justify-content:center; gap:20px;
+      display:none; 
+      margin-top:20px; 
+      flex-wrap:wrap; 
+      justify-content:center; 
+      gap:15px;
     }
     .memory-item {
-      width:200px;height:200px;background:#f5f5f5;border-radius:15px;overflow:hidden;
-      display:flex;justify-content:center;align-items:center;transition:all .3s;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      width:150px;
+      height:150px;
+      background:#2a2a2a;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      transition:all .3s;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+      border: 1px solid #444;
     }
     .memory-item:hover {
-      transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:2;
+      transform:scale(1.05); 
+      box-shadow:0 10px 25px rgba(0,0,0,0.4); 
+      z-index:2;
     }
     .memory-item img, .memory-item video {
-      width:100%; height:100%; object-fit:cover; transition:transform .3s;
+      width:100%; 
+      height:100%; 
+      object-fit:cover; 
+      transition:transform .3s;
     }
     h1 {
-      font-family: 'Winky Rough', cursive; font-size:2.5em; color:#e84393;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.1); margin:0;
+      font-family: 'Winky Rough', cursive; 
+      font-size:2.2em; 
+      color:#e84393;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3); 
+      margin:0;
     }
     #bg-music { display:none; }
-    .balloon, .confetti, .floating-heart { position:absolute; z-index:1; }
+    .balloon, .confetti, .floating-heart { 
+      position:absolute; 
+      z-index:1; 
+    }
     .balloon {
-      width:60px;height:80px;border-radius:50%; opacity:0;
+      width:50px;
+      height:70px;
+      border-radius:50%; 
+      opacity:0;
       animation:float 8s ease-in-out infinite;
-      box-shadow:inset -5px -5px 10px rgba(0,0,0,0.1);
+      box-shadow:inset -5px -5px 10px rgba(0,0,0,0.2);
     }
     .balloon:before {
-      content:''; position:absolute; bottom:-50px; left:50%; width:2px;height:50px;
-      background:#333; transform:translateX(-50%);
+      content:''; 
+      position:absolute; 
+      bottom:-40px; 
+      left:50%; 
+      width:2px;
+      height:40px;
+      background:#444; 
+      transform:translateX(-50%);
     }
     @keyframes float {
-      0%,100%{transform:translateY(0)}50%{transform:translateY(-50px) rotate(5deg);}
+      0%,100%{transform:translateY(0)}50%{transform:translateY(-40px) rotate(5deg);}
     }
     .balloon.red{background:radial-gradient(circle at 30% 30%,#ff6b6b,#e84393);}
     .balloon.blue{background:radial-gradient(circle at 30% 30%,#74b9ff,#0984e3);}
@@ -175,29 +238,47 @@
     .balloon.yellow{background:radial-gradient(circle at 30% 30%,#ffeaa7,#fdcb6e);}
     .balloon.purple{background:radial-gradient(circle at 30% 30%,#a29bfe,#6c5ce7);}
     .confetti {
-      width:10px; height:10px; animation:confetti-fall 3s linear forwards;
+      width:8px; 
+      height:8px; 
+      animation:confetti-fall 3s linear forwards;
     }
     @keyframes confetti-fall {
       0% { transform:translateY(-100vh); opacity:1; }
       100% { transform:translateY(100vh); opacity:0; }
     }
     .floating-heart {
-      font-size:20px; color:#ff6b6b; animation:float-up 4s ease-in forwards;
+      font-size:18px; 
+      color:#ff6b6b; 
+      animation:float-up 4s ease-in forwards;
     }
     @keyframes float-up {
       0% { transform:translateY(0); opacity:1; }
       100% { transform:translateY(-100vh) rotate(360deg); opacity:0; }
     }
     .party-overlay {
-      position:fixed;top:0;left:0;width:100%;height:100%;
-      background:rgba(255,255,255,0.1);backdrop-filter:blur(2px);
-      z-index:3;display:none;pointer-events:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(2px);
+      z-index:3;
+      display:none;
+      pointer-events:none;
     }
     .welcome-message {
-      position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-      font-size:3em;font-family:'Dancing Script',cursive;color:#e84393;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.2);
-      opacity:0;z-index:100;pointer-events:none;
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      font-size:2.5em;
+      font-family:'Dancing Script',cursive;
+      color:#e84393;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+      opacity:0;
+      z-index:100;
+      pointer-events:none;
     }
     .fade-in { animation:fadeIn 1s forwards; }
     .fade-out { animation:fadeOut 1s forwards; }
@@ -214,17 +295,17 @@
       position: fixed;
       top:0; left:0;
       width:100%; height:100%;
-      background: #fff;
+      background: #121212;
       z-index: 9999;
       display:flex;
       justify-content:center;
       align-items:center;
       cursor:pointer;
       font-family: 'Dancing Script', cursive;
-      font-size: 2em;
+      font-size: 1.8em;
       color: #e84393;
       user-select:none;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     /* New animation for gift button */
@@ -255,27 +336,82 @@
       padding: 12px 25px;
       border: none;
       border-radius: 25px;
-      background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+      background: linear-gradient(45deg, #e84393, #ff6b6b);
       color: white;
       font-weight: bold;
       font-size: 1.1em;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255,107,107,0.5);
-      margin: 20px auto;
+      box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+      margin: 15px auto;
     }
     #wish-button:hover {
-      background: linear-gradient(45deg, #ff6b6b, #ff3b3b);
+      background: linear-gradient(45deg, #ff6b6b, #e84393);
     }
     #wish-message {
       display: none;
-      color: #e84393;
+      color: #ff6b6b;
       font-weight: bold;
       margin-top: 15px;
+    }
+    
+    /* Lightbox navigation buttons */
+    #lightbox-close, #lightbox-prev, #lightbox-next {
+      background: rgba(30,30,30,0.7);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    
+    #lightbox-close:hover, #lightbox-prev:hover, #lightbox-next:hover {
+      background: rgba(50,50,50,0.9);
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .cake {
+        width: 150px;
+        height: 80px;
+      }
+      .cake:before {
+        width: 170px;
+      }
+      .birthday-message {
+        font-size: 1em;
+        padding: 15px;
+      }
+      .memory-item {
+        width: 130px;
+        height: 130px;
+      }
+      .welcome-message {
+        font-size: 2em;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .memory-item {
+        width: 100px;
+        height: 100px;
+      }
+      #gift-button, #memories-button, #show-memories-button, #wish-button {
+        padding: 10px 20px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="start-overlay">Click to Start 🎉</div>
+  <div id="start-overlay">Tap to Start 🎉</div>
   <div class="container">
     <h1 id="typing-text">👸 Happy Birthday Prasansha!</h1>
     <div class="cake-container" id="cake-container" title="Click the cake to light the candle">
@@ -297,15 +433,14 @@
   <div class="welcome-message" id="welcome-message-1">Hi Cutiepie</div>
   <div class="welcome-message" id="welcome-message-2">Gulumulu</div>
   <div class="welcome-message" id="welcome-message-3">I know it's unexpected</div>
-  <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
-  <button id="lightbox-close" style="position:absolute;top:20px;right:20px; font-size:1.5em; background:none; border:none; color:white; cursor:pointer;">✖ Close</button>
-  <button id="lightbox-prev" style="position:absolute;top:50%;left:20px; transform:translateY(-50%); font-size:2em; background:none; border:none; color:white; cursor:pointer;">◀</button>
-  <div id="lightbox-content" style="max-width:90vw; max-height:80vh; display:flex; justify-content:center; align-items:center;">
-    <!-- Media will be injected here -->
+  <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
+    <button id="lightbox-close" style="position:absolute;top:20px;right:20px; font-size:1.5em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">✖</button>
+    <button id="lightbox-prev" style="position:absolute;top:50%;left:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">◀</button>
+    <div id="lightbox-content" style="max-width:90vw; max-height:80vh; display:flex; justify-content:center; align-items:center;">
+      <!-- Media will be injected here -->
+    </div>
+    <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">▶</button>
   </div>
-  <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:none; border:none; color:white; cursor:pointer;">▶</button>
-</div>
-
   
   <audio id="bg-music" loop>
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
@@ -321,113 +456,117 @@
   const showMemoriesButton = document.getElementById('show-memories-button');
   const memoryGallery = document.getElementById('memory-gallery');
   const bgMusic = document.getElementById('bg-music');
-  bgMusic.volume = 0.7; // volume ranges from 0.0 (mute) to 1.0 (full volume)
+  bgMusic.volume = 0.5; // Lower volume for better mobile experience
 
   const lightboxModal = document.getElementById('lightbox-modal');
-const lightboxContent = document.getElementById('lightbox-content');
-const lightboxClose = document.getElementById('lightbox-close');
-const lightboxNext = document.getElementById('lightbox-next');
-const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxContent = document.getElementById('lightbox-content');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxPrev = document.getElementById('lightbox-prev');
 
-// Added wish button elements
-const wishButton = document.getElementById('wish-button');
-const wishMessage = document.getElementById('wish-message');
+  // Added wish button elements
+  const wishButton = document.getElementById('wish-button');
+  const wishMessage = document.getElementById('wish-message');
 
-let currentIndex = 0;
+  let currentIndex = 0;
 
-// Open lightbox with media at index
-function openLightbox(index) {
-  currentIndex = index;
-  showMedia(currentIndex);
-  lightboxModal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';  // Prevent background scroll
-}
-
-// Close lightbox
-function closeLightbox() {
-  lightboxModal.style.display = 'none';
-  lightboxContent.innerHTML = '';
-  document.body.style.overflow = '';
-}
-
-// Show media inside lightbox
-function showMedia(index) {
-  const mem = memories[index];
-  lightboxContent.innerHTML = ''; // clear previous
-
-  if(mem.type === 'image') {
-    const img = document.createElement('img');
-    img.src = mem.url;
-    lightboxContent.appendChild(img);
-  } else if(mem.type === 'video') {
-    const vid = document.createElement('video');
-    vid.src = mem.url;
-    vid.controls = true;
-    vid.autoplay = true;
-    lightboxContent.appendChild(vid);
+  // Open lightbox with media at index
+  function openLightbox(index) {
+    currentIndex = index;
+    showMedia(currentIndex);
+    lightboxModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';  // Prevent background scroll
   }
-}
 
-// Next media
-function nextMedia() {
-  currentIndex = (currentIndex + 1) % memories.length;
-  showMedia(currentIndex);
-}
+  // Close lightbox
+  function closeLightbox() {
+    lightboxModal.style.display = 'none';
+    lightboxContent.innerHTML = '';
+    document.body.style.overflow = '';
+  }
 
-// Previous media
-function prevMedia() {
-  currentIndex = (currentIndex - 1 + memories.length) % memories.length;
-  showMedia(currentIndex);
-}
+  // Show media inside lightbox
+  function showMedia(index) {
+    const mem = memories[index];
+    lightboxContent.innerHTML = ''; // clear previous
 
-// Add click listeners on thumbnails to open lightbox
-function setupMemoryClicks() {
-  const items = memoryGallery.querySelectorAll('.memory-item');
-  items.forEach((item, i) => {
-    item.style.cursor = 'pointer';
-    item.onclick = () => openLightbox(i);
-  });
-}
-
-lightboxClose.onclick = closeLightbox;
-lightboxNext.onclick = nextMedia;
-lightboxPrev.onclick = prevMedia;
-
-// Call this after memories loaded to setup clicks
-function loadMemories() {
-  if (memoryGallery.children.length > 0) return; // Prevent duplicates
-  memories.forEach(mem => {
-    const div = document.createElement('div');
-    div.className = 'memory-item';
-    if (mem.type === 'image') {
+    if(mem.type === 'image') {
       const img = document.createElement('img');
       img.src = mem.url;
-      img.alt = 'Memory image';
-      div.appendChild(img);
-    } else if (mem.type === 'video') {
+      img.style.maxHeight = '80vh';
+      img.style.maxWidth = '90vw';
+      lightboxContent.appendChild(img);
+    } else if(mem.type === 'video') {
       const vid = document.createElement('video');
       vid.src = mem.url;
-      vid.controls = false;  // controls off in thumbnail
-      vid.muted = true;
-      vid.loop = true;
+      vid.controls = true;
       vid.autoplay = true;
-      div.appendChild(vid);
+      vid.style.maxHeight = '80vh';
+      vid.style.maxWidth = '90vw';
+      lightboxContent.appendChild(vid);
     }
-    memoryGallery.appendChild(div);
-  });
+  }
 
-  setupMemoryClicks();
-  
-  // Show wish button after memories are loaded
-  setTimeout(() => {
-    wishButton.style.display = 'inline-block';
-    wishButton.style.opacity = '0';
+  // Next media
+  function nextMedia() {
+    currentIndex = (currentIndex + 1) % memories.length;
+    showMedia(currentIndex);
+  }
+
+  // Previous media
+  function prevMedia() {
+    currentIndex = (currentIndex - 1 + memories.length) % memories.length;
+    showMedia(currentIndex);
+  }
+
+  // Add click listeners on thumbnails to open lightbox
+  function setupMemoryClicks() {
+    const items = memoryGallery.querySelectorAll('.memory-item');
+    items.forEach((item, i) => {
+      item.style.cursor = 'pointer';
+      item.onclick = () => openLightbox(i);
+    });
+  }
+
+  lightboxClose.onclick = closeLightbox;
+  lightboxNext.onclick = nextMedia;
+  lightboxPrev.onclick = prevMedia;
+
+  // Call this after memories loaded to setup clicks
+  function loadMemories() {
+    if (memoryGallery.children.length > 0) return; // Prevent duplicates
+    memories.forEach(mem => {
+      const div = document.createElement('div');
+      div.className = 'memory-item';
+      if (mem.type === 'image') {
+        const img = document.createElement('img');
+        img.src = mem.url;
+        img.alt = 'Memory image';
+        div.appendChild(img);
+      } else if (mem.type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = mem.url;
+        vid.controls = false;  // controls off in thumbnail
+        vid.muted = true;
+        vid.loop = true;
+        vid.autoplay = true;
+        div.appendChild(vid);
+      }
+      memoryGallery.appendChild(div);
+    });
+
+    setupMemoryClicks();
+    
+    // Show wish button after memories are loaded
     setTimeout(() => {
-      wishButton.style.transition = 'opacity 1s ease';
-      wishButton.style.opacity = '1';
-    }, 100);
-  }, 500);
-}
+      wishButton.style.display = 'inline-block';
+      wishButton.style.opacity = '0';
+      setTimeout(() => {
+        wishButton.style.transition = 'opacity 1s ease';
+        wishButton.style.opacity = '1';
+      }, 100);
+    }, 500);
+  }
 
   const balloonsContainer = document.getElementById('balloons-container');
   const partyOverlay = document.getElementById('party-overlay');
@@ -441,20 +580,25 @@ function loadMemories() {
 
   const memories = [
     { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
- { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-  { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-  { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-  { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-  { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
-  
-  
-];
+    { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
+  ];
 
   startOverlay.onclick = () => {
     if (started) return;
     started = true;
     startOverlay.style.display = 'none';
-    bgMusic.play().catch(() => {});
+    // Try to play music with user interaction
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay was prevented, show a mute button or handle it
+        console.log("Autoplay prevented");
+      });
+    }
     showWelcomeMessages();
   };
 
@@ -524,10 +668,10 @@ function loadMemories() {
   }
 
   function openGift() {
-    document.body.style.backgroundColor = '#ffebee';
+    document.body.style.backgroundColor = '#1a1a1a';
     giftButton.style.display = 'none';
     cakeContainer.style.display = 'block';
-    createBalloons(15);
+    createBalloons(12);
     createConfetti();
     createFloatingHearts();
     partyOverlay.style.display = 'block';
@@ -566,7 +710,7 @@ function loadMemories() {
           wishMessage.style.display = 'block';
           
           // Create some visual feedback
-          for (let i = 0; i < 30; i++) {
+          for (let i = 0; i < 20; i++) {
             setTimeout(() => createConfetti(), i * 100);
           }
           
@@ -579,7 +723,7 @@ function loadMemories() {
           wishMessage.style.display = 'block';
           
           // Create some visual feedback
-          for (let i = 0; i < 30; i++) {
+          for (let i = 0; i < 20; i++) {
             setTimeout(() => createConfetti(), i * 100);
           }
           
@@ -593,7 +737,7 @@ function loadMemories() {
       wishMessage.style.display = 'block';
       
       // Create some visual feedback
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 20; i++) {
         setTimeout(() => createConfetti(), i * 100);
       }
       
@@ -621,39 +765,28 @@ function loadMemories() {
     });
   });
 
- showMemoriesButton.addEventListener('click', () => {
-  birthdayMessage.style.display = 'block';  // Keep message visible
-  birthdayMessage.textContent = '';         // Clear old text
-  memoryGallery.style.display = 'none';     // Hide gallery initially
-  
-  const treasureMessage = "Here's some treasure I still have in my phone";
-  
-  // Type the treasure message first
-  typeText(birthdayMessage, treasureMessage, 60, () => {
-    // After typing completes, show the gallery
-    memoryGallery.style.display = 'flex';
-    loadMemories();
-  });
-});
-  function loadMemories() {
-    if (memoryGallery.children.length > 0) return; // Prevent duplicates
-    memories.forEach(mem => {
-      const div = document.createElement('div');
-      div.className = 'memory-item';
-      if (mem.type === 'image') {
-        const img = document.createElement('img');
-        img.src = mem.url;
-        img.alt = 'Memory image';
-        div.appendChild(img);
-      } else if (mem.type === 'video') {
-        const vid = document.createElement('video');
-        vid.src = mem.url;
-        vid.controls = true;
-        div.appendChild(vid);
-      }
-      memoryGallery.appendChild(div);
+  showMemoriesButton.addEventListener('click', () => {
+    birthdayMessage.style.display = 'block';  // Keep message visible
+    birthdayMessage.textContent = '';         // Clear old text
+    memoryGallery.style.display = 'none';     // Hide gallery initially
+    
+    const treasureMessage = "Here's some treasure I still have in my phone";
+    
+    // Type the treasure message first
+    typeText(birthdayMessage, treasureMessage, 60, () => {
+      // After typing completes, show the gallery
+      memoryGallery.style.display = 'flex';
+      loadMemories();
     });
-  }
+  });
+  
+  // Handle touch events for mobile
+  document.addEventListener('touchstart', function() {}, {passive: true});
+  
+  // Handle orientation changes
+  window.addEventListener('orientationchange', function() {
+    // You might want to recalculate some dimensions here if needed
+  });
   </script>
 </body>
 </html>
