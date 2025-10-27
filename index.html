@@ -24,51 +24,78 @@
       z-index:100;
       pointer-events:none;
     }
+
+    @media (max-width: 768px) {
+      body {
+        justify-content: flex-start;
+        padding: 10px 0;
+        overflow-y: auto;
+      }
+      
+      .container {
+        padding: 15px;
+        margin-top: 20px;
+      }
+      
+      .memory-gallery {
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      
+      .memory-item {
+        width: 45%;
+        height: 120px;
+      }
+    }
+
     body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(232, 67, 147, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(157, 78, 221, 0.1) 0%, transparent 50%);
-  animation: gentlePulse 8s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(232, 67, 147, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(157, 78, 221, 0.1) 0%, transparent 50%);
+      animation: gentlePulse 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-@keyframes gentlePulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
-}
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.8; }
+    }
+
     .shooting-star {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 10px 2px white;
-  opacity: 0;
-  z-index: 1;
-  animation: shootStar 3s ease-out forwards;
-}
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px white;
+      opacity: 0;
+      z-index: 1;
+      animation: shootStar 3s ease-out forwards;
+    }
 
-@keyframes shootStar {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
+    @keyframes shootStar {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100vw, 100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     h1 {
       margin-bottom: 20px !important;
     }
+
     body {
       margin:0; padding:0;
       font-family:'Montserrat',sans-serif;
@@ -77,21 +104,24 @@
       min-height:100vh;
       display:flex;
       flex-direction:column;
-      justify-content:center;
+      justify-content:flex-start;
       align-items:center;
       background:#121212;
       color: #e0e0e0;
       overflow-x:hidden;
       position: relative;
+      padding: 20px 0;
     }
+
     .container { 
       max-width:800px; 
       width:95%; 
       padding:20px; 
       position:relative; 
       z-index:10;
+      margin: auto;
     }
-   
+
     #gift-button {
       display: none;
       opacity: 0;
@@ -424,78 +454,18 @@
       text-align: center;
     }
     .cake-sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: gold;
-  border-radius: 50%;
-  opacity: 0;
-  animation: sparkle 2s ease-in-out infinite;
-}
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: gold;
+      border-radius: 50%;
+      opacity: 0;
+      animation: sparkle 2s ease-in-out infinite;
+    }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
-}
-    
-    .love-hint {
-  position: fixed;
-  font-size: 1.4em;
-  font-weight: bold;
-  opacity: 0.6; /* More transparent */
-  z-index: 1000;
-  pointer-events: none;
-  animation: floatLove 15s ease-in-out forwards; /* Slower animation */
-  text-shadow: 
-    2px 2px 8px rgba(0,0,0,0.8),
-    0 0 10px rgba(255,107,107,0.3); /* Added glow effect */
-  background: rgba(0,0,0,0.5); /* More transparent background */
-  padding: 8px 15px;
-  border-radius: 20px;
-  backdrop-filter: blur(3px) brightness(0.9); /* Added blur to background */
-  white-space: nowrap;
-  max-width: 90vw;
-  word-wrap: break-word;
-  filter: blur(0.5px); /* Text blur */
-  transition: all 0.3s ease; /* Smooth transitions */
-}
-
-@keyframes floatLove {
-  0% { 
-    transform: translateY(100vh) translateX(-50%); 
-    opacity: 0.4; /* Lower starting opacity */
-    filter: blur(1px); /* More blur at start */
-  }
-  20% { 
-    opacity: 0.7; /* Slightly more visible */
-    filter: blur(0.3px); /* Less blur */
-  }
-  60% { 
-    opacity: 0.6; /* Maintain dreamy look */
-    filter: blur(0.5px); /* Slight blur */
-  }
-  100% { 
-    transform: translateY(-100vh) translateX(-50%); 
-    opacity: 0.2; /* Very faint at end */
-    filter: blur(1.5px); /* More blur at end */
-  }
-}
-
-    @keyframes floatLove {
-      0% { 
-        transform: translateY(100vh) translateX(-50%); 
-        opacity: 0.5;
-      }
-      20% { 
-        opacity: 0.7;
-      }
-      80% { 
-        opacity: 0.7;
-      }
-      100% { 
-        transform: translateY(-100vh) translateX(-50%); 
-        opacity: 0.3;
-      }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
     }
     
     .heart-pulse {
@@ -538,12 +508,6 @@
       }
       .welcome-message {
         font-size: 2em;
-      }
-      .love-hint {
-        font-size: 1.2em;
-        padding: 6px 12px;
-        max-width: 80vw;
-        opacity: 0.6;
       }
     }
     
@@ -599,12 +563,17 @@
     </div>
     <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">▶</button>
   </div>
-  <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Dancing Script', cursive; font-size:2em; text-align:center; padding:20px;">
-  <p>No matter where life takes us...</p>
-  <p style="font-size:1.5em; margin-top:20px;">You'll always have a special place in my heart 💖</p>
-  <p style="font-size:1em; margin-top:30px; font-family:'Montserrat', sans-serif;">- Always yours</p>
+ <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; cursor:pointer; line-height:1.6;">
+  <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
+  <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll always have a special place in my heart 💖</p>
+  <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Always yours</p>
 </div>
-  
+
+<div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; cursor:pointer; line-height:1.5;">
+  <p style="font-weight:500; text-shadow: 0 0 10px rgba(255,107,107,0.3);">Kya tum firse wo purana "haan ji" wala Prasansha banogi?</p>
+  <p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">(Will you be my Mam once again?)</p>
+
+</div> 
   <audio id="bg-music" loop>
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
   </audio>
@@ -619,6 +588,7 @@
   const showMemoriesButton = document.getElementById('show-memories-button');
   const memoryGallery = document.getElementById('memory-gallery');
   const bgMusic = document.getElementById('bg-music');
+  const finalMessage = document.getElementById('final-message');
   bgMusic.volume = 0.5;
 
   const lightboxModal = document.getElementById('lightbox-modal');
@@ -654,66 +624,32 @@
     { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
   ];
 
-  function createLoveHint() {
-  const messages = [
-    "🧩 Its been 649 days without you",
-    "💖 Still thinking of you...",
-    "📞 Still remember your voice",
-    "✨ Wish I could turn back time",
-    "🌑 No more goodnight message since you are gone",
-    "💝 You mean everything to me",
-    "🦋 My heart still skips a beat for you",
-    "🌙 Missing you every day",
-    "💫 I still care about you",
-    "🌸 Still every night I cry for you",
-    "💌 Will you be my Mam again?",
-    "🎀 You're unforgettable, Prasansha"
-  ];
-  
-  const hint = document.createElement('div');
-  hint.className = 'love-hint';
-  
-  // Get message sequentially
-  const message = messages[loveHintIndex];
-  hint.textContent = message;
-  
-  // Move to next message (loop back to start when reaching end)
-  loveHintIndex = (loveHintIndex + 1) % messages.length;
-  
-  // Center the hint and ensure it stays within screen bounds
-  hint.style.left = '50%';
-  hint.style.transform = 'translateX(-50%)';
-  hint.style.color = '#ff6b6b';
-  hint.style.fontSize = '1.3em';
-  hint.style.animationDuration = '15s'; // Slower: 15 seconds instead of 12
-  hint.style.zIndex = '1000';
-  hint.style.whiteSpace = 'nowrap';
-  hint.style.filter = 'blur(0.5px)'; // Added subtle blur effect
-  hint.style.opacity = '0.6'; // More transparent for dreamy effect
-  
-  document.body.appendChild(hint);
-  
+  // Make final message closable
+  // Make final message closable and show question after
+finalMessage.addEventListener('click', function() {
+  this.style.transition = 'opacity 1s ease';
+  this.style.opacity = '0';
   setTimeout(() => {
-    if (document.body.contains(hint)) {
-      document.body.removeChild(hint);
-    }
-  }, 15000); // Increased to match slower animation
-}
-  function startSequentialLoveHints() {
-    // Clear any existing timer
-    if (loveHintTimer) {
-      clearInterval(loveHintTimer);
-    }
-    
-    // Create first hint immediately
-    createLoveHint();
-    
-    // Then create hints every 10 seconds
-    loveHintTimer = setInterval(() => {
-      createLoveHint();
-    }, 10000);
-  }
+    this.style.display = 'none';
+    const question = document.getElementById('final-question');
+    question.style.display = 'flex';
+    question.style.opacity = '0';
+    setTimeout(() => {
+      question.style.transition = 'opacity 1.5s ease';
+      question.style.opacity = '1';
+      createHeartPulse(); // Add heart effect when question appears
+    }, 100);
+  }, 1000);
+});
 
+// Make the question closable too
+document.getElementById('final-question').addEventListener('click', function() {
+  this.style.transition = 'opacity 1s ease';
+  this.style.opacity = '0';
+  setTimeout(() => {
+    this.style.display = 'none';
+  }, 1000);
+});
   function createHeartPulse() {
     const heart = document.createElement('div');
     heart.className = 'heart-pulse';
@@ -911,62 +847,52 @@
   }
 
   function openGift() {
-  document.body.style.backgroundColor = '#1a1a1a';
-  giftButton.style.display = 'none';
-  cakeContainer.style.display = 'block';
-  createBalloons(12);
-  createConfetti();
-  createFloatingHearts();
-  partyOverlay.style.display = 'block';
-  
-  // Add cake sparkles
-  for(let i = 0; i < 8; i++) {
-    createCakeSparkle();
-  }
-  
-  // Start all effects
-  startSequentialLoveHints();
-  
-  // Shooting stars occasionally
-  setInterval(() => {
-    if(Math.random() > 0.8) {
-      createShootingStar();
+    document.body.style.backgroundColor = '#1a1a1a';
+    giftButton.style.display = 'none';
+    cakeContainer.style.display = 'block';
+    createBalloons(12);
+    createConfetti();
+    createFloatingHearts();
+    partyOverlay.style.display = 'block';
+    
+    // Add cake sparkles
+    for(let i = 0; i < 8; i++) {
+      createCakeSparkle();
     }
-  }, 5000);
-  
-  // Other effects
-  setInterval(() => { 
-    createConfetti(); 
-    createFloatingHearts(); 
-  }, 3000);
-  
-  setTimeout(() => { 
-    memoriesButton.style.display = 'inline-block'; 
-    createHeartPulse();
-  }, 1000);
-  
-  // Show final message after 2 minutes
-  setTimeout(() => {
-    document.getElementById('final-message').style.display = 'flex';
-  }, 120000);
-}
+    
+    // Shooting stars occasionally
+    setInterval(() => {
+      if(Math.random() > 0.8) {
+        createShootingStar();
+      }
+    }, 5000);
+    
+    // Other effects
+    setInterval(() => { 
+      createConfetti(); 
+      createFloatingHearts(); 
+    }, 3000);
+    
+    setTimeout(() => { 
+      memoriesButton.style.display = 'inline-block'; 
+      createHeartPulse();
+    }, 1000);
+  }
 
-function createCakeSparkle() {
-  const sparkle = document.createElement('div');
-  sparkle.className = 'cake-sparkle';
-  const cakeRect = cakeContainer.getBoundingClientRect();
-  sparkle.style.left = (Math.random() * 180 - 90) + cakeRect.left + 'px';
-  sparkle.style.top = (Math.random() * 100 - 50) + cakeRect.top + 'px';
-  sparkle.style.animationDelay = Math.random() * 2 + 's';
-  document.body.appendChild(sparkle);
-}
+  function createCakeSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'cake-sparkle';
+    const cakeRect = cakeContainer.getBoundingClientRect();
+    sparkle.style.left = (Math.random() * 180 - 90) + cakeRect.left + 'px';
+    sparkle.style.top = (Math.random() * 100 - 50) + cakeRect.top + 'px';
+    sparkle.style.animationDelay = Math.random() * 2 + 's';
+    document.body.appendChild(sparkle);
+  }
+
   function lightCandle() {
     flame.classList.add('burning');
     createConfetti();
     createHeartPulse();
-    for (let i = 0; i < 3; i++) {
-      setTimeout(() => createLoveHint(), i * 800);
-    }
   }
 
   function typeText(element, text, speed, callback) {
@@ -998,9 +924,6 @@ function createCakeSparkle() {
       }
       
       createHeartPulse();
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => createLoveHint(), i * 500);
-      }
     }
   });
 
@@ -1025,45 +948,47 @@ function createCakeSparkle() {
   });
 
   showMemoriesButton.addEventListener('click', () => {
-    birthdayMessage.style.display = 'block';
-    birthdayMessage.textContent = '';
-    memoryGallery.style.display = 'none';
-    
-    const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
-    
-    typeText(birthdayMessage, treasureMessage, 40, () => {
-      memoryGallery.style.display = 'flex';
-      loadMemories();
-      for (let i = 0; i < 3; i++) {
-        setTimeout(() => createLoveHint(), i * 1000);
-      }
-    });
-  });
+  birthdayMessage.style.display = 'block';
+  birthdayMessage.textContent = '';
+  memoryGallery.style.display = 'none';
   
-  document.addEventListener('touchstart', function() {}, {passive: true});
+  const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
   
-  window.addEventListener('orientationchange', function() {
+  // Clear any existing content and start typing (like message button)
+  birthdayMessage.textContent = '';
+  birthdayMessage.style.display = 'block';
+  
+  typeText(birthdayMessage, treasureMessage, 40, () => {
+    // After typing completes, show memories
+    memoryGallery.style.display = 'flex';
+    loadMemories();
+    
+    // Show final message after 10 seconds delay
+    setTimeout(() => {
+      finalMessage.style.display = 'flex';
+      finalMessage.style.opacity = '0';
+      setTimeout(() => {
+        finalMessage.style.transition = 'opacity 2s ease';
+        finalMessage.style.opacity = '1';
+      }, 100);
+      createHeartPulse();
+    }, 10000);
   });
-
-  document.body.addEventListener('touchmove', function(e) {
-    if (started) {
-      e.preventDefault();
-    }
-  }, { passive: false });
+});
   function createShootingStar() {
-  const star = document.createElement('div');
-  star.className = 'shooting-star';
-  star.style.left = Math.random() * 20 + 'vw';
-  star.style.top = Math.random() * 30 + 'vh';
-  star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-  document.body.appendChild(star);
-  
-  setTimeout(() => {
-    if (document.body.contains(star)) {
-      document.body.removeChild(star);
-    }
-  }, 3000);
-}
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    star.style.left = Math.random() * 20 + 'vw';
+    star.style.top = Math.random() * 30 + 'vh';
+    star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    document.body.appendChild(star);
+    
+    setTimeout(() => {
+      if (document.body.contains(star)) {
+        document.body.removeChild(star);
+      }
+    }, 3000);
+  }
   </script>
 </body>
 </html>
