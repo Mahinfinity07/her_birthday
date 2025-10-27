@@ -24,6 +24,48 @@
       z-index:100;
       pointer-events:none;
     }
+    body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(232, 67, 147, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(157, 78, 221, 0.1) 0%, transparent 50%);
+  animation: gentlePulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+    .shooting-star {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px white;
+  opacity: 0;
+  z-index: 1;
+  animation: shootStar 3s ease-out forwards;
+}
+
+@keyframes shootStar {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
     h1 {
       margin-bottom: 20px !important;
     }
@@ -225,6 +267,7 @@
       color:#e84393;
       text-shadow:2px 2px 4px rgba(0,0,0,0.3); 
       margin:0;
+      margin-bottom: 40px !important;
     }
     #bg-music { display:none; }
     .balloon, .confetti, .floating-heart { 
@@ -297,7 +340,6 @@
       from {opacity:1;}
       to {opacity:0;}
     }
-    /* Overlay to start */
     #start-overlay {
       position: fixed;
       top:0; left:0;
@@ -336,7 +378,6 @@
       opacity: 1;
     }
 
-    /* Updated wish section styles */
     #wish-container {
       display: none;
       margin: 20px auto;
@@ -382,11 +423,103 @@
       margin-top: 15px;
       text-align: center;
     }
+    .cake-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
     
-    /* Mobile optimizations */
+    .love-hint {
+  position: fixed;
+  font-size: 1.4em;
+  font-weight: bold;
+  opacity: 0.6; /* More transparent */
+  z-index: 1000;
+  pointer-events: none;
+  animation: floatLove 15s ease-in-out forwards; /* Slower animation */
+  text-shadow: 
+    2px 2px 8px rgba(0,0,0,0.8),
+    0 0 10px rgba(255,107,107,0.3); /* Added glow effect */
+  background: rgba(0,0,0,0.5); /* More transparent background */
+  padding: 8px 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(3px) brightness(0.9); /* Added blur to background */
+  white-space: nowrap;
+  max-width: 90vw;
+  word-wrap: break-word;
+  filter: blur(0.5px); /* Text blur */
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+@keyframes floatLove {
+  0% { 
+    transform: translateY(100vh) translateX(-50%); 
+    opacity: 0.4; /* Lower starting opacity */
+    filter: blur(1px); /* More blur at start */
+  }
+  20% { 
+    opacity: 0.7; /* Slightly more visible */
+    filter: blur(0.3px); /* Less blur */
+  }
+  60% { 
+    opacity: 0.6; /* Maintain dreamy look */
+    filter: blur(0.5px); /* Slight blur */
+  }
+  100% { 
+    transform: translateY(-100vh) translateX(-50%); 
+    opacity: 0.2; /* Very faint at end */
+    filter: blur(1.5px); /* More blur at end */
+  }
+}
+
+    @keyframes floatLove {
+      0% { 
+        transform: translateY(100vh) translateX(-50%); 
+        opacity: 0.5;
+      }
+      20% { 
+        opacity: 0.7;
+      }
+      80% { 
+        opacity: 0.7;
+      }
+      100% { 
+        transform: translateY(-100vh) translateX(-50%); 
+        opacity: 0.3;
+      }
+    }
+    
+    .heart-pulse {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0;
+      z-index: 999;
+      pointer-events: none;
+      animation: heartPulse 2s ease-out forwards;
+    }
+    
+    @keyframes heartPulse {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+    }
+    
     @media (max-width: 600px) {
       h1 {
         font-size: 1.8em;
+        margin-bottom: 30px !important;
       }
       .cake {
         width: 150px;
@@ -406,11 +539,18 @@
       .welcome-message {
         font-size: 2em;
       }
+      .love-hint {
+        font-size: 1.2em;
+        padding: 6px 12px;
+        max-width: 80vw;
+        opacity: 0.6;
+      }
     }
     
     @media (max-width: 400px) {
       h1 {
         font-size: 1.5em;
+        margin-bottom: 25px !important;
       }
       .memory-item {
         width: 100px;
@@ -431,14 +571,12 @@
       <div class="candle"><div class="flame"></div></div>
       <div class="cake"></div>
     </div>
-    <button id="gift-button">Open the Gift</button>
+    <button id="gift-button">A simple gift for you</button>
     <button id="memories-button">Message</button>
-    <div class="birthday-message" id="birthday-message">
-       "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha.And yes ,remmeber "NO DIET". You are beautiful as you are Take love ❤️"; </div>
+    <div class="birthday-message" id="birthday-message"></div>
     <button id="show-memories-button">Memories</button>
     <div class="memory-gallery" id="memory-gallery"></div>
     
-    <!-- Updated wish section -->
     <div id="wish-container">
       <textarea id="wish-text" placeholder="Type your wish here..."></textarea>
       <button id="submit-wish">Send Your Wish</button>
@@ -448,24 +586,24 @@
   <div id="balloons-container"></div>
   <div class="party-overlay" id="party-overlay"></div>
   
-  <!-- Welcome messages -->
   <div class="welcome-message" id="welcome-message-1">Hi Cutiepie</div>
   <div class="welcome-message" id="welcome-message-2">Gulumulu</div>
-  <div class="welcome-message" id="welcome-message-3">My Sunshine</div>
-  <div class="welcome-message" id="welcome-message-4">Cupcake</div>
-  <div class="welcome-message" id="welcome-message-5">Snickerdoodle</div>
-  <div class="welcome-message" id="welcome-message-6">Dumpling</div>
-  <div class="welcome-message" id="welcome-message-7">My What-If</div>
-  <div class="welcome-message" id="welcome-message-8">I know it's unexpected</div>
+  <div class="welcome-message" id="welcome-message-3">Cupcake</div>
+  <div class="welcome-message" id="welcome-message-4">Dumpling</div>
+  <div class="welcome-message" id="welcome-message-5">I know it's unexpected</div>
   
   <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
     <button id="lightbox-close" style="position:absolute;top:20px;right:20px; font-size:1.5em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">✖</button>
     <button id="lightbox-prev" style="position:absolute;top:50%;left:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">◀</button>
     <div id="lightbox-content" style="max-width:90vw; max-height:80vh; display:flex; justify-content:center; align-items:center;">
-      <!-- Media will be injected here -->
     </div>
     <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">▶</button>
   </div>
+  <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Dancing Script', cursive; font-size:2em; text-align:center; padding:20px;">
+  <p>No matter where life takes us...</p>
+  <p style="font-size:1.5em; margin-top:20px;">You'll always have a special place in my heart 💖</p>
+  <p style="font-size:1em; margin-top:30px; font-family:'Montserrat', sans-serif;">- Always yours</p>
+</div>
   
   <audio id="bg-music" loop>
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
@@ -489,25 +627,105 @@
   const lightboxNext = document.getElementById('lightbox-next');
   const lightboxPrev = document.getElementById('lightbox-prev');
 
-  // Wish section elements
   const wishContainer = document.getElementById('wish-container');
   const wishText = document.getElementById('wish-text');
   const submitWish = document.getElementById('submit-wish');
   const wishMessage = document.getElementById('wish-message');
 
-  // Get all welcome messages
   const welcomeMessages = [
     document.getElementById('welcome-message-1'),
     document.getElementById('welcome-message-2'),
     document.getElementById('welcome-message-3'),
     document.getElementById('welcome-message-4'),
-    document.getElementById('welcome-message-5'),
-    document.getElementById('welcome-message-6'),
-    document.getElementById('welcome-message-7'),
-    document.getElementById('welcome-message-8')
+    document.getElementById('welcome-message-5')
   ];
 
   let currentIndex = 0;
+  let balloonsActive = false;
+  let loveHintIndex = 0;
+  let loveHintTimer = null;
+
+  const memories = [
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
+    { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+    { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
+  ];
+
+  function createLoveHint() {
+  const messages = [
+    "🧩 Its been 649 days without you",
+    "💖 Still thinking of you...",
+    "📞 Still remember your voice",
+    "✨ Wish I could turn back time",
+    "🌑 No more goodnight message since you are gone",
+    "💝 You mean everything to me",
+    "🦋 My heart still skips a beat for you",
+    "🌙 Missing you every day",
+    "💫 I still care about you",
+    "🌸 Still every night I cry for you",
+    "💌 Will you be my Mam again?",
+    "🎀 You're unforgettable, Prasansha"
+  ];
+  
+  const hint = document.createElement('div');
+  hint.className = 'love-hint';
+  
+  // Get message sequentially
+  const message = messages[loveHintIndex];
+  hint.textContent = message;
+  
+  // Move to next message (loop back to start when reaching end)
+  loveHintIndex = (loveHintIndex + 1) % messages.length;
+  
+  // Center the hint and ensure it stays within screen bounds
+  hint.style.left = '50%';
+  hint.style.transform = 'translateX(-50%)';
+  hint.style.color = '#ff6b6b';
+  hint.style.fontSize = '1.3em';
+  hint.style.animationDuration = '15s'; // Slower: 15 seconds instead of 12
+  hint.style.zIndex = '1000';
+  hint.style.whiteSpace = 'nowrap';
+  hint.style.filter = 'blur(0.5px)'; // Added subtle blur effect
+  hint.style.opacity = '0.6'; // More transparent for dreamy effect
+  
+  document.body.appendChild(hint);
+  
+  setTimeout(() => {
+    if (document.body.contains(hint)) {
+      document.body.removeChild(hint);
+    }
+  }, 15000); // Increased to match slower animation
+}
+  function startSequentialLoveHints() {
+    // Clear any existing timer
+    if (loveHintTimer) {
+      clearInterval(loveHintTimer);
+    }
+    
+    // Create first hint immediately
+    createLoveHint();
+    
+    // Then create hints every 10 seconds
+    loveHintTimer = setInterval(() => {
+      createLoveHint();
+    }, 10000);
+  }
+
+  function createHeartPulse() {
+    const heart = document.createElement('div');
+    heart.className = 'heart-pulse';
+    heart.textContent = '💖';
+    document.body.appendChild(heart);
+    
+    setTimeout(() => {
+      if (document.body.contains(heart)) {
+        document.body.removeChild(heart);
+      }
+    }, 2000);
+  }
 
   function openLightbox(index) {
     currentIndex = index;
@@ -589,7 +807,6 @@
 
     setupMemoryClicks();
     
-    // Show wish container after memories are loaded
     setTimeout(() => {
       wishContainer.style.display = 'block';
       wishContainer.style.opacity = '0';
@@ -607,15 +824,6 @@
   let charIndex = 0;
   let started = false;
 
-  const memories = [
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-    { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
-  ];
-
   startOverlay.onclick = () => {
     if (started) return;
     started = true;
@@ -632,14 +840,12 @@
   function showWelcomeMessages() {
     document.querySelector('.container').style.opacity = '0';
 
-    // Show messages sequentially with 1s intervals
     welcomeMessages.forEach((message, index) => {
       setTimeout(() => {
         message.classList.add('fade-in');
         setTimeout(() => {
           message.classList.replace('fade-in', 'fade-out');
           
-          // After last message, show content
           if (index === welcomeMessages.length - 1) {
             setTimeout(() => {
               document.querySelector('.container').style.opacity = '1';
@@ -674,8 +880,8 @@
       balloon.style.animationDelay = Math.random() * 5 + 's';
       balloon.style.opacity = '1';
       balloonsContainer.appendChild(balloon);
-      setTimeout(() => balloonsContainer.removeChild(balloon), 8000);
     }
+    balloonsActive = true;
   }
 
   function createConfetti() {
@@ -684,7 +890,11 @@
     confetti.style.left = Math.random() * 100 + 'vw';
     confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
     balloonsContainer.appendChild(confetti);
-    setTimeout(() => balloonsContainer.removeChild(confetti), 3000);
+    setTimeout(() => {
+      if (balloonsContainer.contains(confetti)) {
+        balloonsContainer.removeChild(confetti);
+      }
+    }, 3000);
   }
 
   function createFloatingHearts() {
@@ -693,24 +903,70 @@
     heart.textContent = '❤️';
     heart.style.left = Math.random() * 100 + 'vw';
     balloonsContainer.appendChild(heart);
-    setTimeout(() => balloonsContainer.removeChild(heart), 4000);
+    setTimeout(() => {
+      if (balloonsContainer.contains(heart)) {
+        balloonsContainer.removeChild(heart);
+      }
+    }, 4000);
   }
 
   function openGift() {
-    document.body.style.backgroundColor = '#1a1a1a';
-    giftButton.style.display = 'none';
-    cakeContainer.style.display = 'block';
-    createBalloons(12);
-    createConfetti();
-    createFloatingHearts();
-    partyOverlay.style.display = 'block';
-    setInterval(() => { createConfetti(); createFloatingHearts(); }, 3000);
-    setTimeout(() => { memoriesButton.style.display = 'inline-block'; }, 1000);
+  document.body.style.backgroundColor = '#1a1a1a';
+  giftButton.style.display = 'none';
+  cakeContainer.style.display = 'block';
+  createBalloons(12);
+  createConfetti();
+  createFloatingHearts();
+  partyOverlay.style.display = 'block';
+  
+  // Add cake sparkles
+  for(let i = 0; i < 8; i++) {
+    createCakeSparkle();
   }
+  
+  // Start all effects
+  startSequentialLoveHints();
+  
+  // Shooting stars occasionally
+  setInterval(() => {
+    if(Math.random() > 0.8) {
+      createShootingStar();
+    }
+  }, 5000);
+  
+  // Other effects
+  setInterval(() => { 
+    createConfetti(); 
+    createFloatingHearts(); 
+  }, 3000);
+  
+  setTimeout(() => { 
+    memoriesButton.style.display = 'inline-block'; 
+    createHeartPulse();
+  }, 1000);
+  
+  // Show final message after 2 minutes
+  setTimeout(() => {
+    document.getElementById('final-message').style.display = 'flex';
+  }, 120000);
+}
 
+function createCakeSparkle() {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'cake-sparkle';
+  const cakeRect = cakeContainer.getBoundingClientRect();
+  sparkle.style.left = (Math.random() * 180 - 90) + cakeRect.left + 'px';
+  sparkle.style.top = (Math.random() * 100 - 50) + cakeRect.top + 'px';
+  sparkle.style.animationDelay = Math.random() * 2 + 's';
+  document.body.appendChild(sparkle);
+}
   function lightCandle() {
     flame.classList.add('burning');
     createConfetti();
+    createHeartPulse();
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => createLoveHint(), i * 800);
+    }
   }
 
   function typeText(element, text, speed, callback) {
@@ -729,7 +985,6 @@
     typeNext();
   }
 
-  // Updated wish functionality
   submitWish.addEventListener('click', function() {
     const wish = wishText.value.trim();
     if (wish) {
@@ -738,9 +993,13 @@
       wishText.value = '';
       submitWish.style.display = 'none';
       
-      // Create some visual feedback
       for (let i = 0; i < 20; i++) {
         setTimeout(() => createConfetti(), i * 100);
+      }
+      
+      createHeartPulse();
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createLoveHint(), i * 500);
       }
     }
   });
@@ -757,10 +1016,11 @@
     birthdayMessage.style.display = 'block';
     birthdayMessage.textContent = '';
 
-    const message = "Happy Birthday Prasansha. I wish you are happy,healthy, and still a chubby doll. And apology for my previous so many reels and messages at a time immature acts. FORGIVE ME Prasansha. Take love ❤️";
+    const message = "Happy Birthday Prasansha\n\nWishing you all the happiness in the world — khush raho, healthy raho, aur hamesha waise hi pyaari aur chubby doll bane raho jaise tum ho.\n\nI know maine pehle jyada hi immature behave kiya — ek saath itna sara reels,messages ke saath shayad zyada ho gaya tha. Tumhara post ka comment pe jaake react dena, reply karna sab kuch jyada hi tha. For that, I'm genuinely sorry. Mujhe maaf kar dena, please.\n\nAur haan, ek baat yaad rakhna — \"NO DIET.\"\nTum jaise ho, waise hi perfect ho. Beautiful inside and out.\n\nTake love ❤️.";
 
-    typeText(birthdayMessage, message, 60, () => {
+    typeText(birthdayMessage, message, 40, () => {
       showMemoriesButton.style.display = 'inline-block';
+      createHeartPulse();
     });
   });
 
@@ -769,19 +1029,41 @@
     birthdayMessage.textContent = '';
     memoryGallery.style.display = 'none';
     
-    const treasureMessage = "Here's some treasure I still have in my phone";
+    const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
     
-    typeText(birthdayMessage, treasureMessage, 60, () => {
+    typeText(birthdayMessage, treasureMessage, 40, () => {
       memoryGallery.style.display = 'flex';
       loadMemories();
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => createLoveHint(), i * 1000);
+      }
     });
   });
   
   document.addEventListener('touchstart', function() {}, {passive: true});
   
   window.addEventListener('orientationchange', function() {
-    // You might want to recalculate some dimensions here if needed
   });
+
+  document.body.addEventListener('touchmove', function(e) {
+    if (started) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  function createShootingStar() {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.style.left = Math.random() * 20 + 'vw';
+  star.style.top = Math.random() * 30 + 'vh';
+  star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+  document.body.appendChild(star);
+  
+  setTimeout(() => {
+    if (document.body.contains(star)) {
+      document.body.removeChild(star);
+    }
+  }, 3000);
+}
   </script>
 </body>
 </html>
