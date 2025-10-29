@@ -582,21 +582,44 @@
     <p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">(Will you be my Mam once again?)</p>
   </div>
 
-  <audio id="bg-music" loop>
+  <audio id="bg-music" loop preload="auto">
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
   </audio>
   
   <!-- Tum Hi Ho Music Element -->
-  <audio id="tum-hi-ho-music">
+  <audio id="tum-hi-ho-music" preload="auto">
     <source src="https://dl.dropboxusercontent.com/scl/fi/j55hmo1c8mll6rgo0loak/Tum-Hi-Ho-Aashiqui-2-Karaoke-Version.m4a?rlkey=ggbeo5fpm66tr941b8dbp7thr&st=ra2ut3c9&dl=1" type="audio/mpeg"/>
   </audio>
-  <audio id="bg-music" loop preload="auto"></audio>
   
   <script>
+    // Mobile autoplay workaround
+    document.addEventListener('DOMContentLoaded', function() {
+      let audioUnlocked = false;
+      
+      const unlockAudio = () => {
+        if (audioUnlocked) return;
+        
+        const bgMusic = document.getElementById('bg-music');
+        const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
+        
+        // Create a silent audio context to unlock audio on mobile
+        const silentAudio = new Audio();
+        silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==';
+        silentAudio.volume = 0;
+        
+        silentAudio.play().then(() => {
+          audioUnlocked = true;
+          silentAudio.pause();
+          silentAudio.remove();
+        }).catch(() => {});
+      };
+      
+      // Unlock audio on any user interaction
+      document.addEventListener('click', unlockAudio);
+      document.addEventListener('touchstart', unlockAudio);
+      document.addEventListener('keydown', unlockAudio);
+    });
 
-
-const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
-tumHiHoMusic.volume = 0; // Start with volume 0
     const startOverlay = document.getElementById('start-overlay');
     const giftButton = document.getElementById('gift-button');
     const cakeContainer = document.getElementById('cake-container');
@@ -614,7 +637,7 @@ tumHiHoMusic.volume = 0; // Start with volume 0
     const finalQuestion = document.getElementById('final-question');
     
     bgMusic.volume = 0.5;
-    tumHiHoMusic.volume = 0; // Start with volume 0
+    tumHiHoMusic.volume = 0;
 
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxContent = document.getElementById('lightbox-content');
@@ -640,12 +663,12 @@ tumHiHoMusic.volume = 0; // Start with volume 0
     let wishCount = 3;
 
     const memories = [
-      { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-      { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-      { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-      { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-      { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-      { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
+      { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
     ];
 
     // Final message close functionality
@@ -708,6 +731,9 @@ tumHiHoMusic.volume = 0; // Start with volume 0
         img.src = mem.url;
         img.style.maxHeight = '80vh';
         img.style.maxWidth = '90vw';
+        img.onerror = function() {
+          this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
+        };
         lightboxContent.appendChild(img);
       } else if(mem.type === 'video') {
         const vid = document.createElement('video');
@@ -751,6 +777,9 @@ tumHiHoMusic.volume = 0; // Start with volume 0
           const img = document.createElement('img');
           img.src = mem.url;
           img.alt = 'Memory image';
+          img.onerror = function() {
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIE5vdCBGb3VuZDwvdGV4dD48L3N2Zz4=';
+          };
           div.appendChild(img);
         } else if (mem.type === 'video') {
           const vid = document.createElement('video');
@@ -787,12 +816,22 @@ tumHiHoMusic.volume = 0; // Start with volume 0
       if (started) return;
       started = true;
       startOverlay.style.display = 'none';
-      const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          console.log("Autoplay prevented");
+      
+      // Mobile-friendly audio play with error handling
+      const playAudio = () => {
+        bgMusic.play().then(() => {
+          console.log("Birthday music started");
+        }).catch(error => {
+          console.log("Audio play failed, retrying...", error);
+          // Retry after user interaction
+          document.addEventListener('click', function retryPlay() {
+            bgMusic.play();
+            document.removeEventListener('click', retryPlay);
+          }, { once: true });
         });
-      }
+      };
+      
+      playAudio();
       showWelcomeMessages();
     };
 
@@ -935,23 +974,40 @@ tumHiHoMusic.volume = 0; // Start with volume 0
     }
 
     function fadeInTumHiHo() {
-      // Start playing Tum Hi Ho
-      tumHiHoMusic.play().catch(() => {
-        console.log("Tum Hi Ho autoplay prevented");
-      });
+      console.log("Starting Tum Hi Ho fade in...");
       
-      // Fade in Tum Hi Ho gradually
-      let volume = 0;
-      tumHiHoMusic.volume = volume;
+      // Reset and prepare Tum Hi Ho
+      tumHiHoMusic.currentTime = 0;
+      tumHiHoMusic.volume = 0;
       
-      const fadeInInterval = setInterval(() => {
-        volume += 0.05;
-        if (volume >= 0.5) {
-          volume = 0.5;
-          clearInterval(fadeInInterval);
-        }
-        tumHiHoMusic.volume = volume;
-      }, 200);
+      const playTumHiHo = () => {
+        tumHiHoMusic.play().then(() => {
+          console.log("Tum Hi Ho started successfully");
+          
+          // Fade in Tum Hi Ho gradually
+          let volume = 0;
+          const fadeInInterval = setInterval(() => {
+            volume += 0.02;
+            if (volume >= 0.6) {
+              volume = 0.6;
+              clearInterval(fadeInInterval);
+              console.log("Tum Hi Ho fade in complete");
+            }
+            tumHiHoMusic.volume = volume;
+          }, 150);
+          
+        }).catch(error => {
+          console.log("Tum Hi Ho play failed:", error);
+          // Retry after user interaction
+          document.addEventListener('click', function retryTumHiHo() {
+            tumHiHoMusic.play();
+            document.removeEventListener('click', retryTumHiHo);
+          }, { once: true });
+        });
+      };
+      
+      // Start playing
+      playTumHiHo();
     }
 
     // 3-Wish limit functionality
@@ -1002,22 +1058,21 @@ tumHiHoMusic.volume = 0; // Start with volume 0
             // Start erasing effect and music fade out after 2 seconds (so she can read the message)
             setTimeout(() => {
               // Start music fade out
-              // Replace the current music fade out section with this:
-// Start music fade out
-let volume = 0.5;
-const fadeAudio = setInterval(() => {
-  volume -= 0.05;
-  if (volume <= 0) {
-    bgMusic.volume = 0;
-    bgMusic.pause(); // Stop the birthday music
-    clearInterval(fadeAudio);
-    
-    // Start fading in Tum Hi Ho when birthday music fades out
-    setTimeout(fadeInTumHiHo, 500); // Small delay for smoother transition
-  } else {
-    bgMusic.volume = volume;
-  }
-}, 300);
+              let volume = 0.5;
+              const fadeAudio = setInterval(() => {
+                volume -= 0.05;
+                if (volume <= 0) {
+                  bgMusic.volume = 0;
+                  bgMusic.pause(); // Stop the birthday music
+                  clearInterval(fadeAudio);
+                  
+                  // Start fading in Tum Hi Ho when birthday music fades out
+                  setTimeout(fadeInTumHiHo, 500); // Small delay for smoother transition
+                } else {
+                  bgMusic.volume = volume;
+                }
+              }, 300);
+              
               // Start erasing from top to bottom
               erasingOverlay.style.height = '100%';
               
@@ -1101,32 +1156,6 @@ const fadeAudio = setInterval(() => {
         }
       }, 3000);
     }
-    function fadeInTumHiHo() {
-  // Preload and start playing Tum Hi Ho
-  tumHiHoMusic.load(); // Force preload
-  tumHiHoMusic.play().then(() => {
-    console.log("Tum Hi Ho started playing");
-    
-    // Fade in Tum Hi Ho gradually
-    let volume = 0;
-    const fadeInInterval = setInterval(() => {
-      volume += 0.02; // Slower fade for smoother transition
-      if (volume >= 0.6) {
-        volume = 0.6;
-        clearInterval(fadeInInterval);
-      }
-      tumHiHoMusic.volume = volume;
-    }, 150);
-    
-  }).catch(error => {
-    console.log("Tum Hi Ho play failed:", error);
-    // Try again with user interaction
-    document.addEventListener('click', function tryPlayAgain() {
-      tumHiHoMusic.play();
-      document.removeEventListener('click', tryPlayAgain);
-    });
-  });
-}
   </script>
 </body>
 </html>
