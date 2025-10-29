@@ -31,6 +31,10 @@
         padding: 10px 0;
         overflow-y: auto;
       }
+      #wish-text:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
       
       .container {
         padding: 15px;
@@ -299,7 +303,7 @@
       margin:0;
       margin-bottom: 40px !important;
     }
-    #bg-music { display:none; }
+    #bg-music, #tum-hi-ho-music { display:none; }
     .balloon, .confetti, .floating-heart { 
       position:absolute; 
       z-index:1; 
@@ -525,6 +529,7 @@
         font-size: 1em;
       }
     }
+    #bg-music, #tum-hi-ho-music { display:none; }
   </style>
 </head>
 <body>
@@ -543,7 +548,7 @@
     
     <div id="wish-container">
       <textarea id="wish-text" placeholder="Type your wish here..."></textarea>
-      <button id="submit-wish">Send Your Wish</button>
+      <button id="submit-wish">Send Your Wish (3 left)</button>
       <p id="wish-message"></p>
     </div>
   </div>
@@ -563,440 +568,565 @@
     </div>
     <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">▶</button>
   </div>
- <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; cursor:pointer; line-height:1.6;">
-  <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
-  <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll always have a special place in my heart 💖</p>
-  <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Always yours</p>
-</div>
 
-<div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; cursor:pointer; line-height:1.5;">
-  <p style="font-weight:500; text-shadow: 0 0 10px rgba(255,107,107,0.3);">Kya tum firse wo purana "haan ji" wala Prasansha banogi?</p>
-  <p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">(Will you be my Mam once again?)</p>
+  <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.6;">
+    <button id="close-final-message" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+    <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
+    <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll always have a special place in my heart 💖</p>
+    <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Forever</p>
+  </div>
 
-</div> 
+  <div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
+    <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+    <p style="font-weight:500; text-shadow: 0 0 10px rgba(255,107,107,0.3);">Kya tum firse wo purana "haan ji" wala Prasansha banogi?</p>
+    <p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">(Will you be my Mam once again?)</p>
+  </div>
+
   <audio id="bg-music" loop>
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
   </audio>
+  
+  <!-- Tum Hi Ho Music Element -->
+  <audio id="tum-hi-ho-music">
+    <source src="https://dl.dropboxusercontent.com/scl/fi/j55hmo1c8mll6rgo0loak/Tum-Hi-Ho-Aashiqui-2-Karaoke-Version.m4a?rlkey=ggbeo5fpm66tr941b8dbp7thr&st=ra2ut3c9&dl=1" type="audio/mpeg"/>
+  </audio>
+  <audio id="bg-music" loop preload="auto"></audio>
+  
   <script>
-  const startOverlay = document.getElementById('start-overlay');
-  const giftButton = document.getElementById('gift-button');
-  const cakeContainer = document.getElementById('cake-container');
-  const candle = document.querySelector('.candle');
-  const flame = document.querySelector('.flame');
-  const memoriesButton = document.getElementById('memories-button');
-  const birthdayMessage = document.getElementById('birthday-message');
-  const showMemoriesButton = document.getElementById('show-memories-button');
-  const memoryGallery = document.getElementById('memory-gallery');
-  const bgMusic = document.getElementById('bg-music');
-  const finalMessage = document.getElementById('final-message');
-  bgMusic.volume = 0.5;
 
-  const lightboxModal = document.getElementById('lightbox-modal');
-  const lightboxContent = document.getElementById('lightbox-content');
-  const lightboxClose = document.getElementById('lightbox-close');
-  const lightboxNext = document.getElementById('lightbox-next');
-  const lightboxPrev = document.getElementById('lightbox-prev');
 
-  const wishContainer = document.getElementById('wish-container');
-  const wishText = document.getElementById('wish-text');
-  const submitWish = document.getElementById('submit-wish');
-  const wishMessage = document.getElementById('wish-message');
-
-  const welcomeMessages = [
-    document.getElementById('welcome-message-1'),
-    document.getElementById('welcome-message-2'),
-    document.getElementById('welcome-message-3'),
-    document.getElementById('welcome-message-4'),
-    document.getElementById('welcome-message-5')
-  ];
-
-  let currentIndex = 0;
-  let balloonsActive = false;
-  let loveHintIndex = 0;
-  let loveHintTimer = null;
-
-  const memories = [
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-    { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-    { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
-  ];
-
-  // Make final message closable
-  // Make final message closable and show question after
-finalMessage.addEventListener('click', function() {
-  this.style.transition = 'opacity 1s ease';
-  this.style.opacity = '0';
-  setTimeout(() => {
-    this.style.display = 'none';
-    const question = document.getElementById('final-question');
-    question.style.display = 'flex';
-    question.style.opacity = '0';
-    setTimeout(() => {
-      question.style.transition = 'opacity 1.5s ease';
-      question.style.opacity = '1';
-      createHeartPulse(); // Add heart effect when question appears
-    }, 100);
-  }, 1000);
-});
-
-// Make the question closable too
-document.getElementById('final-question').addEventListener('click', function() {
-  this.style.transition = 'opacity 1s ease';
-  this.style.opacity = '0';
-  setTimeout(() => {
-    this.style.display = 'none';
-  }, 1000);
-});
-  function createHeartPulse() {
-    const heart = document.createElement('div');
-    heart.className = 'heart-pulse';
-    heart.textContent = '💖';
-    document.body.appendChild(heart);
+const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
+tumHiHoMusic.volume = 0; // Start with volume 0
+    const startOverlay = document.getElementById('start-overlay');
+    const giftButton = document.getElementById('gift-button');
+    const cakeContainer = document.getElementById('cake-container');
+    const candle = document.querySelector('.candle');
+    const flame = document.querySelector('.flame');
+    const memoriesButton = document.getElementById('memories-button');
+    const birthdayMessage = document.getElementById('birthday-message');
+    const showMemoriesButton = document.getElementById('show-memories-button');
+    const memoryGallery = document.getElementById('memory-gallery');
+    const bgMusic = document.getElementById('bg-music');
+    const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
+    const finalMessage = document.getElementById('final-message');
+    const closeFinalMessage = document.getElementById('close-final-message');
+    const closeFinalQuestion = document.getElementById('close-final-question');
+    const finalQuestion = document.getElementById('final-question');
     
-    setTimeout(() => {
-      if (document.body.contains(heart)) {
-        document.body.removeChild(heart);
-      }
-    }, 2000);
-  }
+    bgMusic.volume = 0.5;
+    tumHiHoMusic.volume = 0; // Start with volume 0
 
-  function openLightbox(index) {
-    currentIndex = index;
-    showMedia(currentIndex);
-    lightboxModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxPrev = document.getElementById('lightbox-prev');
 
-  function closeLightbox() {
-    lightboxModal.style.display = 'none';
-    lightboxContent.innerHTML = '';
-    document.body.style.overflow = '';
-  }
+    const wishContainer = document.getElementById('wish-container');
+    const wishText = document.getElementById('wish-text');
+    const submitWish = document.getElementById('submit-wish');
+    const wishMessage = document.getElementById('wish-message');
 
-  function showMedia(index) {
-    const mem = memories[index];
-    lightboxContent.innerHTML = '';
+    const welcomeMessages = [
+      document.getElementById('welcome-message-1'),
+      document.getElementById('welcome-message-2'),
+      document.getElementById('welcome-message-3'),
+      document.getElementById('welcome-message-4'),
+      document.getElementById('welcome-message-5')
+    ];
 
-    if(mem.type === 'image') {
-      const img = document.createElement('img');
-      img.src = mem.url;
-      img.style.maxHeight = '80vh';
-      img.style.maxWidth = '90vw';
-      lightboxContent.appendChild(img);
-    } else if(mem.type === 'video') {
-      const vid = document.createElement('video');
-      vid.src = mem.url;
-      vid.controls = true;
-      vid.autoplay = true;
-      vid.style.maxHeight = '80vh';
-      vid.style.maxWidth = '90vw';
-      lightboxContent.appendChild(vid);
-    }
-  }
+    let currentIndex = 0;
+    let balloonsActive = false;
+    let wishCount = 3;
 
-  function nextMedia() {
-    currentIndex = (currentIndex + 1) % memories.length;
-    showMedia(currentIndex);
-  }
+    const memories = [
+      { type: 'image', url: 'https://www.dropbox.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
+      { type: 'video', url: 'https://www.dropbox.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+      { type: 'image', url: 'https://www.dropbox.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+      { type: 'image', url: 'https://www.dropbox.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+      { type: 'image', url: 'https://www.dropbox.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+      { type: 'image', url: 'https://www.dropbox.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
+    ];
 
-  function prevMedia() {
-    currentIndex = (currentIndex - 1 + memories.length) % memories.length;
-    showMedia(currentIndex);
-  }
-
-  function setupMemoryClicks() {
-    const items = memoryGallery.querySelectorAll('.memory-item');
-    items.forEach((item, i) => {
-      item.style.cursor = 'pointer';
-      item.onclick = () => openLightbox(i);
+    // Final message close functionality
+    closeFinalMessage.addEventListener('click', function() {
+      finalMessage.style.transition = 'opacity 1s ease';
+      finalMessage.style.opacity = '0';
+      setTimeout(() => {
+        finalMessage.style.display = 'none';
+        finalQuestion.style.display = 'flex';
+        finalQuestion.style.opacity = '0';
+        setTimeout(() => {
+          finalQuestion.style.transition = 'opacity 1.5s ease';
+          finalQuestion.style.opacity = '1';
+          createHeartPulse();
+        }, 100);
+      }, 1000);
     });
-  }
 
-  lightboxClose.onclick = closeLightbox;
-  lightboxNext.onclick = nextMedia;
-  lightboxPrev.onclick = prevMedia;
+    // Final question close functionality
+    closeFinalQuestion.addEventListener('click', function() {
+      finalQuestion.style.transition = 'opacity 1s ease';
+      finalQuestion.style.opacity = '0';
+      setTimeout(() => {
+        finalQuestion.style.display = 'none';
+      }, 1000);
+    });
 
-  function loadMemories() {
-    if (memoryGallery.children.length > 0) return;
-    memories.forEach(mem => {
-      const div = document.createElement('div');
-      div.className = 'memory-item';
-      if (mem.type === 'image') {
+    function createHeartPulse() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-pulse';
+      heart.textContent = '💖';
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        if (document.body.contains(heart)) {
+          document.body.removeChild(heart);
+        }
+      }, 2000);
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      showMedia(currentIndex);
+      lightboxModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxModal.style.display = 'none';
+      lightboxContent.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    function showMedia(index) {
+      const mem = memories[index];
+      lightboxContent.innerHTML = '';
+
+      if(mem.type === 'image') {
         const img = document.createElement('img');
         img.src = mem.url;
-        img.alt = 'Memory image';
-        div.appendChild(img);
-      } else if (mem.type === 'video') {
+        img.style.maxHeight = '80vh';
+        img.style.maxWidth = '90vw';
+        lightboxContent.appendChild(img);
+      } else if(mem.type === 'video') {
         const vid = document.createElement('video');
         vid.src = mem.url;
-        vid.controls = false;
-        vid.muted = true;
-        vid.loop = true;
+        vid.controls = true;
         vid.autoplay = true;
-        div.appendChild(vid);
+        vid.style.maxHeight = '80vh';
+        vid.style.maxWidth = '90vw';
+        lightboxContent.appendChild(vid);
       }
-      memoryGallery.appendChild(div);
-    });
+    }
 
-    setupMemoryClicks();
-    
-    setTimeout(() => {
-      wishContainer.style.display = 'block';
-      wishContainer.style.opacity = '0';
-      setTimeout(() => {
-        wishContainer.style.transition = 'opacity 1s ease';
-        wishContainer.style.opacity = '1';
-      }, 100);
-    }, 500);
-  }
+    function nextMedia() {
+      currentIndex = (currentIndex + 1) % memories.length;
+      showMedia(currentIndex);
+    }
 
-  const balloonsContainer = document.getElementById('balloons-container');
-  const partyOverlay = document.getElementById('party-overlay');
-  const typingText = document.getElementById('typing-text');
-  const fullText = '👑 Happy Birthday Prasansha!';
-  let charIndex = 0;
-  let started = false;
+    function prevMedia() {
+      currentIndex = (currentIndex - 1 + memories.length) % memories.length;
+      showMedia(currentIndex);
+    }
 
-  startOverlay.onclick = () => {
-    if (started) return;
-    started = true;
-    startOverlay.style.display = 'none';
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        console.log("Autoplay prevented");
+    function setupMemoryClicks() {
+      const items = memoryGallery.querySelectorAll('.memory-item');
+      items.forEach((item, i) => {
+        item.style.cursor = 'pointer';
+        item.onclick = () => openLightbox(i);
       });
     }
-    showWelcomeMessages();
-  };
 
-  function showWelcomeMessages() {
-    document.querySelector('.container').style.opacity = '0';
+    lightboxClose.onclick = closeLightbox;
+    lightboxNext.onclick = nextMedia;
+    lightboxPrev.onclick = prevMedia;
 
-    welcomeMessages.forEach((message, index) => {
+    function loadMemories() {
+      if (memoryGallery.children.length > 0) return;
+      memories.forEach(mem => {
+        const div = document.createElement('div');
+        div.className = 'memory-item';
+        if (mem.type === 'image') {
+          const img = document.createElement('img');
+          img.src = mem.url;
+          img.alt = 'Memory image';
+          div.appendChild(img);
+        } else if (mem.type === 'video') {
+          const vid = document.createElement('video');
+          vid.src = mem.url;
+          vid.controls = false;
+          vid.muted = true;
+          vid.loop = true;
+          vid.autoplay = true;
+          div.appendChild(vid);
+        }
+        memoryGallery.appendChild(div);
+      });
+
+      setupMemoryClicks();
+      
       setTimeout(() => {
-        message.classList.add('fade-in');
+        wishContainer.style.display = 'block';
+        wishContainer.style.opacity = '0';
         setTimeout(() => {
-          message.classList.replace('fade-in', 'fade-out');
-          
-          if (index === welcomeMessages.length - 1) {
-            setTimeout(() => {
-              document.querySelector('.container').style.opacity = '1';
-              typeWriter();
-            }, 1000);
-          }
-        }, 1000);
-      }, index * 1500);
-    });
-  }
+          wishContainer.style.transition = 'opacity 1s ease';
+          wishContainer.style.opacity = '1';
+        }, 100);
+      }, 500);
+    }
 
-  function typeWriter() {
-    if (charIndex < fullText.length) {
-      typingText.textContent = fullText.slice(0, charIndex + 1);
-      charIndex++;
-      setTimeout(typeWriter, 120);
-    } else {
-      typingText.style.borderRight = 'none';
+    const balloonsContainer = document.getElementById('balloons-container');
+    const partyOverlay = document.getElementById('party-overlay');
+    const typingText = document.getElementById('typing-text');
+    const fullText = '👑 Happy Birthday Prasansha!';
+    let charIndex = 0;
+    let started = false;
+
+    startOverlay.onclick = () => {
+      if (started) return;
+      started = true;
+      startOverlay.style.display = 'none';
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          console.log("Autoplay prevented");
+        });
+      }
+      showWelcomeMessages();
+    };
+
+    function showWelcomeMessages() {
+      document.querySelector('.container').style.opacity = '0';
+
+      welcomeMessages.forEach((message, index) => {
+        setTimeout(() => {
+          message.classList.add('fade-in');
+          setTimeout(() => {
+            message.classList.replace('fade-in', 'fade-out');
+            
+            if (index === welcomeMessages.length - 1) {
+              setTimeout(() => {
+                document.querySelector('.container').style.opacity = '1';
+                typeWriter();
+              }, 1000);
+            }
+          }, 1000);
+        }, index * 1500);
+      });
+    }
+
+    function typeWriter() {
+      if (charIndex < fullText.length) {
+        typingText.textContent = fullText.slice(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeWriter, 120);
+      } else {
+        typingText.style.borderRight = 'none';
+        setTimeout(() => {
+          giftButton.classList.add('show');
+        }, 1000);
+      }
+    }
+
+    function createBalloons(count) {
+      for (let i = 0; i < count; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
+        balloon.classList.add(colors[i % colors.length]);
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDelay = Math.random() * 5 + 's';
+        balloon.style.opacity = '1';
+        balloonsContainer.appendChild(balloon);
+      }
+      balloonsActive = true;
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      balloonsContainer.appendChild(confetti);
       setTimeout(() => {
-        giftButton.classList.add('show');
+        if (balloonsContainer.contains(confetti)) {
+          balloonsContainer.removeChild(confetti);
+        }
+      }, 3000);
+    }
+
+    function createFloatingHearts() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      balloonsContainer.appendChild(heart);
+      setTimeout(() => {
+        if (balloonsContainer.contains(heart)) {
+          balloonsContainer.removeChild(heart);
+        }
+      }, 4000);
+    }
+
+    function openGift() {
+      document.body.style.backgroundColor = '#1a1a1a';
+      giftButton.style.display = 'none';
+      cakeContainer.style.display = 'block';
+      createBalloons(12);
+      createConfetti();
+      createFloatingHearts();
+      partyOverlay.style.display = 'block';
+      
+      // Add cake sparkles
+      for(let i = 0; i < 8; i++) {
+        createCakeSparkle();
+      }
+      
+      // Shooting stars occasionally
+      setInterval(() => {
+        if(Math.random() > 0.8) {
+          createShootingStar();
+        }
+      }, 5000);
+      
+      // Other effects
+      setInterval(() => { 
+        createConfetti(); 
+        createFloatingHearts(); 
+      }, 3000);
+      
+      setTimeout(() => { 
+        memoriesButton.style.display = 'inline-block'; 
+        createHeartPulse();
       }, 1000);
     }
-  }
 
-  function createBalloons(count) {
-    for (let i = 0; i < count; i++) {
-      const balloon = document.createElement('div');
-      balloon.classList.add('balloon');
-      const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
-      balloon.classList.add(colors[i % colors.length]);
-      balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.animationDelay = Math.random() * 5 + 's';
-      balloon.style.opacity = '1';
-      balloonsContainer.appendChild(balloon);
+    function createCakeSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'cake-sparkle';
+      const cakeRect = cakeContainer.getBoundingClientRect();
+      sparkle.style.left = (Math.random() * 180 - 90) + cakeRect.left + 'px';
+      sparkle.style.top = (Math.random() * 100 - 50) + cakeRect.top + 'px';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(sparkle);
     }
-    balloonsActive = true;
-  }
 
-  function createConfetti() {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = Math.random() * 100 + 'vw';
-    confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
-    balloonsContainer.appendChild(confetti);
-    setTimeout(() => {
-      if (balloonsContainer.contains(confetti)) {
-        balloonsContainer.removeChild(confetti);
-      }
-    }, 3000);
-  }
-
-  function createFloatingHearts() {
-    const heart = document.createElement('div');
-    heart.classList.add('floating-heart');
-    heart.textContent = '❤️';
-    heart.style.left = Math.random() * 100 + 'vw';
-    balloonsContainer.appendChild(heart);
-    setTimeout(() => {
-      if (balloonsContainer.contains(heart)) {
-        balloonsContainer.removeChild(heart);
-      }
-    }, 4000);
-  }
-
-  function openGift() {
-    document.body.style.backgroundColor = '#1a1a1a';
-    giftButton.style.display = 'none';
-    cakeContainer.style.display = 'block';
-    createBalloons(12);
-    createConfetti();
-    createFloatingHearts();
-    partyOverlay.style.display = 'block';
-    
-    // Add cake sparkles
-    for(let i = 0; i < 8; i++) {
-      createCakeSparkle();
-    }
-    
-    // Shooting stars occasionally
-    setInterval(() => {
-      if(Math.random() > 0.8) {
-        createShootingStar();
-      }
-    }, 5000);
-    
-    // Other effects
-    setInterval(() => { 
-      createConfetti(); 
-      createFloatingHearts(); 
-    }, 3000);
-    
-    setTimeout(() => { 
-      memoriesButton.style.display = 'inline-block'; 
+    function lightCandle() {
+      flame.classList.add('burning');
+      createConfetti();
       createHeartPulse();
-    }, 1000);
-  }
-
-  function createCakeSparkle() {
-    const sparkle = document.createElement('div');
-    sparkle.className = 'cake-sparkle';
-    const cakeRect = cakeContainer.getBoundingClientRect();
-    sparkle.style.left = (Math.random() * 180 - 90) + cakeRect.left + 'px';
-    sparkle.style.top = (Math.random() * 100 - 50) + cakeRect.top + 'px';
-    sparkle.style.animationDelay = Math.random() * 2 + 's';
-    document.body.appendChild(sparkle);
-  }
-
-  function lightCandle() {
-    flame.classList.add('burning');
-    createConfetti();
-    createHeartPulse();
-  }
-
-  function typeText(element, text, speed, callback) {
-    let i = 0;
-    element.textContent = '';
-    element.style.display = 'block';
-    function typeNext() {
-      if (i < text.length) {
-        element.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeNext, speed);
-      } else if (callback) {
-        callback();
-      }
     }
-    typeNext();
-  }
 
- submitWish.addEventListener('click', function() {
-    const wish = wishText.value.trim();
-    if (wish) {
+    function typeText(element, text, speed, callback) {
+      let i = 0;
+      element.textContent = '';
+      element.style.display = 'block';
+      function typeNext() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeNext, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      typeNext();
+    }
+
+    function fadeInTumHiHo() {
+      // Start playing Tum Hi Ho
+      tumHiHoMusic.play().catch(() => {
+        console.log("Tum Hi Ho autoplay prevented");
+      });
+      
+      // Fade in Tum Hi Ho gradually
+      let volume = 0;
+      tumHiHoMusic.volume = volume;
+      
+      const fadeInInterval = setInterval(() => {
+        volume += 0.05;
+        if (volume >= 0.5) {
+          volume = 0.5;
+          clearInterval(fadeInInterval);
+        }
+        tumHiHoMusic.volume = volume;
+      }, 200);
+    }
+
+    // 3-Wish limit functionality
+    submitWish.addEventListener('click', function() {
+      const wish = wishText.value.trim();
+      if (wish && wishCount > 0) {
         const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
         const chatId = '6643918586';
-        const message = `💌 New Wish from Prasansha:\n"${wish}"`;
+        const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
         
-        // SILENT version - remove all console logs
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ chat_id: chatId, text: message })
-        }).catch(() => {}) // Silent fail
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ chat_id: chatId, text: message })
+        }).catch(() => {})
         .finally(() => {
-            wishMessage.textContent = "Your wish has been sent to the universe my love.\nBe happy and healthy until we meet again";
+          wishCount--;
+          
+          if (wishCount > 0) {
+            wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
+            submitWish.textContent = `Send Your Wish (${wishCount} left)`;
             wishMessage.style.display = 'block';
             wishText.value = '';
-            submitWish.style.display = 'none';
             
             for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
             createHeartPulse();
+          } else {
+            // All wishes completed - Start erasing effect after 3rd wish
+            wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
+            submitWish.style.display = 'none';
+            wishText.disabled = true;
+            wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
+            wishMessage.style.display = 'block';
+            wishText.value = '';
+            
+            // Create erasing overlay
+            const erasingOverlay = document.createElement('div');
+            erasingOverlay.style.position = 'fixed';
+            erasingOverlay.style.top = '0';
+            erasingOverlay.style.left = '0';
+            erasingOverlay.style.width = '100%';
+            erasingOverlay.style.height = '0%';
+            erasingOverlay.style.background = '#121212';
+            erasingOverlay.style.zIndex = '1999';
+            erasingOverlay.style.transition = 'height 3s ease-in-out';
+            document.body.appendChild(erasingOverlay);
+            
+            // Start erasing effect and music fade out after 2 seconds (so she can read the message)
+            setTimeout(() => {
+              // Start music fade out
+              // Replace the current music fade out section with this:
+// Start music fade out
+let volume = 0.5;
+const fadeAudio = setInterval(() => {
+  volume -= 0.05;
+  if (volume <= 0) {
+    bgMusic.volume = 0;
+    bgMusic.pause(); // Stop the birthday music
+    clearInterval(fadeAudio);
+    
+    // Start fading in Tum Hi Ho when birthday music fades out
+    setTimeout(fadeInTumHiHo, 500); // Small delay for smoother transition
+  } else {
+    bgMusic.volume = volume;
+  }
+}, 300);
+              // Start erasing from top to bottom
+              erasingOverlay.style.height = '100%';
+              
+              // After erasing completes, show final message
+              setTimeout(() => {
+                // Hide everything
+                document.querySelector('.container').style.display = 'none';
+                balloonsContainer.style.display = 'none';
+                partyOverlay.style.display = 'none';
+                erasingOverlay.style.display = 'none';
+                
+                // Show final message
+                finalMessage.style.display = 'flex';
+                finalMessage.style.opacity = '0';
+                setTimeout(() => {
+                  finalMessage.style.transition = 'opacity 2s ease';
+                  finalMessage.style.opacity = '1';
+                  
+                  createHeartPulse();
+                  
+                  // Final celebration
+                  for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                  for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
+                  
+                }, 100);
+              }, 3000); // Erasing duration
+              
+            }, 2000); // Initial delay before erasing starts
+          }
         });
+      }
+    });
+
+    giftButton.addEventListener('click', openGift);
+    cakeContainer.addEventListener('click', () => {
+      if (!flame.classList.contains('burning')) {
+        lightCandle();
+      }
+    });
+
+    memoriesButton.addEventListener('click', () => {
+      memoriesButton.style.display = 'none';
+      birthdayMessage.style.display = 'block';
+      birthdayMessage.textContent = '';
+
+      const message = "Happy Birthday Prasansha\n\nWishing you all the happiness in the world — khush raho, healthy raho, aur hamesha waise hi pyaari aur chubby doll bane raho jaise tum ho.\n\nI know maine pehle jyada hi immature behave kiya — ek saath itna sara reels,messages ke saath shayad zyada ho gaya tha. Tumhara post ka comment pe jaake react dena, reply karna sab kuch jyada hi tha. For that, I'm genuinely sorry. Mujhe maaf kar dena, please.\n\nAur haan, ek baat yaad rakhna — \"NO DIET.\"\nTum jaise ho, waise hi perfect ho. Beautiful inside and out.\n\nTake love ❤️.";
+
+      typeText(birthdayMessage, message, 40, () => {
+        showMemoriesButton.style.display = 'inline-block';
+        createHeartPulse();
+      });
+    });
+
+    showMemoriesButton.addEventListener('click', () => {
+      birthdayMessage.style.display = 'block';
+      birthdayMessage.textContent = '';
+      memoryGallery.style.display = 'none';
+      
+      const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
+      
+      birthdayMessage.textContent = '';
+      birthdayMessage.style.display = 'block';
+      
+      typeText(birthdayMessage, treasureMessage, 40, () => {
+        memoryGallery.style.display = 'flex';
+        loadMemories();
+      });
+    });
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      star.style.left = Math.random() * 20 + 'vw';
+      star.style.top = Math.random() * 30 + 'vh';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      document.body.appendChild(star);
+      
+      setTimeout(() => {
+        if (document.body.contains(star)) {
+          document.body.removeChild(star);
+        }
+      }, 3000);
     }
-});
-  giftButton.addEventListener('click', openGift);
-  cakeContainer.addEventListener('click', () => {
-    if (!flame.classList.contains('burning')) {
-      lightCandle();
-    }
-  });
-
-  memoriesButton.addEventListener('click', () => {
-    memoriesButton.style.display = 'none';
-    birthdayMessage.style.display = 'block';
-    birthdayMessage.textContent = '';
-
-    const message = "Happy Birthday Prasansha\n\nWishing you all the happiness in the world — khush raho, healthy raho, aur hamesha waise hi pyaari aur chubby doll bane raho jaise tum ho.\n\nI know maine pehle jyada hi immature behave kiya — ek saath itna sara reels,messages ke saath shayad zyada ho gaya tha. Tumhara post ka comment pe jaake react dena, reply karna sab kuch jyada hi tha. For that, I'm genuinely sorry. Mujhe maaf kar dena, please.\n\nAur haan, ek baat yaad rakhna — \"NO DIET.\"\nTum jaise ho, waise hi perfect ho. Beautiful inside and out.\n\nTake love ❤️.";
-
-    typeText(birthdayMessage, message, 40, () => {
-      showMemoriesButton.style.display = 'inline-block';
-      createHeartPulse();
+    function fadeInTumHiHo() {
+  // Preload and start playing Tum Hi Ho
+  tumHiHoMusic.load(); // Force preload
+  tumHiHoMusic.play().then(() => {
+    console.log("Tum Hi Ho started playing");
+    
+    // Fade in Tum Hi Ho gradually
+    let volume = 0;
+    const fadeInInterval = setInterval(() => {
+      volume += 0.02; // Slower fade for smoother transition
+      if (volume >= 0.6) {
+        volume = 0.6;
+        clearInterval(fadeInInterval);
+      }
+      tumHiHoMusic.volume = volume;
+    }, 150);
+    
+  }).catch(error => {
+    console.log("Tum Hi Ho play failed:", error);
+    // Try again with user interaction
+    document.addEventListener('click', function tryPlayAgain() {
+      tumHiHoMusic.play();
+      document.removeEventListener('click', tryPlayAgain);
     });
   });
-
-  showMemoriesButton.addEventListener('click', () => {
-  birthdayMessage.style.display = 'block';
-  birthdayMessage.textContent = '';
-  memoryGallery.style.display = 'none';
-  
-  const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
-  
-  // Clear any existing content and start typing (like message button)
-  birthdayMessage.textContent = '';
-  birthdayMessage.style.display = 'block';
-  
-  typeText(birthdayMessage, treasureMessage, 40, () => {
-    // After typing completes, show memories
-    memoryGallery.style.display = 'flex';
-    loadMemories();
-    
-    // Show final message after 10 seconds delay
-    setTimeout(() => {
-      finalMessage.style.display = 'flex';
-      finalMessage.style.opacity = '0';
-      setTimeout(() => {
-        finalMessage.style.transition = 'opacity 2s ease';
-        finalMessage.style.opacity = '1';
-      }, 100);
-      createHeartPulse();
-    }, 10000);
-  });
-});
-  function createShootingStar() {
-    const star = document.createElement('div');
-    star.className = 'shooting-star';
-    star.style.left = Math.random() * 20 + 'vw';
-    star.style.top = Math.random() * 30 + 'vh';
-    star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    document.body.appendChild(star);
-    
-    setTimeout(() => {
-      if (document.body.contains(star)) {
-        document.body.removeChild(star);
-      }
-    }, 3000);
-  }
+}
   </script>
 </body>
 </html>
