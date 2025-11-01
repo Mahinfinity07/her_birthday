@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <title>Happy Birthday Prasansha!</title>
   <link href="https://fonts.cdnfonts.com/css/winky-rough" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
@@ -375,22 +378,22 @@
       to {opacity:0;}
     }
     #start-overlay {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: #121212;
-      z-index: 9999;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.8em;
-      color: #e84393;
-      user-select:none;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: #121212;
+  z-index: 9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.8em;
+  color: #e84393;
+  user-select:none;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: 500; /* You can adjust weight: 300, 400, 500, 600, 700, etc. */
+}
     @keyframes bounceFadeIn {
       0% {
         opacity: 0;
@@ -533,7 +536,7 @@
   </style>
 </head>
 <body>
-  <div id="start-overlay">Tap to Start 🎉</div>
+  <div id="start-overlay">Tap to Start. Use headphone for better sound 🎉</div>
   <div class="container">
     <h1 id="typing-text">👸 Happy Birthday Prasansha!</h1>
     <div class="cake-container" id="cake-container" title="Click the cake to light the candle">
@@ -662,14 +665,27 @@
     let balloonsActive = false;
     let wishCount = 3;
 
-    const memories = [
-      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-      { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' }
-    ];
+   const memories = [
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
+  { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' },
+  // Your 4 new pictures:
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/l8ypf8o3c02evlmk5p68u/IMG_20251101_235252_485.jpg?rlkey=xokyjg9396vral1r9wn26emq5&st=hjl3n27s&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/0j8dopua4x3qudgmb24d0/IMG_20251101_235246_563.jpg?rlkey=8c97s098e1gwyshwtld3am3nz&st=zrpvxok1&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uou6riqsfjpn6cgpaivd6/IMG_20251101_235243_458.jpg?rlkey=kp8e1sdvyjgvphv51pe6u06ga&st=h41ybcmv&dl=1' },
+  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/3hqion58o3t5s0q3e3y6b/IMG_20251101_235239_710.jpg?rlkey=eqspt6rb8hycotf7ilipg4ejc&st=ugeltzsp&dl=1' }
+];
+
+const memoryCaptions = [
+  "", "", "", "", "", "", // for existing memories
+  "Koi itni cute aur beautiful ek saath kaise ho sakti hai? 💓",
+  "Perfection exists, aur main use dekh raha hoon 🌟",
+  "Mujhe wo logo se jealous feel hota hey jo tumhe daily bina kisi effort ke dekh sakta hey 🙂",
+  "Har angle se tum perfect lagti ho ✨" // 4th caption
+];
 
     // Final message close functionality
     closeFinalMessage.addEventListener('click', function() {
@@ -717,35 +733,80 @@
     }
 
     function closeLightbox() {
-      lightboxModal.style.display = 'none';
-      lightboxContent.innerHTML = '';
-      document.body.style.overflow = '';
-    }
+  lightboxModal.style.display = 'none';
+  lightboxContent.innerHTML = '';
+  document.body.style.overflow = '';
+  
+  // Always restore music volume when lightbox closes
+  bgMusic.volume = 0.5;
+}
 
+// Update the close button to use the proper function
+lightboxClose.onclick = function() {
+  closeLightbox();
+};
     function showMedia(index) {
-      const mem = memories[index];
-      lightboxContent.innerHTML = '';
+  const mem = memories[index];
+  lightboxContent.innerHTML = '';
 
-      if(mem.type === 'image') {
-        const img = document.createElement('img');
-        img.src = mem.url;
-        img.style.maxHeight = '80vh';
-        img.style.maxWidth = '90vw';
-        img.onerror = function() {
-          this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
-        };
-        lightboxContent.appendChild(img);
-      } else if(mem.type === 'video') {
-        const vid = document.createElement('video');
-        vid.src = mem.url;
-        vid.controls = true;
-        vid.autoplay = true;
-        vid.style.maxHeight = '80vh';
-        vid.style.maxWidth = '90vw';
-        lightboxContent.appendChild(vid);
-      }
-    }
+  // Create container for media and caption
+  const mediaContainer = document.createElement('div');
+  mediaContainer.style.display = 'flex';
+  mediaContainer.style.flexDirection = 'column';
+  mediaContainer.style.alignItems = 'center';
+  mediaContainer.style.justifyContent = 'center';
+  mediaContainer.style.maxWidth = '90vw';
+  mediaContainer.style.maxHeight = '90vh';
 
+  if(mem.type === 'image') {
+    const img = document.createElement('img');
+    img.src = mem.url;
+    img.style.maxHeight = '70vh';
+    img.style.maxWidth = '80vw';
+    img.style.borderRadius = '10px';
+    img.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
+    img.onerror = function() {
+      this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
+    };
+    mediaContainer.appendChild(img);
+  } else if(mem.type === 'video') {
+    const vid = document.createElement('video');
+    vid.src = mem.url;
+    vid.controls = true;
+    vid.autoplay = false; // Don't autoplay, let user click to play
+    vid.style.maxHeight = '70vh';
+    vid.style.maxWidth = '80vw';
+    vid.style.borderRadius = '10px';
+    vid.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
+    
+    // Lower site music when video starts playing
+    vid.addEventListener('play', function() {
+      bgMusic.volume = 0.1; // Lower background music volume
+    });
+    
+    // Restore site music when video is paused or ends
+    vid.addEventListener('pause', function() {
+      bgMusic.volume = 0.5; // Restore normal volume
+    });
+    
+    vid.addEventListener('ended', function() {
+      bgMusic.volume = 0.5; // Restore normal volume when video ends
+    });
+    
+    mediaContainer.appendChild(vid);
+  }
+
+  // ADD CAPTION TO LIGHTBOX
+  if (memoryCaptions[index]) {
+    const caption = document.createElement('div');
+    caption.className = 'lightbox-caption';
+    caption.textContent = memoryCaptions[index];
+    caption.style.cssText = 'color: #e84393; font-size: 1.2em; margin-top: 20px; text-align: center; font-style: italic; padding: 15px; line-height: 1.4; background: rgba(232, 67, 147, 0.1); border-radius: 15px; border: 1px solid rgba(232, 67, 147, 0.3); max-width: 80%;';
+    mediaContainer.appendChild(caption);
+  }
+
+  lightboxContent.appendChild(mediaContainer);
+}
     function nextMedia() {
       currentIndex = (currentIndex + 1) % memories.length;
       showMedia(currentIndex);
@@ -813,27 +874,41 @@
     let started = false;
 
     startOverlay.onclick = () => {
-      if (started) return;
-      started = true;
-      startOverlay.style.display = 'none';
+  if (started) return;
+  started = true;
+  startOverlay.style.display = 'none';
+  
+  // Mobile-friendly audio play with error handling and fade in
+  const playAudio = () => {
+    bgMusic.volume = 0; // Start with volume 0
+    bgMusic.play().then(() => {
+      console.log("Birthday music started - fading in");
       
-      // Mobile-friendly audio play with error handling
-      const playAudio = () => {
-        bgMusic.play().then(() => {
-          console.log("Birthday music started");
-        }).catch(error => {
-          console.log("Audio play failed, retrying...", error);
-          // Retry after user interaction
-          document.addEventListener('click', function retryPlay() {
-            bgMusic.play();
-            document.removeEventListener('click', retryPlay);
-          }, { once: true });
-        });
-      };
+      // Fade in audio over 1 second
+      let volume = 0;
+      const fadeInInterval = setInterval(() => {
+        volume += 0.05; // Increase volume gradually
+        if (volume >= 0.5) {
+          volume = 0.5; // Final volume
+          clearInterval(fadeInInterval);
+          console.log("Audio fade in complete");
+        }
+        bgMusic.volume = volume;
+      }, 50); // Update every 50ms for smooth fade (20 steps over 1 second)
       
-      playAudio();
-      showWelcomeMessages();
-    };
+    }).catch(error => {
+      console.log("Audio play failed, retrying...", error);
+      // Retry after user interaction
+      document.addEventListener('click', function retryPlay() {
+        bgMusic.play();
+        document.removeEventListener('click', retryPlay);
+      }, { once: true });
+    });
+  };
+  
+  playAudio();
+  showWelcomeMessages();
+};
 
     function showWelcomeMessages() {
       document.querySelector('.container').style.opacity = '0';
