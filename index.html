@@ -565,25 +565,33 @@
   <div class="welcome-message" id="welcome-message-5">I know it's unexpected</div>
   
   <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
-    <button id="lightbox-close" style="position:absolute;top:20px;right:20px; font-size:1.5em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">✖</button>
-    <button id="lightbox-prev" style="position:absolute;top:50%;left:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">◀</button>
-    <div id="lightbox-content" style="max-width:90vw; max-height:80vh; display:flex; justify-content:center; align-items:center;">
-    </div>
-    <button id="lightbox-next" style="position:absolute;top:50%;right:20px; transform:translateY(-50%); font-size:2em; background:rgba(30,30,30,0.7); border:none; color:white; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; justify-content:center; align-items:center;">▶</button>
+  <button id="lightbox-close" style="position:absolute;top:30px;right:30px; font-size:2em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">✖</button>
+  <button id="lightbox-prev" style="position:absolute;top:50%;left:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">◀</button>
+  <div id="lightbox-content" style="max-width:90vw; max-height:85vh; display:flex; justify-content:center; align-items:center; position:relative;">
   </div>
-
+  <button id="lightbox-next" style="position:absolute;top:50%;right:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">▶</button>
+</div>
   <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.6;">
     <button id="close-final-message" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
     <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
-    <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll always have a special place in my heart 💖</p>
+    <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll be always a special person in my heart 💟</p>
     <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Forever</p>
   </div>
 
   <div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
-    <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-    <p style="font-weight:500; text-shadow: 0 0 10px rgba(255,107,107,0.3);">Kya tum firse wo purana "haan ji" wala Prasansha banogi?</p>
-    <p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">(Will you be my Mam once again?)</p>
-  </div>
+  <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3);">
+    Kya tum firse wo purani “haan ji” wali Prasansha banogi?
+  </p>
+<p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">
+  Agar nahi to msg ka reply denen ka jarurat nehi hey.<br>
+  Main samajh jaunga.<br>
+  Aur promise karta hoon ki aabhi se phir kabhi tumhari life me interfere nahi karunga.<br>
+  Bohot sara dukh to hoga hi lekin mey kar bhi keya sakta hu ?
+</p>
+
+</div>
+
 
   <audio id="bg-music" loop preload="auto">
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
@@ -680,11 +688,17 @@
 ];
 
 const memoryCaptions = [
-  "", "", "", "", "", "", // for existing memories
-  "Koi itni cute aur beautiful ek saath kaise ho sakti hai? 💓",
-  "Perfection exists, aur main use dekh raha hoon 🌟",
-  "Mujhe wo logo se jealous feel hota hey jo tumhe daily bina kisi effort ke dekh sakta hey 🙂",
-  "Har angle se tum perfect lagti ho ✨" // 4th caption
+  "That look… I could get lost in it forever 🌹", // 1st image
+  "Jab tum lip-sync karti ho, har ek lafz tumhari smile se aur bhi magical lagta hai… 🎵💖", // 2nd video
+  "Yess… That face, that smile… Har photo mein tumhari khubsurti aur pyar mujhe mehsoos hota hai, jaise duniya ki har khoobsurti tumhare andar hi base ho ❤️🌸", // 3rd collage
+  "Chhoti si masti, par har expression mein tumhari khubsurti aur pyaar nazar aata hai… har photo ek yaad, har yaad ek feeling ❤️🐾", // 4th collage with doggy effect
+  "Red hair, twinkling smile, aur woh cute effect… bas tum hi ho jo mujhe hamesha khus rehne par majboor kar deti ho", // 5th collage red hair + cute effect
+  "Woh khula aasman aur tum… jaise duniya ke saare stars bas tumhari hi taraf dekh rahe ho ✨💖. Piche dekho, mujhe dikh raha hai… wo cows, waise main hi hoon 😄🐄", // 6th standing in open field
+  "Koi itni cute aur beautiful ek saath kaise ho sakti hai? 💓", // 7th new picture
+  "Bas tumhari aankhon mein kho jaane ka mann karta hai… jaise duniya thodi si silent ho jaaye aur sirf tum aur ye pal rahe ✨🖤", // 8th new picture
+ // 8th new picture
+  "Har photo mein tumhari ek alag charm hai… jaise tum khud ek little universe ho 🌸🌟", // 9th new picture
+  "Perfection exists, aur main use dekh raha hoon 🌟" // 10th new picture
 ];
 
     // Final message close functionality
@@ -715,7 +729,7 @@ const memoryCaptions = [
     function createHeartPulse() {
       const heart = document.createElement('div');
       heart.className = 'heart-pulse';
-      heart.textContent = '💖';
+      heart.textContent = '💟';
       document.body.appendChild(heart);
       
       setTimeout(() => {
@@ -869,7 +883,7 @@ lightboxClose.onclick = function() {
     const balloonsContainer = document.getElementById('balloons-container');
     const partyOverlay = document.getElementById('party-overlay');
     const typingText = document.getElementById('typing-text');
-    const fullText = '👑 Happy Birthday Prasansha!';
+    const fullText = '👑 Happy Birthday Prasansha! ✨💓';
     let charIndex = 0;
     let started = false;
 
@@ -1086,101 +1100,182 @@ lightboxClose.onclick = function() {
     }
 
     // 3-Wish limit functionality
-    submitWish.addEventListener('click', function() {
-      const wish = wishText.value.trim();
-      if (wish && wishCount > 0) {
-        const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
-        const chatId = '6643918586';
-        const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
+    // 3-Wish limit functionality
+submitWish.addEventListener('click', function() {
+  const wish = wishText.value.trim();
+  if (wish && wishCount > 0) {
+    const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
+    const chatId = '6643918586';
+    const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
+    
+    // Show loading state
+    const originalText = submitWish.textContent;
+    submitWish.textContent = 'Sending...';
+    submitWish.disabled = true;
+    
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ 
+        chat_id: chatId, 
+        text: message
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Telegram response:', data);
+      wishCount--;
+      
+      if (wishCount > 0) {
+        wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
+        submitWish.textContent = `Send Your Wish (${wishCount} left)`;
+        wishMessage.style.display = 'block';
+        wishText.value = '';
         
-        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ chat_id: chatId, text: message })
-        }).catch(() => {})
-        .finally(() => {
-          wishCount--;
+        for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
+        createHeartPulse();
+      } else {
+        // ALL WISHES COMPLETED - This part should trigger the final message
+        wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
+        submitWish.style.display = 'none';
+        wishText.disabled = true;
+        wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
+        wishMessage.style.display = 'block';
+        wishText.value = '';
+        
+        // Create erasing overlay
+        const erasingOverlay = document.createElement('div');
+        erasingOverlay.style.position = 'fixed';
+        erasingOverlay.style.top = '0';
+        erasingOverlay.style.left = '0';
+        erasingOverlay.style.width = '100%';
+        erasingOverlay.style.height = '0%';
+        erasingOverlay.style.background = '#121212';
+        erasingOverlay.style.zIndex = '1999';
+        erasingOverlay.style.transition = 'height 3s ease-in-out';
+        document.body.appendChild(erasingOverlay);
+        
+        // Start erasing effect and music fade out after 2 seconds
+        setTimeout(() => {
+          // Start music fade out
+          let volume = 0.5;
+          const fadeAudio = setInterval(() => {
+            volume -= 0.05;
+            if (volume <= 0) {
+              bgMusic.volume = 0;
+              bgMusic.pause(); // Stop the birthday music
+              clearInterval(fadeAudio);
+              
+              // Start fading in Tum Hi Ho when birthday music fades out
+              setTimeout(fadeInTumHiHo, 500);
+            } else {
+              bgMusic.volume = volume;
+            }
+          }, 300);
           
-          if (wishCount > 0) {
-            wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
-            submitWish.textContent = `Send Your Wish (${wishCount} left)`;
-            wishMessage.style.display = 'block';
-            wishText.value = '';
+          // Start erasing from top to bottom
+          erasingOverlay.style.height = '100%';
+          
+          // After erasing completes, show final message
+          setTimeout(() => {
+            // Hide everything
+            document.querySelector('.container').style.display = 'none';
+            balloonsContainer.style.display = 'none';
+            partyOverlay.style.display = 'none';
+            erasingOverlay.style.display = 'none';
             
-            for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
-            createHeartPulse();
-          } else {
-            // All wishes completed - Start erasing effect after 3rd wish
-            wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
-            submitWish.style.display = 'none';
-            wishText.disabled = true;
-            wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
-            wishMessage.style.display = 'block';
-            wishText.value = '';
-            
-            // Create erasing overlay
-            const erasingOverlay = document.createElement('div');
-            erasingOverlay.style.position = 'fixed';
-            erasingOverlay.style.top = '0';
-            erasingOverlay.style.left = '0';
-            erasingOverlay.style.width = '100%';
-            erasingOverlay.style.height = '0%';
-            erasingOverlay.style.background = '#121212';
-            erasingOverlay.style.zIndex = '1999';
-            erasingOverlay.style.transition = 'height 3s ease-in-out';
-            document.body.appendChild(erasingOverlay);
-            
-            // Start erasing effect and music fade out after 2 seconds (so she can read the message)
+            // Show final message
+            finalMessage.style.display = 'flex';
+            finalMessage.style.opacity = '0';
             setTimeout(() => {
-              // Start music fade out
-              let volume = 0.5;
-              const fadeAudio = setInterval(() => {
-                volume -= 0.05;
-                if (volume <= 0) {
-                  bgMusic.volume = 0;
-                  bgMusic.pause(); // Stop the birthday music
-                  clearInterval(fadeAudio);
-                  
-                  // Start fading in Tum Hi Ho when birthday music fades out
-                  setTimeout(fadeInTumHiHo, 500); // Small delay for smoother transition
-                } else {
-                  bgMusic.volume = volume;
-                }
-              }, 300);
+              finalMessage.style.transition = 'opacity 2s ease';
+              finalMessage.style.opacity = '1';
               
-              // Start erasing from top to bottom
-              erasingOverlay.style.height = '100%';
+              createHeartPulse();
               
-              // After erasing completes, show final message
-              setTimeout(() => {
-                // Hide everything
-                document.querySelector('.container').style.display = 'none';
-                balloonsContainer.style.display = 'none';
-                partyOverlay.style.display = 'none';
-                erasingOverlay.style.display = 'none';
-                
-                // Show final message
-                finalMessage.style.display = 'flex';
-                finalMessage.style.opacity = '0';
-                setTimeout(() => {
-                  finalMessage.style.transition = 'opacity 2s ease';
-                  finalMessage.style.opacity = '1';
-                  
-                  createHeartPulse();
-                  
-                  // Final celebration
-                  for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
-                  for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-                  
-                }, 100);
-              }, 3000); // Erasing duration
+              // Final celebration
+              for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+              for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
               
-            }, 2000); // Initial delay before erasing starts
-          }
-        });
+            }, 100);
+          }, 3000); // Erasing duration
+          
+        }, 2000); // Initial delay before erasing starts
       }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Even if there's an error, still continue with the flow
+      wishCount--;
+      
+      if (wishCount > 0) {
+        wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
+        submitWish.textContent = `Send Your Wish (${wishCount} left)`;
+      } else {
+        wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
+        submitWish.style.display = 'none';
+        wishText.disabled = true;
+        wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
+        
+        // Trigger final message sequence even if Telegram fails
+        setTimeout(() => {
+          const erasingOverlay = document.createElement('div');
+          erasingOverlay.style.position = 'fixed';
+          erasingOverlay.style.top = '0';
+          erasingOverlay.style.left = '0';
+          erasingOverlay.style.width = '100%';
+          erasingOverlay.style.height = '0%';
+          erasingOverlay.style.background = '#121212';
+          erasingOverlay.style.zIndex = '1999';
+          erasingOverlay.style.transition = 'height 3s ease-in-out';
+          document.body.appendChild(erasingOverlay);
+          
+          setTimeout(() => {
+            let volume = 0.5;
+            const fadeAudio = setInterval(() => {
+              volume -= 0.05;
+              if (volume <= 0) {
+                bgMusic.volume = 0;
+                bgMusic.pause();
+                clearInterval(fadeAudio);
+                setTimeout(fadeInTumHiHo, 500);
+              } else {
+                bgMusic.volume = volume;
+              }
+            }, 300);
+            
+            erasingOverlay.style.height = '100%';
+            
+            setTimeout(() => {
+              document.querySelector('.container').style.display = 'none';
+              balloonsContainer.style.display = 'none';
+              partyOverlay.style.display = 'none';
+              erasingOverlay.style.display = 'none';
+              
+              finalMessage.style.display = 'flex';
+              finalMessage.style.opacity = '0';
+              setTimeout(() => {
+                finalMessage.style.transition = 'opacity 2s ease';
+                finalMessage.style.opacity = '1';
+                createHeartPulse();
+                for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
+              }, 100);
+            }, 3000);
+          }, 2000);
+        }, 1000);
+      }
+      wishMessage.style.display = 'block';
+      wishText.value = '';
+      
+      for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
+      createHeartPulse();
+    })
+    .finally(() => {
+      submitWish.disabled = false;
     });
-
+  }
+});
     giftButton.addEventListener('click', openGift);
     cakeContainer.addEventListener('click', () => {
       if (!flame.classList.contains('burning')) {
@@ -1192,8 +1287,16 @@ lightboxClose.onclick = function() {
       memoriesButton.style.display = 'none';
       birthdayMessage.style.display = 'block';
       birthdayMessage.textContent = '';
+const message = "Happy Birthday Prasansha! 🎉💖" +
+"Tum hamesha khush raho, healthy raho, aur waise hi pyaari aur adorable raho jaise tum ho." +
+"Mujhe pata hai, maine pehle immature behave kiya jo zyada ho gaya tha — reels, messages, comments… sab kuch." +
+"For that, I’m truly sorry." +
+"Please maaf kar dena." +
+"Aur haan, yaad rakhna — “NO DIET.” Please thori chubby hi raho." +
+"Tum waise hi perfect ho, aur main hamesha tumhari khushi aur smile ke liye dua karta hoon ❤️" +
+"Take care, hamesha 🌑";
 
-      const message = "Happy Birthday Prasansha\n\nWishing you all the happiness in the world — khush raho, healthy raho, aur hamesha waise hi pyaari aur chubby doll bane raho jaise tum ho.\n\nI know maine pehle jyada hi immature behave kiya — ek saath itna sara reels,messages ke saath shayad zyada ho gaya tha. Tumhara post ka comment pe jaake react dena, reply karna sab kuch jyada hi tha. For that, I'm genuinely sorry. Mujhe maaf kar dena, please.\n\nAur haan, ek baat yaad rakhna — \"NO DIET.\"\nTum jaise ho, waise hi perfect ho. Beautiful inside and out.\n\nTake love ❤️.";
+
 
       typeText(birthdayMessage, message, 40, () => {
         showMemoriesButton.style.display = 'inline-block';
@@ -1206,7 +1309,7 @@ lightboxClose.onclick = function() {
       birthdayMessage.textContent = '';
       memoryGallery.style.display = 'none';
       
-      const treasureMessage = "Here's some treasure I still have in my phone\n\n(These memories are still precious to me...)";
+      const treasureMessage = "Maine ye photos ab tak sambhal ke rakhi hain. Na ki isliye ki kuch badal sakun, par kyunki ye tumhara ek hissa hain jo main bhool nahi sakta. Ab bhi, inhe dekhkar khusi ho jata hoon, tumhe yaad karke 💛";
       
       birthdayMessage.textContent = '';
       birthdayMessage.style.display = 'block';
