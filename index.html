@@ -4,8 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <title>Happy Birthday Prasansha!</title>
   <link href="https://fonts.cdnfonts.com/css/winky-rough" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
@@ -392,7 +392,7 @@
   color: #e84393;
   user-select:none;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  font-weight: 500; /* You can adjust weight: 300, 400, 500, 600, 700, etc. */
+  font-weight: 500;
 }
     @keyframes bounceFadeIn {
       0% {
@@ -571,27 +571,85 @@
   </div>
   <button id="lightbox-next" style="position:absolute;top:50%;right:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">▶</button>
 </div>
-  <div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.6;">
-    <button id="close-final-message" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-    <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
-    <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll be always a special person in my heart 💟</p>
-    <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Forever</p>
-  </div>
 
-  <div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
-  <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3);">
-    Kya tum firse wo purani “haan ji” wali Prasansha banogi?
-  </p>
-<p style="font-size:0.8em; margin-top:20px; opacity:0.8; font-weight:300;">
-  Agar nahi to msg ka reply denen ka jarurat nehi hey.<br>
-  Main samajh jaunga.<br>
-  Aur promise karta hoon ki aabhi se phir kabhi tumhari life me interfere nahi karunga.<br>
-  Bohot sara dukh to hoga hi lekin mey kar bhi keya sakta hu ?
-</p>
-
+<!-- Page 1: Final Message -->
+<div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.6;">
+  <button id="close-final-message" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+  <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
+  <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll be always a special person in my heart 💟</p>
+  <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Forever</p>
 </div>
 
+<!-- Page 2: Final Question - Updated Softer Version -->
+<div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
+  <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+  
+  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
+    Kya kabhi woh din wapas aa sakte hain...
+  </p>
+  
+  <p style="font-size:0.9em; margin-bottom:25px; font-weight:300; color:#e0e0e0; max-width: 800px;">
+    Ki tum firse wo haan ji wala Prasansha ban jaogi? <br>
+     Woh innocence, woh care, woh connection...<br>
+    Kya woh sab wapas aa sakta hai?
+  </p>
+  
+  <p style="font-size:1.1em; color:#ff6b6b; font-weight:500; margin-top: 20px; text-shadow: 0 0 10px rgba(255,107,107,0.3);">
+    Agar tumhe nahi lagta ki yeh possible hai...<br>
+    Koi reply karne ki zarurat nahi hai 💔
+  </p>
+  
+  <p style="font-size:0.8em; margin-top:30px; opacity:0.7; color:#e0e0e0; font-weight:300;">
+    Main samajh jaunga...<br>
+    Aur main tumhe disturb nahi karunga<br>
+    Chahe kitna bhi dard ho, main accept kar lunga kiyu ki mey aur kar bhi keya sakta hu?
+  </p>
+  
+  <p style="font-size:0.7em; margin-top:40px; opacity:0.6; color:#e0e0e0;">
+    Sometimes love means letting go when it's best for the other person
+  </p>
+</div>
+
+<!-- Page 3: Final Message 2 -->
+<div id="final-message-2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
+  <button id="close-final-message-2" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+  
+  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
+    Main jaanta hun hum alag countries, religion mein hain...
+  </p>
+  
+  <p style="font-size:0.9em; margin-bottom:25px; font-weight:300; color:#e0e0e0; max-width: 800px;">
+    ...lekin keya iye sachme matter karta hey?<br><br>
+    Pichle 649 din se har raat, main sochta raha...<br>
+    kya ho sakta tha humara? eisa keya kar diya meyne jo tumhe bura lage.
+  </p>
+  
+  <p style="font-size:1.1em; color:#ff6b6b; font-weight:500; margin-top: 20px; text-shadow: 0 0 10px rgba(255,107,107,0.3);">
+    Agar kabhi tumhe lage ki "hum" firse try kar sakte hain...<br>
+    main intezaar karunga ❤️ pura jindegi bhar.
+  </p>
+</div>
+
+<!-- Page 4: Final Message 3 - New Additional Message -->
+<div id="final-message-3" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
+  <button id="close-final-message-3" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
+  
+  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
+    Ek aur baat kehni thi...<br>
+    Mey tumhara sara baate manunga<br>
+    Mey responsible ban jaaunga<br>
+    Khud ko pura change kar lunga<br>
+    Ek stable future banaunga<br>
+    Tumhara bina kisi ladki se kabhi baate bhi nehi karunga<br> 
+    Ek nek insaan ban jaunga <br>
+    Sab kaam karunga <br>
+    Tumhe kabhi dukh nehi dunga<br>
+    Tum jo bolo wo hi karunga<br>
+    Mujhe sirf ek chance do Prasansha 🙂
+  </p>
+  
+  
+</div>
 
   <audio id="bg-music" loop preload="auto">
     <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
@@ -646,9 +704,22 @@
     const closeFinalMessage = document.getElementById('close-final-message');
     const closeFinalQuestion = document.getElementById('close-final-question');
     const finalQuestion = document.getElementById('final-question');
+    const finalMessage2 = document.getElementById('final-message-2');
+    const closeFinalMessage2 = document.getElementById('close-final-message-2');
+    const finalMessage3 = document.getElementById('final-message-3');
+    const closeFinalMessage3 = document.getElementById('close-final-message-3');
     
     bgMusic.volume = 0.5;
     tumHiHoMusic.volume = 0;
+
+    // Add error handling for audio
+    bgMusic.addEventListener('error', function(e) {
+      console.log('Background music failed to load');
+    });
+
+    tumHiHoMusic.addEventListener('error', function(e) {
+      console.log('Tum Hi Ho music failed to load');
+    });
 
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxContent = document.getElementById('lightbox-content');
@@ -673,40 +744,39 @@
     let balloonsActive = false;
     let wishCount = 3;
 
-   const memories = [
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-  { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' },
-  // Your 4 new pictures:
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/l8ypf8o3c02evlmk5p68u/IMG_20251101_235252_485.jpg?rlkey=xokyjg9396vral1r9wn26emq5&st=hjl3n27s&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/0j8dopua4x3qudgmb24d0/IMG_20251101_235246_563.jpg?rlkey=8c97s098e1gwyshwtld3am3nz&st=zrpvxok1&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uou6riqsfjpn6cgpaivd6/IMG_20251101_235243_458.jpg?rlkey=kp8e1sdvyjgvphv51pe6u06ga&st=h41ybcmv&dl=1' },
-  { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/3hqion58o3t5s0q3e3y6b/IMG_20251101_235239_710.jpg?rlkey=eqspt6rb8hycotf7ilipg4ejc&st=ugeltzsp&dl=1' }
-];
+    const memories = [
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
+      { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/l8ypf8o3c02evlmk5p68u/IMG_20251101_235252_485.jpg?rlkey=xokyjg9396vral1r9wn26emq5&st=hjl3n27s&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/0j8dopua4x3qudgmb24d0/IMG_20251101_235246_563.jpg?rlkey=8c97s098e1gwyshwtld3am3nz&st=zrpvxok1&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uou6riqsfjpn6cgpaivd6/IMG_20251101_235243_458.jpg?rlkey=kp8e1sdvyjgvphv51pe6u06ga&st=h41ybcmv&dl=1' },
+      { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/3hqion58o3t5s0q3e3y6b/IMG_20251101_235239_710.jpg?rlkey=eqspt6rb8hycotf7ilipg4ejc&st=ugeltzsp&dl=1' }
+    ];
 
-const memoryCaptions = [
-  "That look… I could get lost in it forever 🌹", // 1st image
-  "Jab tum lip-sync karti ho, har ek lafz tumhari smile se aur bhi magical lagta hai… 🎵💖", // 2nd video
-  "Yess… That face, that smile… Har photo mein tumhari khubsurti aur pyar mujhe mehsoos hota hai, jaise duniya ki har khoobsurti tumhare andar hi base ho ❤️🌸", // 3rd collage
-  "Chhoti si masti, par har expression mein tumhari khubsurti aur pyaar nazar aata hai… har photo ek yaad, har yaad ek feeling ❤️🐾", // 4th collage with doggy effect
-  "Red hair, twinkling smile, aur woh cute effect… bas tum hi ho jo mujhe hamesha khus rehne par majboor kar deti ho", // 5th collage red hair + cute effect
-  "Woh khula aasman aur tum… jaise duniya ke saare stars bas tumhari hi taraf dekh rahe ho ✨💖. Piche dekho, mujhe dikh raha hai… wo cows, waise main hi hoon 😄🐄", // 6th standing in open field
-  "Koi itni cute aur beautiful ek saath kaise ho sakti hai? 💓", // 7th new picture
-  "Bas tumhari aankhon mein kho jaane ka mann karta hai… jaise duniya thodi si silent ho jaaye aur sirf tum aur ye pal rahe ✨🖤", // 8th new picture
- // 8th new picture
-  "Har photo mein tumhari ek alag charm hai… jaise tum khud ek little universe ho 🌸🌟", // 9th new picture
-  "Perfection exists, aur main use dekh raha hoon 🌟" // 10th new picture
-];
+    const memoryCaptions = [
+      "That look… I could get lost in it forever 🌹",
+      "Jab tum lip-sync karti ho, har ek lafz tumhari smile se aur bhi magical lagta hai… 🎵💖",
+      "Yess… That face, that smile… Har photo mein tumhari khubsurti aur pyar mujhe mehsoos hota hai, jaise duniya ki har khoobsurti tumhare andar hi base ho ❤️🌸",
+      "Chhoti si masti, par har expression mein tumhari khubsurti aur pyaar nazar aata hai… har photo ek yaad, har yaad ek feeling ❤️🐾",
+      "Red hair, twinkling smile, aur woh cute effect… bas tum hi ho jo mujhe hamesha khus rehne par majboor kar deti ho",
+      "Woh khula aasman aur tum… jaise duniya ke saare stars bas tumhari hi taraf dekh rahe ho ✨💖. Piche dekho, mujhe dikh raha hai… wo cows, waise main hi hoon 😄🐄",
+      "Koi itni cute aur beautiful ek saath kaise ho sakti hai? 💓",
+      "Bas tumhari aankhon mein kho jaane ka mann karta hai… jaise duniya thodi si silent ho jaaye aur sirf tum aur ye pal rahe ✨🖤",
+      "Har photo mein tumhari ek alag charm hai… jaise tum khud ek little universe ho 🌸🌟",
+      "Perfection exists, aur main use dekh raha hoon 🌟"
+    ];
 
-    // Final message close functionality
+    // Page 1 → Page 2
     closeFinalMessage.addEventListener('click', function() {
       finalMessage.style.transition = 'opacity 1s ease';
       finalMessage.style.opacity = '0';
       setTimeout(() => {
         finalMessage.style.display = 'none';
+        // Show Page 2
         finalQuestion.style.display = 'flex';
         finalQuestion.style.opacity = '0';
         setTimeout(() => {
@@ -717,12 +787,48 @@ const memoryCaptions = [
       }, 1000);
     });
 
-    // Final question close functionality
+    // Page 2 → Page 3
     closeFinalQuestion.addEventListener('click', function() {
       finalQuestion.style.transition = 'opacity 1s ease';
       finalQuestion.style.opacity = '0';
       setTimeout(() => {
         finalQuestion.style.display = 'none';
+        // Show Page 3
+        finalMessage2.style.display = 'flex';
+        finalMessage2.style.opacity = '0';
+        setTimeout(() => {
+          finalMessage2.style.transition = 'opacity 1.5s ease';
+          finalMessage2.style.opacity = '1';
+          createHeartPulse();
+        }, 100);
+      }, 1000);
+    });
+
+    // Page 3 → Page 4
+    closeFinalMessage2.addEventListener('click', function() {
+      finalMessage2.style.transition = 'opacity 1s ease';
+      finalMessage2.style.opacity = '0';
+      setTimeout(() => {
+        finalMessage2.style.display = 'none';
+        // Show Page 4
+        finalMessage3.style.display = 'flex';
+        finalMessage3.style.opacity = '0';
+        setTimeout(() => {
+          finalMessage3.style.transition = 'opacity 1.5s ease';
+          finalMessage3.style.opacity = '1';
+          createHeartPulse();
+        }, 100);
+      }, 1000);
+    });
+
+    // Page 4 → Close Everything
+    closeFinalMessage3.addEventListener('click', function() {
+      finalMessage3.style.transition = 'opacity 1s ease';
+      finalMessage3.style.opacity = '0';
+      setTimeout(() => {
+        finalMessage3.style.display = 'none';
+        // End of journey
+        createHeartPulse();
       }, 1000);
     });
 
@@ -747,80 +853,77 @@ const memoryCaptions = [
     }
 
     function closeLightbox() {
-  lightboxModal.style.display = 'none';
-  lightboxContent.innerHTML = '';
-  document.body.style.overflow = '';
-  
-  // Always restore music volume when lightbox closes
-  bgMusic.volume = 0.5;
-}
+      lightboxModal.style.display = 'none';
+      lightboxContent.innerHTML = '';
+      document.body.style.overflow = '';
+      
+      // Always restore music volume when lightbox closes
+      bgMusic.volume = 0.5;
+    }
 
-// Update the close button to use the proper function
-lightboxClose.onclick = function() {
-  closeLightbox();
-};
     function showMedia(index) {
-  const mem = memories[index];
-  lightboxContent.innerHTML = '';
+      const mem = memories[index];
+      lightboxContent.innerHTML = '';
 
-  // Create container for media and caption
-  const mediaContainer = document.createElement('div');
-  mediaContainer.style.display = 'flex';
-  mediaContainer.style.flexDirection = 'column';
-  mediaContainer.style.alignItems = 'center';
-  mediaContainer.style.justifyContent = 'center';
-  mediaContainer.style.maxWidth = '90vw';
-  mediaContainer.style.maxHeight = '90vh';
+      // Create container for media and caption
+      const mediaContainer = document.createElement('div');
+      mediaContainer.style.display = 'flex';
+      mediaContainer.style.flexDirection = 'column';
+      mediaContainer.style.alignItems = 'center';
+      mediaContainer.style.justifyContent = 'center';
+      mediaContainer.style.maxWidth = '90vw';
+      mediaContainer.style.maxHeight = '90vh';
 
-  if(mem.type === 'image') {
-    const img = document.createElement('img');
-    img.src = mem.url;
-    img.style.maxHeight = '70vh';
-    img.style.maxWidth = '80vw';
-    img.style.borderRadius = '10px';
-    img.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
-    img.onerror = function() {
-      this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
-    };
-    mediaContainer.appendChild(img);
-  } else if(mem.type === 'video') {
-    const vid = document.createElement('video');
-    vid.src = mem.url;
-    vid.controls = true;
-    vid.autoplay = false; // Don't autoplay, let user click to play
-    vid.style.maxHeight = '70vh';
-    vid.style.maxWidth = '80vw';
-    vid.style.borderRadius = '10px';
-    vid.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
-    
-    // Lower site music when video starts playing
-    vid.addEventListener('play', function() {
-      bgMusic.volume = 0.1; // Lower background music volume
-    });
-    
-    // Restore site music when video is paused or ends
-    vid.addEventListener('pause', function() {
-      bgMusic.volume = 0.5; // Restore normal volume
-    });
-    
-    vid.addEventListener('ended', function() {
-      bgMusic.volume = 0.5; // Restore normal volume when video ends
-    });
-    
-    mediaContainer.appendChild(vid);
-  }
+      if(mem.type === 'image') {
+        const img = document.createElement('img');
+        img.src = mem.url;
+        img.style.maxHeight = '70vh';
+        img.style.maxWidth = '80vw';
+        img.style.borderRadius = '10px';
+        img.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
+        img.onerror = function() {
+          this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
+        };
+        mediaContainer.appendChild(img);
+      } else if(mem.type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = mem.url;
+        vid.controls = true;
+        vid.autoplay = false; // Don't autoplay, let user click to play
+        vid.style.maxHeight = '70vh';
+        vid.style.maxWidth = '80vw';
+        vid.style.borderRadius = '10px';
+        vid.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
+        
+        // Lower site music when video starts playing
+        vid.addEventListener('play', function() {
+          bgMusic.volume = 0.1; // Lower background music volume
+        });
+        
+        // Restore site music when video is paused or ends
+        vid.addEventListener('pause', function() {
+          bgMusic.volume = 0.5; // Restore normal volume
+        });
+        
+        vid.addEventListener('ended', function() {
+          bgMusic.volume = 0.5; // Restore normal volume when video ends
+        });
+        
+        mediaContainer.appendChild(vid);
+      }
 
-  // ADD CAPTION TO LIGHTBOX
-  if (memoryCaptions[index]) {
-    const caption = document.createElement('div');
-    caption.className = 'lightbox-caption';
-    caption.textContent = memoryCaptions[index];
-    caption.style.cssText = 'color: #e84393; font-size: 1.2em; margin-top: 20px; text-align: center; font-style: italic; padding: 15px; line-height: 1.4; background: rgba(232, 67, 147, 0.1); border-radius: 15px; border: 1px solid rgba(232, 67, 147, 0.3); max-width: 80%;';
-    mediaContainer.appendChild(caption);
-  }
+      // ADD CAPTION TO LIGHTBOX
+      if (memoryCaptions[index]) {
+        const caption = document.createElement('div');
+        caption.className = 'lightbox-caption';
+        caption.textContent = memoryCaptions[index];
+        caption.style.cssText = 'color: #e84393; font-size: 1.2em; margin-top: 20px; text-align: center; font-style: italic; padding: 15px; line-height: 1.4; background: rgba(232, 67, 147, 0.1); border-radius: 15px; border: 1px solid rgba(232, 67, 147, 0.3); max-width: 80%;';
+        mediaContainer.appendChild(caption);
+      }
 
-  lightboxContent.appendChild(mediaContainer);
-}
+      lightboxContent.appendChild(mediaContainer);
+    }
+
     function nextMedia() {
       currentIndex = (currentIndex + 1) % memories.length;
       showMedia(currentIndex);
@@ -888,41 +991,41 @@ lightboxClose.onclick = function() {
     let started = false;
 
     startOverlay.onclick = () => {
-  if (started) return;
-  started = true;
-  startOverlay.style.display = 'none';
-  
-  // Mobile-friendly audio play with error handling and fade in
-  const playAudio = () => {
-    bgMusic.volume = 0; // Start with volume 0
-    bgMusic.play().then(() => {
-      console.log("Birthday music started - fading in");
+      if (started) return;
+      started = true;
+      startOverlay.style.display = 'none';
       
-      // Fade in audio over 1 second
-      let volume = 0;
-      const fadeInInterval = setInterval(() => {
-        volume += 0.05; // Increase volume gradually
-        if (volume >= 0.5) {
-          volume = 0.5; // Final volume
-          clearInterval(fadeInInterval);
-          console.log("Audio fade in complete");
-        }
-        bgMusic.volume = volume;
-      }, 50); // Update every 50ms for smooth fade (20 steps over 1 second)
+      // Mobile-friendly audio play with error handling and fade in
+      const playAudio = () => {
+        bgMusic.volume = 0; // Start with volume 0
+        bgMusic.play().then(() => {
+          console.log("Birthday music started - fading in");
+          
+          // Fade in audio over 1 second
+          let volume = 0;
+          const fadeInInterval = setInterval(() => {
+            volume += 0.05; // Increase volume gradually
+            if (volume >= 0.5) {
+              volume = 0.5; // Final volume
+              clearInterval(fadeInInterval);
+              console.log("Audio fade in complete");
+            }
+            bgMusic.volume = volume;
+          }, 50); // Update every 50ms for smooth fade (20 steps over 1 second)
+          
+        }).catch(error => {
+          console.log("Audio play failed, retrying...", error);
+          // Retry after user interaction
+          document.addEventListener('click', function retryPlay() {
+            bgMusic.play();
+            document.removeEventListener('click', retryPlay);
+          }, { once: true });
+        });
+      };
       
-    }).catch(error => {
-      console.log("Audio play failed, retrying...", error);
-      // Retry after user interaction
-      document.addEventListener('click', function retryPlay() {
-        bgMusic.play();
-        document.removeEventListener('click', retryPlay);
-      }, { once: true });
-    });
-  };
-  
-  playAudio();
-  showWelcomeMessages();
-};
+      playAudio();
+      showWelcomeMessages();
+    };
 
     function showWelcomeMessages() {
       document.querySelector('.container').style.opacity = '0';
@@ -1100,182 +1203,182 @@ lightboxClose.onclick = function() {
     }
 
     // 3-Wish limit functionality
-    // 3-Wish limit functionality
-submitWish.addEventListener('click', function() {
-  const wish = wishText.value.trim();
-  if (wish && wishCount > 0) {
-    const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
-    const chatId = '6643918586';
-    const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
-    
-    // Show loading state
-    const originalText = submitWish.textContent;
-    submitWish.textContent = 'Sending...';
-    submitWish.disabled = true;
-    
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ 
-        chat_id: chatId, 
-        text: message
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Telegram response:', data);
-      wishCount--;
-      
-      if (wishCount > 0) {
-        wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
-        submitWish.textContent = `Send Your Wish (${wishCount} left)`;
-        wishMessage.style.display = 'block';
-        wishText.value = '';
+    submitWish.addEventListener('click', function() {
+      const wish = wishText.value.trim();
+      if (wish && wishCount > 0) {
+        const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
+        const chatId = '6643918586';
+        const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
         
-        for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
-        createHeartPulse();
-      } else {
-        // ALL WISHES COMPLETED - This part should trigger the final message
-        wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
-        submitWish.style.display = 'none';
-        wishText.disabled = true;
-        wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
-        wishMessage.style.display = 'block';
-        wishText.value = '';
+        // Show loading state
+        const originalText = submitWish.textContent;
+        submitWish.textContent = 'Sending...';
+        submitWish.disabled = true;
         
-        // Create erasing overlay
-        const erasingOverlay = document.createElement('div');
-        erasingOverlay.style.position = 'fixed';
-        erasingOverlay.style.top = '0';
-        erasingOverlay.style.left = '0';
-        erasingOverlay.style.width = '100%';
-        erasingOverlay.style.height = '0%';
-        erasingOverlay.style.background = '#121212';
-        erasingOverlay.style.zIndex = '1999';
-        erasingOverlay.style.transition = 'height 3s ease-in-out';
-        document.body.appendChild(erasingOverlay);
-        
-        // Start erasing effect and music fade out after 2 seconds
-        setTimeout(() => {
-          // Start music fade out
-          let volume = 0.5;
-          const fadeAudio = setInterval(() => {
-            volume -= 0.05;
-            if (volume <= 0) {
-              bgMusic.volume = 0;
-              bgMusic.pause(); // Stop the birthday music
-              clearInterval(fadeAudio);
-              
-              // Start fading in Tum Hi Ho when birthday music fades out
-              setTimeout(fadeInTumHiHo, 500);
-            } else {
-              bgMusic.volume = volume;
-            }
-          }, 300);
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ 
+            chat_id: chatId, 
+            text: message
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Telegram response:', data);
+          wishCount--;
           
-          // Start erasing from top to bottom
-          erasingOverlay.style.height = '100%';
-          
-          // After erasing completes, show final message
-          setTimeout(() => {
-            // Hide everything
-            document.querySelector('.container').style.display = 'none';
-            balloonsContainer.style.display = 'none';
-            partyOverlay.style.display = 'none';
-            erasingOverlay.style.display = 'none';
+          if (wishCount > 0) {
+            wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
+            submitWish.textContent = `Send Your Wish (${wishCount} left)`;
+            wishMessage.style.display = 'block';
+            wishText.value = '';
             
-            // Show final message
-            finalMessage.style.display = 'flex';
-            finalMessage.style.opacity = '0';
+            for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
+            createHeartPulse();
+          } else {
+            // ALL WISHES COMPLETED - This part should trigger the final message
+            wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
+            submitWish.style.display = 'none';
+            wishText.disabled = true;
+            wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
+            wishMessage.style.display = 'block';
+            wishText.value = '';
+            
+            // Create erasing overlay
+            const erasingOverlay = document.createElement('div');
+            erasingOverlay.style.position = 'fixed';
+            erasingOverlay.style.top = '0';
+            erasingOverlay.style.left = '0';
+            erasingOverlay.style.width = '100%';
+            erasingOverlay.style.height = '0%';
+            erasingOverlay.style.background = '#121212';
+            erasingOverlay.style.zIndex = '1999';
+            erasingOverlay.style.transition = 'height 3s ease-in-out';
+            document.body.appendChild(erasingOverlay);
+            
+            // Start erasing effect and music fade out after 2 seconds
             setTimeout(() => {
-              finalMessage.style.transition = 'opacity 2s ease';
-              finalMessage.style.opacity = '1';
+              // Start music fade out
+              let volume = 0.5;
+              const fadeAudio = setInterval(() => {
+                volume -= 0.05;
+                if (volume <= 0) {
+                  bgMusic.volume = 0;
+                  bgMusic.pause(); // Stop the birthday music
+                  clearInterval(fadeAudio);
+                  
+                  // Start fading in Tum Hi Ho when birthday music fades out
+                  setTimeout(fadeInTumHiHo, 500);
+                } else {
+                  bgMusic.volume = volume;
+                }
+              }, 300);
               
-              createHeartPulse();
+              // Start erasing from top to bottom
+              erasingOverlay.style.height = '100%';
               
-              // Final celebration
-              for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
-              for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-              
-            }, 100);
-          }, 3000); // Erasing duration
-          
-        }, 2000); // Initial delay before erasing starts
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      // Even if there's an error, still continue with the flow
-      wishCount--;
-      
-      if (wishCount > 0) {
-        wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
-        submitWish.textContent = `Send Your Wish (${wishCount} left)`;
-      } else {
-        wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
-        submitWish.style.display = 'none';
-        wishText.disabled = true;
-        wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
-        
-        // Trigger final message sequence even if Telegram fails
-        setTimeout(() => {
-          const erasingOverlay = document.createElement('div');
-          erasingOverlay.style.position = 'fixed';
-          erasingOverlay.style.top = '0';
-          erasingOverlay.style.left = '0';
-          erasingOverlay.style.width = '100%';
-          erasingOverlay.style.height = '0%';
-          erasingOverlay.style.background = '#121212';
-          erasingOverlay.style.zIndex = '1999';
-          erasingOverlay.style.transition = 'height 3s ease-in-out';
-          document.body.appendChild(erasingOverlay);
-          
-          setTimeout(() => {
-            let volume = 0.5;
-            const fadeAudio = setInterval(() => {
-              volume -= 0.05;
-              if (volume <= 0) {
-                bgMusic.volume = 0;
-                bgMusic.pause();
-                clearInterval(fadeAudio);
-                setTimeout(fadeInTumHiHo, 500);
-              } else {
-                bgMusic.volume = volume;
-              }
-            }, 300);
-            
-            erasingOverlay.style.height = '100%';
-            
-            setTimeout(() => {
-              document.querySelector('.container').style.display = 'none';
-              balloonsContainer.style.display = 'none';
-              partyOverlay.style.display = 'none';
-              erasingOverlay.style.display = 'none';
-              
-              finalMessage.style.display = 'flex';
-              finalMessage.style.opacity = '0';
+              // After erasing completes, show final message
               setTimeout(() => {
-                finalMessage.style.transition = 'opacity 2s ease';
-                finalMessage.style.opacity = '1';
-                createHeartPulse();
-                for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
-                for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-              }, 100);
-            }, 3000);
-          }, 2000);
-        }, 1000);
+                // Hide everything
+                document.querySelector('.container').style.display = 'none';
+                balloonsContainer.style.display = 'none';
+                partyOverlay.style.display = 'none';
+                erasingOverlay.style.display = 'none';
+                
+                // Show final message
+                finalMessage.style.display = 'flex';
+                finalMessage.style.opacity = '0';
+                setTimeout(() => {
+                  finalMessage.style.transition = 'opacity 2s ease';
+                  finalMessage.style.opacity = '1';
+                  
+                  createHeartPulse();
+                  
+                  // Final celebration
+                  for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                  for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
+                  
+                }, 100);
+              }, 3000); // Erasing duration
+              
+            }, 2000); // Initial delay before erasing starts
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Even if there's an error, still continue with the flow
+          wishCount--;
+          
+          if (wishCount > 0) {
+            wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
+            submitWish.textContent = `Send Your Wish (${wishCount} left)`;
+          } else {
+            wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
+            submitWish.style.display = 'none';
+            wishText.disabled = true;
+            wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
+            
+            // Trigger final message sequence even if Telegram fails
+            setTimeout(() => {
+              const erasingOverlay = document.createElement('div');
+              erasingOverlay.style.position = 'fixed';
+              erasingOverlay.style.top = '0';
+              erasingOverlay.style.left = '0';
+              erasingOverlay.style.width = '100%';
+              erasingOverlay.style.height = '0%';
+              erasingOverlay.style.background = '#121212';
+              erasingOverlay.style.zIndex = '1999';
+              erasingOverlay.style.transition = 'height 3s ease-in-out';
+              document.body.appendChild(erasingOverlay);
+              
+              setTimeout(() => {
+                let volume = 0.5;
+                const fadeAudio = setInterval(() => {
+                  volume -= 0.05;
+                  if (volume <= 0) {
+                    bgMusic.volume = 0;
+                    bgMusic.pause();
+                    clearInterval(fadeAudio);
+                    setTimeout(fadeInTumHiHo, 500);
+                  } else {
+                    bgMusic.volume = volume;
+                  }
+                }, 300);
+                
+                erasingOverlay.style.height = '100%';
+                
+                setTimeout(() => {
+                  document.querySelector('.container').style.display = 'none';
+                  balloonsContainer.style.display = 'none';
+                  partyOverlay.style.display = 'none';
+                  erasingOverlay.style.display = 'none';
+                  
+                  finalMessage.style.display = 'flex';
+                  finalMessage.style.opacity = '0';
+                  setTimeout(() => {
+                    finalMessage.style.transition = 'opacity 2s ease';
+                    finalMessage.style.opacity = '1';
+                    createHeartPulse();
+                    for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                    for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
+                  }, 100);
+                }, 3000);
+              }, 2000);
+            }, 1000);
+          }
+          wishMessage.style.display = 'block';
+          wishText.value = '';
+          
+          for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
+          createHeartPulse();
+        })
+        .finally(() => {
+          submitWish.disabled = false;
+        });
       }
-      wishMessage.style.display = 'block';
-      wishText.value = '';
-      
-      for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
-      createHeartPulse();
-    })
-    .finally(() => {
-      submitWish.disabled = false;
     });
-  }
-});
+
     giftButton.addEventListener('click', openGift);
     cakeContainer.addEventListener('click', () => {
       if (!flame.classList.contains('burning')) {
@@ -1287,16 +1390,7 @@ submitWish.addEventListener('click', function() {
       memoriesButton.style.display = 'none';
       birthdayMessage.style.display = 'block';
       birthdayMessage.textContent = '';
-const message = "Happy Birthday Prasansha! 🎉💖" +
-"Tum hamesha khush raho, healthy raho, aur waise hi pyaari aur adorable raho jaise tum ho." +
-"Mujhe pata hai, maine pehle immature behave kiya jo zyada ho gaya tha — reels, messages, comments… sab kuch." +
-"For that, I’m truly sorry." +
-"Please maaf kar dena." +
-"Aur haan, yaad rakhna — “NO DIET.” Please thori chubby hi raho." +
-"Tum waise hi perfect ho, aur main hamesha tumhari khushi aur smile ke liye dua karta hoon ❤️" +
-"Take care, hamesha 🌑";
-
-
+      const message = "Happy Birthday Prasansha! 🎉💖\n\nTum hamesha khush raho, healthy raho, aur waise hi pyaari aur adorable chubby doll jeysa bane raho jaise tum ho. Tum waise hi perfect ho.\n\nMujhe pata hai, maine pehle immature behave kiya jo zyada ho gaya tha — reels, messages, comments… sab kuch. Sayad mere iye sab bhi jyada hi ho rahahey.\n\nFor that, I'm truly sorry.\n\nPlease maaf kar dena.\n\n Take care. Dua karta hu khus raho hamesha.... 🌑";
 
       typeText(birthdayMessage, message, 40, () => {
         showMemoriesButton.style.display = 'inline-block';
@@ -1309,7 +1403,7 @@ const message = "Happy Birthday Prasansha! 🎉💖" +
       birthdayMessage.textContent = '';
       memoryGallery.style.display = 'none';
       
-      const treasureMessage = "Maine ye photos ab tak sambhal ke rakhi hain. Na ki isliye ki kuch badal sakun, par kyunki ye tumhara ek hissa hain jo main bhool nahi sakta. Ab bhi, inhe dekhkar khusi ho jata hoon, tumhe yaad karke 💛";
+      const treasureMessage = "Maine ye photos ab tak sambhal ke rakhi hain. Na ki isliye ki kuch badal sakun, par kyunki ye tumhara ek hissa hain jo main bhool nahi sakta. Ab bhi, rooj inhe dekhta hu. Pura din accha jaata hey tumhe yaad karke 💛";
       
       birthdayMessage.textContent = '';
       birthdayMessage.style.display = 'block';
