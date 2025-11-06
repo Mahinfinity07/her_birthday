@@ -13,6 +13,244 @@
     * { box-sizing: border-box; }
     @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&display=swap');
 
+    /* Add these new styles for beautiful final messages */
+    .final-message-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 40, 0.98));
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .message-box {
+      background: linear-gradient(145deg, rgba(40, 40, 50, 0.9), rgba(30, 30, 40, 0.95));
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 90%;
+      width: 600px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(232, 67, 147, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(232, 67, 147, 0.3);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .message-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b6b, #e84393, #a29bfe);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .message-box.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .message-content {
+      color: #e0e0e0;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .message-title {
+      font-size: 1.8em;
+      color: #ff6b6b;
+      margin-bottom: 25px;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .message-body {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .message-highlight {
+      font-size: 1.3em;
+      color: #e84393;
+      font-weight: 500;
+      margin: 25px 0;
+      text-shadow: 0 2px 8px rgba(232, 67, 147, 0.3);
+      line-height: 1.6;
+    }
+
+    .message-footer {
+      font-size: 0.9em;
+      opacity: 0.7;
+      margin-top: 30px;
+      font-style: italic;
+    }
+
+    .blurred-text {
+      filter: blur(8px);
+      transition: all 0.6s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .blurred-text:hover {
+      filter: blur(0);
+    }
+
+    .blurred-text::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(232, 67, 147, 0.9);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .blurred-text:hover::after {
+      opacity: 1;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(232, 67, 147, 0.2);
+      border: 1px solid rgba(232, 67, 147, 0.4);
+      color: #ff6b6b;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.3em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      z-index: 2001;
+    }
+
+    .close-btn:hover {
+      background: rgba(232, 67, 147, 0.3);
+      transform: scale(1.1);
+    }
+
+    .floating-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0;
+      animation: float-heart 6s ease-in-out infinite;
+    }
+
+    @keyframes float-heart {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Mobile responsiveness for final messages */
+    @media (max-width: 768px) {
+      .message-box {
+        padding: 25px 20px;
+        max-width: 95%;
+        margin: 10px;
+      }
+
+      .message-title {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .message-body {
+        font-size: 1em;
+      }
+
+      .message-highlight {
+        font-size: 1.1em;
+      }
+
+      .close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1em;
+        top: 15px;
+        right: 15px;
+      }
+
+      .blurred-text::after {
+        font-size: 0.7em;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .message-box {
+        padding: 20px 15px;
+        border-radius: 15px;
+      }
+
+      .message-title {
+        font-size: 1.3em;
+      }
+
+      .message-body {
+        font-size: 0.95em;
+        line-height: 1.6;
+      }
+
+      .message-highlight {
+        font-size: 1em;
+        margin: 20px 0;
+      }
+
+      .blurred-text {
+        filter: blur(6px);
+      }
+    }
+
+    /* Rest of your existing CSS remains the same */
     .welcome-message {
       position:fixed;
       top:50%;
@@ -572,83 +810,94 @@
   <button id="lightbox-next" style="position:absolute;top:50%;right:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">▶</button>
 </div>
 
+<!-- Beautiful Final Messages -->
 <!-- Page 1: Final Message -->
-<div id="final-message" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:white; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.6;">
-  <button id="close-final-message" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-  <p style="font-weight:300; letter-spacing:1px;">No matter where life takes us...</p>
-  <p style="font-size:1.3em; margin-top:20px; font-weight:400; color:#ff6b6b;">You'll be always a special person in my heart 💟</p>
-  <p style="font-size:0.9em; margin-top:30px; opacity:0.8;">- Forever</p>
+<div id="final-message" class="final-message-container">
+  <button id="close-final-message" class="close-btn">✖</button>
+  <div class="message-box">
+    <div class="message-content">
+      <div class="message-title">No matter where life takes us...</div>
+      <div class="message-body">
+        Through all the changes, distances, and time that may pass between us...
+      </div>
+      <div class="message-highlight">
+        You'll always be a special person in my heart 💟
+      </div>
+      <div class="message-footer">- Forever</div>
+    </div>
+  </div>
+  <div class="floating-hearts" id="hearts-1"></div>
 </div>
 
-<!-- Page 2: Final Question - Updated Softer Version -->
-<div id="final-question" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
-  <button id="close-final-question" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-  
-  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
-    Kya kabhi woh din wapas aa sakte hain...
-  </p>
-  
-  <p style="font-size:0.9em; margin-bottom:25px; font-weight:300; color:#e0e0e0; max-width: 800px;">
-    Ki tum firse wo haan ji wala Prasansha ban jaogi? <br>
-     Woh innocence, woh care, woh connection...<br>
-    Kya woh sab wapas aa sakta hai?
-  </p>
-  
-  <p style="font-size:1.1em; color:#ff6b6b; font-weight:500; margin-top: 20px; text-shadow: 0 0 10px rgba(255,107,107,0.3);">
-    Agar tumhe nahi lagta ki yeh possible hai...<br>
-    Koi reply karne ki zarurat nahi hai 💔
-  </p>
-  
-  <p style="font-size:0.8em; margin-top:30px; opacity:0.7; color:#e0e0e0; font-weight:300;">
-    Main samajh jaunga...<br>
-    Aur main tumhe disturb nahi karunga<br>
-    Chahe kitna bhi dard ho, main accept kar lunga kiyu ki mey aur kar bhi keya sakta hu?
-  </p>
-  
-  <p style="font-size:0.7em; margin-top:40px; opacity:0.6; color:#e0e0e0;">
-    Sometimes love means letting go when it's best for the other person
-  </p>
+<!-- Page 2: Final Question -->
+<div id="final-question" class="final-message-container">
+  <button id="close-final-question" class="close-btn">✖</button>
+  <div class="message-box">
+    <div class="message-content">
+      <div class="message-title">Kya kabhi woh din wapas aa sakte hain...</div>
+      <div class="message-body">
+        Jab tum "haan ji" kehti thi aur har baat mein tumhari woh pyaari si muskurahat hoti thi?<br><br>
+        Woh innocence, woh care, woh connection...<br>
+        Kya woh sab wapas aa sakta hai?
+      </div>
+      <div class="message-highlight">
+        Agar tumhe nahi lagta ki yeh possible hai...<br>
+        Koi reply karne ki zarurat nahi hai 💔
+      </div>
+      <div class="message-body">
+        Main samajh jaunga...<br>
+        Aur main tumhe disturb nahi karunga<br>
+        Chahe kitna bhi dard ho, main accept kar lunga
+      </div>
+      <div class="message-footer">Sometimes love means letting go when it's best for the person you loved from heart.</div>
+    </div>
+  </div>
+  <div class="floating-hearts" id="hearts-2"></div>
 </div>
 
 <!-- Page 3: Final Message 2 -->
-<div id="final-message-2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
-  <button id="close-final-message-2" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-  
-  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
-    Main jaanta hun hum alag countries, religion mein hain...
-  </p>
-  
-  <p style="font-size:0.9em; margin-bottom:25px; font-weight:300; color:#e0e0e0; max-width: 800px;">
-    ...lekin keya iye sachme matter karta hey?<br><br>
-    Pichle 649 din se har raat, main sochta raha...<br>
-    kya ho sakta tha humara? eisa keya kar diya meyne jo tumhe bura lage.
-  </p>
-  
-  <p style="font-size:1.1em; color:#ff6b6b; font-weight:500; margin-top: 20px; text-shadow: 0 0 10px rgba(255,107,107,0.3);">
-    Agar kabhi tumhe lage ki "hum" firse try kar sakte hain...<br>
-    main intezaar karunga ❤️ pura jindegi bhar.
-  </p>
+<div id="final-message-2" class="final-message-container">
+  <button id="close-final-message-2" class="close-btn">✖</button>
+  <div class="message-box">
+    <div class="message-content">
+      <div class="message-title">Main jaanta hun hum alag countries, religion mein hain...</div>
+      <div class="message-body">
+        ...lekin keya iye sachme matter karta hey?<br><br>
+        Pichle 649 din se har raat, main sochta raha...<br>
+        kya ho sakta tha humara? eisa keya kar diya meyne jo tumhe bura lage?<br>
+        Haa pata hey mey dikhen me sandar nehi hu, lekin.....
+      </div>
+      <div class="message-highlight">
+        Agar kabhi tumhe lage ki "hum" firse try kar sakte hain...<br>
+        main intezaar karunga ❤️ pura jindegi bhar.
+      </div>
+    </div>
+  </div>
+  <div class="floating-hearts" id="hearts-3"></div>
 </div>
 
-<!-- Page 4: Final Message 3 - New Additional Message -->
-<div id="final-message-3" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; justify-content:center; align-items:center; flex-direction:column; color:#ff6b6b; font-family:'Montserrat', sans-serif; font-size:1.8em; text-align:center; padding:20px; line-height:1.5;">
-  <button id="close-final-message-3" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5em; cursor:pointer; z-index:2001;">✖</button>
-  
-  <p style="font-weight:500; text-shadow:0 0 10px rgba(77, 205, 237, 0.3); margin-bottom: 30px;">
-    Ek aur baat kehni thi...<br>
-    Mey tumhara sara baate manunga<br>
-    Mey responsible ban jaaunga<br>
-    Khud ko pura change kar lunga<br>
-    Ek stable future banaunga<br>
-    Tumhara bina kisi ladki se kabhi baate bhi nehi karunga<br> 
-    Ek nek insaan ban jaunga <br>
-    Sab kaam karunga <br>
-    Tumhe kabhi dukh nehi dunga<br>
-    Tum jo bolo wo hi karunga<br>
-    Mujhe sirf ek chance do Prasansha 🙂
-  </p>
-  
-  
+<!-- Page 4: Final Message 3 - With Blur Effect -->
+<div id="final-message-3" class="final-message-container">
+  <button id="close-final-message-3" class="close-btn">✖</button>
+  <div class="message-box">
+    <div class="message-content">
+      <div class="message-title">Ek aur baat kehni thi...</div>
+      <div class="message-body">
+        <span class="blurred-text">
+          Mey tumhara sara baate manunga.<br>
+          Mey responsible ban jaaunga.<br>
+          Khud ko pura change kar lunga.<br>
+          Ek stable future banaunga.<br>
+          Tumhe kabhi dukh nehi dunga.<br>
+          Pura jindegi tumhara noukar jeysa rahunga. <br>
+          Tumhara haat ka banaya hua khana khane ka bohot man karta hey.<br>
+          Tumhara saath Splitsvilla dekhne ka bhi bohot maan karta hey mera.<br>
+          Mujhe khudko saboot karne keliye sirf ek chance do Prasansha.. Sirf ek  🙂
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="floating-hearts" id="hearts-4"></div>
 </div>
 
   <audio id="bg-music" loop preload="auto">
@@ -770,66 +1019,95 @@
       "Perfection exists, aur main use dekh raha hoon 🌟"
     ];
 
+    // Function to create floating hearts
+    function createFloatingHearts(containerId, count = 15) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        container.appendChild(heart);
+      }
+    }
+
+    // Function to show final message with animation
+    function showFinalMessage(messageElement) {
+      messageElement.style.display = 'flex';
+      setTimeout(() => {
+        const messageBox = messageElement.querySelector('.message-box');
+        if (messageBox) {
+          messageBox.classList.add('show');
+        }
+      }, 100);
+    }
+
+    // Function to hide final message with animation
+    function hideFinalMessage(messageElement, callback) {
+      const messageBox = messageElement.querySelector('.message-box');
+      if (messageBox) {
+        messageBox.classList.remove('show');
+      }
+      setTimeout(() => {
+        messageElement.style.display = 'none';
+        if (callback) callback();
+      }, 800);
+    }
+
     // Page 1 → Page 2
     closeFinalMessage.addEventListener('click', function() {
-      finalMessage.style.transition = 'opacity 1s ease';
-      finalMessage.style.opacity = '0';
-      setTimeout(() => {
-        finalMessage.style.display = 'none';
-        // Show Page 2
-        finalQuestion.style.display = 'flex';
-        finalQuestion.style.opacity = '0';
-        setTimeout(() => {
-          finalQuestion.style.transition = 'opacity 1.5s ease';
-          finalQuestion.style.opacity = '1';
-          createHeartPulse();
-        }, 100);
-      }, 1000);
+      hideFinalMessage(finalMessage, function() {
+        createFloatingHearts('hearts-2');
+        showFinalMessage(finalQuestion);
+        createHeartPulse();
+      });
     });
 
     // Page 2 → Page 3
     closeFinalQuestion.addEventListener('click', function() {
-      finalQuestion.style.transition = 'opacity 1s ease';
-      finalQuestion.style.opacity = '0';
-      setTimeout(() => {
-        finalQuestion.style.display = 'none';
-        // Show Page 3
-        finalMessage2.style.display = 'flex';
-        finalMessage2.style.opacity = '0';
-        setTimeout(() => {
-          finalMessage2.style.transition = 'opacity 1.5s ease';
-          finalMessage2.style.opacity = '1';
-          createHeartPulse();
-        }, 100);
-      }, 1000);
+      hideFinalMessage(finalQuestion, function() {
+        createFloatingHearts('hearts-3');
+        showFinalMessage(finalMessage2);
+        createHeartPulse();
+      });
     });
 
     // Page 3 → Page 4
     closeFinalMessage2.addEventListener('click', function() {
-      finalMessage2.style.transition = 'opacity 1s ease';
-      finalMessage2.style.opacity = '0';
-      setTimeout(() => {
-        finalMessage2.style.display = 'none';
-        // Show Page 4
-        finalMessage3.style.display = 'flex';
-        finalMessage3.style.opacity = '0';
-        setTimeout(() => {
-          finalMessage3.style.transition = 'opacity 1.5s ease';
-          finalMessage3.style.opacity = '1';
-          createHeartPulse();
-        }, 100);
-      }, 1000);
+      hideFinalMessage(finalMessage2, function() {
+        createFloatingHearts('hearts-4');
+        showFinalMessage(finalMessage3);
+        createHeartPulse();
+      });
     });
 
     // Page 4 → Close Everything
     closeFinalMessage3.addEventListener('click', function() {
-      finalMessage3.style.transition = 'opacity 1s ease';
-      finalMessage3.style.opacity = '0';
-      setTimeout(() => {
-        finalMessage3.style.display = 'none';
+      hideFinalMessage(finalMessage3, function() {
         // End of journey
         createHeartPulse();
-      }, 1000);
+      });
+    });
+
+    // Add click event to blurred text
+    document.addEventListener('DOMContentLoaded', function() {
+      const blurredText = document.querySelector('.blurred-text');
+      if (blurredText) {
+        blurredText.addEventListener('click', function() {
+          this.style.filter = 'blur(0)';
+          this.style.cursor = 'default';
+        });
+        
+        // For mobile touch
+        blurredText.addEventListener('touchstart', function() {
+          this.style.filter = 'blur(0)';
+          this.style.cursor = 'default';
+        });
+      }
     });
 
     function createHeartPulse() {
@@ -1286,20 +1564,15 @@
                 partyOverlay.style.display = 'none';
                 erasingOverlay.style.display = 'none';
                 
-                // Show final message
-                finalMessage.style.display = 'flex';
-                finalMessage.style.opacity = '0';
-                setTimeout(() => {
-                  finalMessage.style.transition = 'opacity 2s ease';
-                  finalMessage.style.opacity = '1';
-                  
-                  createHeartPulse();
-                  
-                  // Final celebration
-                  for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
-                  for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-                  
-                }, 100);
+                // Show final message with beautiful animation
+                createFloatingHearts('hearts-1');
+                showFinalMessage(finalMessage);
+                createHeartPulse();
+                
+                // Final celebration
+                for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
+                
               }, 3000); // Erasing duration
               
             }, 2000); // Initial delay before erasing starts
@@ -1354,15 +1627,11 @@
                   partyOverlay.style.display = 'none';
                   erasingOverlay.style.display = 'none';
                   
-                  finalMessage.style.display = 'flex';
-                  finalMessage.style.opacity = '0';
-                  setTimeout(() => {
-                    finalMessage.style.transition = 'opacity 2s ease';
-                    finalMessage.style.opacity = '1';
-                    createHeartPulse();
-                    for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
-                    for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-                  }, 100);
+                  createFloatingHearts('hearts-1');
+                  showFinalMessage(finalMessage);
+                  createHeartPulse();
+                  for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
+                  for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
                 }, 3000);
               }, 2000);
             }, 1000);
