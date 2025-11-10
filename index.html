@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,11 +10,14 @@
   <title>Happy Birthday Prasansha!</title>
   <link href="https://fonts.cdnfonts.com/css/winky-rough" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
   <style>
     * { box-sizing: border-box; }
     @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&display=swap');
 
-    /* Add these new styles for beautiful final messages */
     .final-message-container {
       display: none;
       position: fixed;
@@ -29,6 +33,7 @@
       padding: 20px;
       backdrop-filter: blur(10px);
     }
+  
 
     .message-box {
       background: linear-gradient(145deg, rgba(40, 40, 50, 0.9), rgba(30, 30, 40, 0.95));
@@ -190,38 +195,28 @@
       }
     }
 
-    /* Mobile responsiveness for final messages */
     @media (max-width: 768px) {
       .message-box {
         padding: 25px 20px;
         max-width: 95%;
         margin: 10px;
       }
-
       .message-title {
         font-size: 1.5em;
         margin-bottom: 20px;
       }
-
       .message-body {
         font-size: 1em;
       }
-
       .message-highlight {
         font-size: 1.1em;
       }
-
       .close-btn {
         width: 40px;
         height: 40px;
         font-size: 1.1em;
         top: 15px;
         right: 15px;
-      }
-
-      .blurred-text::after {
-        font-size: 0.7em;
-        padding: 6px 12px;
       }
     }
 
@@ -230,27 +225,22 @@
         padding: 20px 15px;
         border-radius: 15px;
       }
-
       .message-title {
         font-size: 1.3em;
       }
-
       .message-body {
         font-size: 0.95em;
         line-height: 1.6;
       }
-
       .message-highlight {
         font-size: 1em;
         margin: 20px 0;
       }
-
       .blurred-text {
         filter: blur(6px);
       }
     }
 
-    /* Rest of your existing CSS remains the same */
     .welcome-message {
       position:fixed;
       top:50%;
@@ -266,27 +256,34 @@
       pointer-events:none;
     }
 
+    #wish-text {
+      transition: all 0.3s ease;
+    }
+
+    #wish-text:focus {
+      border-color: #e84393;
+      box-shadow: 0 0 10px rgba(232, 67, 147, 0.3);
+    }
+
     @media (max-width: 768px) {
       body {
         justify-content: flex-start;
         padding: 10px 0;
         overflow-y: auto;
+        
       }
       #wish-text:disabled {
         opacity: 0.6;
         cursor: not-allowed;
       }
-      
       .container {
         padding: 15px;
         margin-top: 20px;
       }
-      
       .memory-gallery {
         gap: 10px;
         margin-bottom: 20px;
       }
-      
       .memory-item {
         width: 45%;
         height: 120px;
@@ -544,7 +541,7 @@
       margin:0;
       margin-bottom: 40px !important;
     }
-    #bg-music, #tum-hi-ho-music { display:none; }
+    #bg-music { display:none; }
     .balloon, .confetti, .floating-heart { 
       position:absolute; 
       z-index:1; 
@@ -616,22 +613,22 @@
       to {opacity:0;}
     }
     #start-overlay {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: #121212;
-  z-index: 9999;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  font-family: 'Rubik', sans-serif;
-  font-size: 1.8em;
-  color: #e84393;
-  user-select:none;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  font-weight: 500;
-}
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: #121212;
+      z-index: 9999;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      cursor:pointer;
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.8em;
+      color: #e84393;
+      user-select:none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-weight: 500;
+    }
     @keyframes bounceFadeIn {
       0% {
         opacity: 0;
@@ -770,8 +767,114 @@
         font-size: 1em;
       }
     }
-    #bg-music, #tum-hi-ho-music { display:none; }
-  </style>
+
+    .blurred-text {
+      font-size: 0.95em;
+      line-height: 1.5;
+      display: block;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .blurred-text {
+        font-size: 0.9em;
+        line-height: 1.4;
+        padding: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blurred-text {
+        font-size: 0.85em;
+        line-height: 1.4;
+      }
+    }
+
+
+    /* Live Lyrics Styles */
+/* Updated Live Lyrics Styles for Mobile */
+.live-lyrics {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Elms Sans', sans-serif;
+  font-size: 2.2em;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+  opacity: 0;
+  z-index: 2500;
+  pointer-events: none;
+  white-space: normal; /* Changed from nowrap to normal */
+  padding: 25px 50px;
+  background: rgba(18, 18, 18, 0.9);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid transparent;
+  transition: all 0.5s ease-in-out;
+  max-width: 90%; /* Increased from 80% */
+  word-wrap: break-word; /* Ensure long words break */
+  overflow-wrap: break-word; /* Modern alternative */
+  line-height: 1.3; /* Better line spacing */
+}
+
+.live-lyrics::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b6b, #e84393, #a29bfe, #6c5ce7);
+  background-size: 400% 400%;
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderFlow 3s linear infinite;
+}
+
+.live-lyrics.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.live-lyrics.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .live-lyrics {
+    font-size: 1.8em; /* Smaller font for tablets */
+    padding: 20px 30px;
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .live-lyrics {
+    font-size: 1.4em; /* Even smaller for phones */
+    padding: 15px 20px;
+    max-width: 90%;
+    line-height: 1.4; /* Better spacing on small screens */
+  }
+}
+
+@media (max-width: 360px) {
+  .live-lyrics {
+    font-size: 1.2em; /* Smallest size for very small screens */
+    padding: 12px 15px;
+  }
+}
+
+</style>
 </head>
 <body>
   <div id="start-overlay">Tap to Start. Use headphone for better sound 🎉</div>
@@ -788,7 +891,7 @@
     <div class="memory-gallery" id="memory-gallery"></div>
     
     <div id="wish-container">
-      <textarea id="wish-text" placeholder="Type your wish here..."></textarea>
+      <textarea id="wish-text" placeholder="Type your wish here... (Press Enter to send)"></textarea>
       <button id="submit-wish">Send Your Wish (3 left)</button>
       <p id="wish-message"></p>
     </div>
@@ -803,152 +906,135 @@
   <div class="welcome-message" id="welcome-message-5">I know it's unexpected</div>
   
   <div id="lightbox-modal" style="display:none; position:fixed;top:0;left:0;width:100vw;height:100vh; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; flex-direction: column;">
-  <button id="lightbox-close" style="position:absolute;top:30px;right:30px; font-size:2em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">✖</button>
-  <button id="lightbox-prev" style="position:absolute;top:50%;left:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">◀</button>
-  <div id="lightbox-content" style="max-width:90vw; max-height:85vh; display:flex; justify-content:center; align-items:center; position:relative;">
+    <button id="lightbox-close" style="position:absolute;top:30px;right:30px; font-size:2em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">✖</button>
+    <button id="lightbox-prev" style="position:absolute;top:50%;left:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">◀</button>
+    <div id="lightbox-content" style="max-width:90vw; max-height:85vh; display:flex; justify-content:center; align-items:center; position:relative;"></div>
+    <button id="lightbox-next" style="position:absolute;top:50%;right:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">▶</button>
   </div>
-  <button id="lightbox-next" style="position:absolute;top:50%;right:30px; transform:translateY(-50%); font-size:2.5em; background:rgba(30,30,30,0.8); border:none; color:white; cursor:pointer; width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; z-index:1001; box-shadow: 0 0 15px rgba(0,0,0,0.5);">▶</button>
-</div>
 
-<!-- Beautiful Final Messages -->
-<!-- Page 1: Final Message -->
-<div id="final-message" class="final-message-container">
-  <button id="close-final-message" class="close-btn">✖</button>
-  <div class="message-box">
-    <div class="message-content">
-      <div class="message-title">No matter where life takes us...</div>
-      <div class="message-body">
-        Through all the changes, distances, and time that may pass between us...
-      </div>
-      <div class="message-highlight">
-        You'll always be a special person in my heart 💟
-      </div>
-      <div class="message-footer">- Forever</div>
-    </div>
-  </div>
-  <div class="floating-hearts" id="hearts-1"></div>
-</div>
-
-<!-- Page 2: Final Question -->
-<div id="final-question" class="final-message-container">
-  <button id="close-final-question" class="close-btn">✖</button>
-  <div class="message-box">
-    <div class="message-content">
-      <div class="message-title">Kya kabhi woh din wapas aa sakte hain...</div>
-      <div class="message-body">
-        Jab tum "haan ji" kehti thi aur har baat mein tumhari woh pyaari si muskurahat hoti thi?<br><br>
-        Woh innocence, woh care, woh connection...<br>
-        Kya woh sab wapas aa sakta hai?
-      </div>
-      <div class="message-highlight">
-        Agar tumhe nahi lagta ki yeh possible hai...<br>
-        Koi reply karne ki zarurat nahi hai 💔
-      </div>
-      <div class="message-body">
-        Main samajh jaunga...<br>
-        Aur main tumhe disturb nahi karunga<br>
-        Chahe kitna bhi dard ho, main accept kar lunga
-      </div>
-      <div class="message-footer">Sometimes love means letting go when it's best for the person you loved from heart.</div>
-    </div>
-  </div>
-  <div class="floating-hearts" id="hearts-2"></div>
-</div>
-
-<!-- Page 3: Final Message 2 -->
-<div id="final-message-2" class="final-message-container">
-  <button id="close-final-message-2" class="close-btn">✖</button>
-  <div class="message-box">
-    <div class="message-content">
-      <div class="message-title">Main jaanta hun hum alag countries, religion mein hain...</div>
-      <div class="message-body">
-        ...lekin keya iye sachme matter karta hey?<br><br>
-        Pichle 649 din se har raat, main sochta raha...<br>
-        kya ho sakta tha humara? eisa keya kar diya meyne jo tumhe bura lage?<br>
-        Haa pata hey mey dikhen me sandar nehi hu, lekin.....
-      </div>
-      <div class="message-highlight">
-        Agar kabhi tumhe lage ki "hum" firse try kar sakte hain...<br>
-        main intezaar karunga ❤️ pura jindegi bhar.
+  <!-- Final Messages -->
+  <div id="final-message" class="final-message-container">
+    <button id="close-final-message" class="close-btn">✖</button>
+    <div class="message-box">
+      <div class="message-content">
+        <div class="message-title">No matter where life takes us...</div>
+        <div class="message-body">Through all the changes, distances, and time that may pass between us...</div>
+        <div class="message-highlight">You'll always be a special person in my heart 💟</div>
+        <div class="message-footer">- Forever</div>
       </div>
     </div>
+    <div class="floating-hearts" id="hearts-1"></div>
   </div>
-  <div class="floating-hearts" id="hearts-3"></div>
-</div>
 
-<!-- Page 4: Final Message 3 - With Blur Effect -->
-<div id="final-message-3" class="final-message-container">
-  <button id="close-final-message-3" class="close-btn">✖</button>
-  <div class="message-box">
-    <div class="message-content">
-      <div class="message-title">Ek aur baat kehni thi...</div>
-      <div class="message-body">
-        <span class="blurred-text">
-          Mey tumhara sara baate manunga.<br>
-          Mey responsible ban jaaunga.<br>
-          Khud ko pura change kar lunga.<br>
-          Ek stable future banaunga.<br>
-          Tumhe kabhi dukh nehi dunga.<br>
-          Pura jindegi tumhara noukar jeysa rahunga. <br>
-          Tumhara haat ka banaya hua khana khane ka bohot man karta hey.<br>
-          Tumhara saath Splitsvilla dekhne ka bhi bohot maan karta hey mera.<br>
-          Mujhe khudko saboot karne keliye sirf ek chance do Prasansha.. Sirf ek  🙂
-        </span>
+  <div id="final-question" class="final-message-container">
+    <button id="close-final-question" class="close-btn">✖</button>
+    <div class="message-box">
+      <div class="message-content">
+        <div class="message-title">Kabhi kabhi sochta hun...</div>
+        <div class="message-body">Kya firse woh purana din wapas ayega?<br><br>Woh "haan ji",late night messages, wo khusiya ...<br>Woh innocence jo har baat mein hoti thi?</div>
+        <div class="message-highlight">Pata hey mey dikhne me sandar nehi hu . lekin...<br>Ek chance dogi Prasansha?<br>Agar nahi, main samajh jaunga 🦋</div>
+        <div class="message-body">Tumhari happiness matters most<br>Chahe woh mere saath ho ya without me<br>Main respect karta hun whatever you decide <br>Dukh to hoga lekin mey rone ki alawa kar bhi keya sakta hu?</div>
+        <div class="message-footer">Tumhe dil se pasand karta hu, itna to kar hi sakta hu na?</div>
       </div>
     </div>
+    <div class="floating-hearts" id="hearts-2"></div>
   </div>
-  <div class="floating-hearts" id="hearts-4"></div>
+
+  <div id="final-message-2" class="final-message-container">
+    <button id="close-final-message-2" class="close-btn">✖</button>
+    <div class="message-box">
+      <div class="message-content">
+        <div class="message-title">Main jaanta hun hamare beech distance hey, alag religions hain...</div>
+        <div class="message-body">...lekin pichle 649 din se mey sochte raha ki...<br>keya iye actually matter karta hey?<br><br>Kya ho sakta tha hamara?<br>Meyne eisa keya kar diya jisse tumhe mere upar itna nafrat hone lagi?</div>
+        <div class="message-highlight">Agar kabhi tumhe lage ki "hum" firse try kar sakte hain...<br>main intezaar karunga ❤️ pura jindegi bhar.</div>
+      </div>
+    </div>
+    <div class="floating-hearts" id="hearts-3"></div>
+  </div>
+
+  <div id="final-message-3" class="final-message-container">
+    <button id="close-final-message-3" class="close-btn">✖</button>
+    <div class="message-box">
+      <div class="message-content">
+        <div class="message-title">Kuch aur baat kehni thi...</div>
+        <div class="message-body">
+          <span class="blurred-text" style="font-size: 0.95em; line-height: 1.5;">
+🍛 Pata hai mujhe... tumhare haath ka banaya khana khane ka man karta hai<br>
+💞 Tumhe tight hug karne ka, tumhari khushboo me kho jaane ka<br>
+📺 Tumhare saath Splitsvilla dekhne ka,<br>
+🌟 Tumhare saath dates pe jaane ka,<br>
+🌙 Raat bhar tumse baatein karne ka,<br>
+🏠 Ek chota sa ghar banane ke... jahan sirf tum aur main ho<br>
+👨‍👩‍👧 Ek family start karne ka sapna...hey mera<br><br>
+
+Pata hai mujhe tumse baat karne ka kitna man karta hai<br>
+Lekin dar lagta hai... sochta hun tum sochogi<br>
+"Yeh fir se pareshan kar raha hai"<br>
+"Block nahi kiya isliye msg de raha hai"<br><br>
+
+Isliye phone utha kar bhi rakh deta hun<br>
+Tumhare id pe message type karke bhi delete kar deta hun<br>
+Kyunki tumhari peace... tumhara space...<br>
+Mere feelings se zyada important hai<br><br>
+
+Bas ek ummeed hai...<br>
+Ki kabhi tum khud yaad karogi<br>
+Ki kabhi tum sochogi ki eisa koi tha jo apana pura dil se mujhe chata tha.<br>
+Main intezaar karunga... chahe pure zindagi bhi lag jaaye 💔
+</span>
 </div>
+      </div>
+    </div>
+    <div class="floating-hearts" id="hearts-4"></div>
+  </div>
+
+  <div id="final-goodbye" class="final-message-container">
+    <button id="close-final-goodbye" class="close-btn">✖</button>
+    <div class="message-box">
+      <div class="message-content">
+        <div class="message-title">❤️</div>
+        <div class="message-body">Umeed karta hu tumhe mera halat samajh ayega.</div>
+        <div class="message-highlight">Khush rahiyo<br>Healthy raho<br>Safe raho<br>Hamara firse mulakat hone tak ✨</div>
+        <div class="message-body" style="font-style: italic; margin-top: 20px;">Take care... forever <br>Tumhara bina ek ek din ek ek saal jeysa lagta hey, Prasansha. <br><br>Kaash mera life ka aakhri time pe tumhara saath ho pata 🌄🎐</div>
+      </div>
+    </div>
+    <div class="floating-hearts" id="hearts-5"></div>
+  </div>
 
   <audio id="bg-music" loop preload="auto">
-    <source src="https://dl.dropboxusercontent.com/scl/fi/k4wo5sv2tetuos0zrcy21/audio.mp3?rlkey=ilhqqk19hlmw50iad0enp7vh3&dl=1" type="audio/mpeg"/>
-  </audio>
-  
-  <!-- Tum Hi Ho Music Element -->
-  <audio id="tum-hi-ho-music" preload="auto">
-    <source src="https://dl.dropboxusercontent.com/scl/fi/j55hmo1c8mll6rgo0loak/Tum-Hi-Ho-Aashiqui-2-Karaoke-Version.m4a?rlkey=ggbeo5fpm66tr941b8dbp7thr&st=ra2ut3c9&dl=1" type="audio/mpeg"/>
+    <source src="https://www.dropbox.com/scl/fi/6h4jigjvixurrkd6s2pxf/One-Direction-Night-Changes-Audio.mp3?rlkey=nnzgpbygh9bpafpj9oo8e1gck&st=8thmkp47&dl=1" type="audio/mpeg"/>
   </audio>
   
   <script>
     // Mobile autoplay workaround
     document.addEventListener('DOMContentLoaded', function() {
       let audioUnlocked = false;
-      
       const unlockAudio = () => {
         if (audioUnlocked) return;
-        
-        const bgMusic = document.getElementById('bg-music');
-        const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
-        
-        // Create a silent audio context to unlock audio on mobile
         const silentAudio = new Audio();
         silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==';
         silentAudio.volume = 0;
-        
         silentAudio.play().then(() => {
           audioUnlocked = true;
           silentAudio.pause();
           silentAudio.remove();
         }).catch(() => {});
       };
-      
-      // Unlock audio on any user interaction
       document.addEventListener('click', unlockAudio);
       document.addEventListener('touchstart', unlockAudio);
       document.addEventListener('keydown', unlockAudio);
     });
 
+    // Variables
     const startOverlay = document.getElementById('start-overlay');
     const giftButton = document.getElementById('gift-button');
     const cakeContainer = document.getElementById('cake-container');
-    const candle = document.querySelector('.candle');
     const flame = document.querySelector('.flame');
     const memoriesButton = document.getElementById('memories-button');
     const birthdayMessage = document.getElementById('birthday-message');
     const showMemoriesButton = document.getElementById('show-memories-button');
     const memoryGallery = document.getElementById('memory-gallery');
     const bgMusic = document.getElementById('bg-music');
-    const tumHiHoMusic = document.getElementById('tum-hi-ho-music');
     const finalMessage = document.getElementById('final-message');
     const closeFinalMessage = document.getElementById('close-final-message');
     const closeFinalQuestion = document.getElementById('close-final-question');
@@ -957,30 +1043,17 @@
     const closeFinalMessage2 = document.getElementById('close-final-message-2');
     const finalMessage3 = document.getElementById('final-message-3');
     const closeFinalMessage3 = document.getElementById('close-final-message-3');
-    
-    bgMusic.volume = 0.5;
-    tumHiHoMusic.volume = 0;
-
-    // Add error handling for audio
-    bgMusic.addEventListener('error', function(e) {
-      console.log('Background music failed to load');
-    });
-
-    tumHiHoMusic.addEventListener('error', function(e) {
-      console.log('Tum Hi Ho music failed to load');
-    });
-
+    const finalGoodbye = document.getElementById('final-goodbye');
+    const closeFinalGoodbye = document.getElementById('close-final-goodbye');
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxContent = document.getElementById('lightbox-content');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxNext = document.getElementById('lightbox-next');
     const lightboxPrev = document.getElementById('lightbox-prev');
-
     const wishContainer = document.getElementById('wish-container');
     const wishText = document.getElementById('wish-text');
     const submitWish = document.getElementById('submit-wish');
     const wishMessage = document.getElementById('wish-message');
-
     const welcomeMessages = [
       document.getElementById('welcome-message-1'),
       document.getElementById('welcome-message-2'),
@@ -992,6 +1065,11 @@
     let currentIndex = 0;
     let balloonsActive = false;
     let wishCount = 3;
+    let started = false;
+
+
+ 
+
 
     const memories = [
       { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
@@ -1019,11 +1097,23 @@
       "Perfection exists, aur main use dekh raha hoon 🌟"
     ];
 
-    // Function to create floating hearts
+    // Music setup
+    bgMusic.volume = 0.5;
+
+    // Enter key for wish
+    wishText.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        if (wishText.value.trim() && wishCount > 0 && !submitWish.disabled) {
+          submitWish.click();
+        }
+      }
+    });
+
+    // Final message functions
     function createFloatingHearts(containerId, count = 15) {
       const container = document.getElementById(containerId);
       if (!container) return;
-      
       for (let i = 0; i < count; i++) {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
@@ -1035,30 +1125,24 @@
       }
     }
 
-    // Function to show final message with animation
     function showFinalMessage(messageElement) {
       messageElement.style.display = 'flex';
       setTimeout(() => {
         const messageBox = messageElement.querySelector('.message-box');
-        if (messageBox) {
-          messageBox.classList.add('show');
-        }
+        if (messageBox) messageBox.classList.add('show');
       }, 100);
     }
 
-    // Function to hide final message with animation
     function hideFinalMessage(messageElement, callback) {
       const messageBox = messageElement.querySelector('.message-box');
-      if (messageBox) {
-        messageBox.classList.remove('show');
-      }
+      if (messageBox) messageBox.classList.remove('show');
       setTimeout(() => {
         messageElement.style.display = 'none';
         if (callback) callback();
       }, 800);
     }
 
-    // Page 1 → Page 2
+    // Page flow
     closeFinalMessage.addEventListener('click', function() {
       hideFinalMessage(finalMessage, function() {
         createFloatingHearts('hearts-2');
@@ -1067,7 +1151,6 @@
       });
     });
 
-    // Page 2 → Page 3
     closeFinalQuestion.addEventListener('click', function() {
       hideFinalMessage(finalQuestion, function() {
         createFloatingHearts('hearts-3');
@@ -1076,7 +1159,6 @@
       });
     });
 
-    // Page 3 → Page 4
     closeFinalMessage2.addEventListener('click', function() {
       hideFinalMessage(finalMessage2, function() {
         createFloatingHearts('hearts-4');
@@ -1085,15 +1167,39 @@
       });
     });
 
-    // Page 4 → Close Everything
     closeFinalMessage3.addEventListener('click', function() {
       hideFinalMessage(finalMessage3, function() {
-        // End of journey
+        createFloatingHearts('hearts-5');
+        showFinalMessage(finalGoodbye);
         createHeartPulse();
       });
     });
 
-    // Add click event to blurred text
+ closeFinalGoodbye.addEventListener('click', function() {
+  hideFinalMessage(finalGoodbye, function() {
+    createHeartPulse();
+    for (let i = 0; i < 50; i++) setTimeout(() => createConfetti(), i * 100);
+    
+    // Hide everything and show blank screen
+    hideAllSiteElements();
+    
+    // Set blank screen background
+    document.body.style.background = '#121212';
+    
+    // Start lyrics after a short delay on blank screen
+    setTimeout(() => {
+      startLyrics();
+    }, 1500);
+  });
+});
+
+
+
+ 
+
+
+
+    // Blurred text
     document.addEventListener('DOMContentLoaded', function() {
       const blurredText = document.querySelector('.blurred-text');
       if (blurredText) {
@@ -1101,8 +1207,6 @@
           this.style.filter = 'blur(0)';
           this.style.cursor = 'default';
         });
-        
-        // For mobile touch
         blurredText.addEventListener('touchstart', function() {
           this.style.filter = 'blur(0)';
           this.style.cursor = 'default';
@@ -1115,14 +1219,12 @@
       heart.className = 'heart-pulse';
       heart.textContent = '💟';
       document.body.appendChild(heart);
-      
       setTimeout(() => {
-        if (document.body.contains(heart)) {
-          document.body.removeChild(heart);
-        }
+        if (document.body.contains(heart)) document.body.removeChild(heart);
       }, 2000);
     }
 
+    // Lightbox functions
     function openLightbox(index) {
       currentIndex = index;
       showMedia(currentIndex);
@@ -1134,16 +1236,12 @@
       lightboxModal.style.display = 'none';
       lightboxContent.innerHTML = '';
       document.body.style.overflow = '';
-      
-      // Always restore music volume when lightbox closes
       bgMusic.volume = 0.5;
     }
 
     function showMedia(index) {
       const mem = memories[index];
       lightboxContent.innerHTML = '';
-
-      // Create container for media and caption
       const mediaContainer = document.createElement('div');
       mediaContainer.style.display = 'flex';
       mediaContainer.style.flexDirection = 'column';
@@ -1167,30 +1265,17 @@
         const vid = document.createElement('video');
         vid.src = mem.url;
         vid.controls = true;
-        vid.autoplay = false; // Don't autoplay, let user click to play
+        vid.autoplay = false;
         vid.style.maxHeight = '70vh';
         vid.style.maxWidth = '80vw';
         vid.style.borderRadius = '10px';
         vid.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.2)';
-        
-        // Lower site music when video starts playing
-        vid.addEventListener('play', function() {
-          bgMusic.volume = 0.1; // Lower background music volume
-        });
-        
-        // Restore site music when video is paused or ends
-        vid.addEventListener('pause', function() {
-          bgMusic.volume = 0.5; // Restore normal volume
-        });
-        
-        vid.addEventListener('ended', function() {
-          bgMusic.volume = 0.5; // Restore normal volume when video ends
-        });
-        
+        vid.addEventListener('play', function() { bgMusic.volume = 0.1; });
+        vid.addEventListener('pause', function() { bgMusic.volume = 0.5; });
+        vid.addEventListener('ended', function() { bgMusic.volume = 0.5; });
         mediaContainer.appendChild(vid);
       }
 
-      // ADD CAPTION TO LIGHTBOX
       if (memoryCaptions[index]) {
         const caption = document.createElement('div');
         caption.className = 'lightbox-caption';
@@ -1250,7 +1335,6 @@
       });
 
       setupMemoryClicks();
-      
       setTimeout(() => {
         wishContainer.style.display = 'block';
         wishContainer.style.opacity = '0';
@@ -1266,54 +1350,42 @@
     const typingText = document.getElementById('typing-text');
     const fullText = '👑 Happy Birthday Prasansha! ✨💓';
     let charIndex = 0;
-    let started = false;
 
+    // Start overlay
     startOverlay.onclick = () => {
       if (started) return;
       started = true;
       startOverlay.style.display = 'none';
-      
-      // Mobile-friendly audio play with error handling and fade in
       const playAudio = () => {
-        bgMusic.volume = 0; // Start with volume 0
+        bgMusic.volume = 0;
         bgMusic.play().then(() => {
-          console.log("Birthday music started - fading in");
-          
-          // Fade in audio over 1 second
           let volume = 0;
           const fadeInInterval = setInterval(() => {
-            volume += 0.05; // Increase volume gradually
+            volume += 0.05;
             if (volume >= 0.5) {
-              volume = 0.5; // Final volume
+              volume = 0.5;
               clearInterval(fadeInInterval);
-              console.log("Audio fade in complete");
             }
             bgMusic.volume = volume;
-          }, 50); // Update every 50ms for smooth fade (20 steps over 1 second)
-          
+          }, 50);
         }).catch(error => {
-          console.log("Audio play failed, retrying...", error);
-          // Retry after user interaction
           document.addEventListener('click', function retryPlay() {
             bgMusic.play();
             document.removeEventListener('click', retryPlay);
           }, { once: true });
         });
       };
-      
       playAudio();
       showWelcomeMessages();
     };
 
     function showWelcomeMessages() {
       document.querySelector('.container').style.opacity = '0';
-
       welcomeMessages.forEach((message, index) => {
         setTimeout(() => {
           message.classList.add('fade-in');
           setTimeout(() => {
             message.classList.replace('fade-in', 'fade-out');
-            
             if (index === welcomeMessages.length - 1) {
               setTimeout(() => {
                 document.querySelector('.container').style.opacity = '1';
@@ -1359,9 +1431,7 @@
       confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
       balloonsContainer.appendChild(confetti);
       setTimeout(() => {
-        if (balloonsContainer.contains(confetti)) {
-          balloonsContainer.removeChild(confetti);
-        }
+        if (balloonsContainer.contains(confetti)) balloonsContainer.removeChild(confetti);
       }, 3000);
     }
 
@@ -1372,9 +1442,7 @@
       heart.style.left = Math.random() * 100 + 'vw';
       balloonsContainer.appendChild(heart);
       setTimeout(() => {
-        if (balloonsContainer.contains(heart)) {
-          balloonsContainer.removeChild(heart);
-        }
+        if (balloonsContainer.contains(heart)) balloonsContainer.removeChild(heart);
       }, 4000);
     }
 
@@ -1386,29 +1454,10 @@
       createConfetti();
       createFloatingHearts();
       partyOverlay.style.display = 'block';
-      
-      // Add cake sparkles
-      for(let i = 0; i < 8; i++) {
-        createCakeSparkle();
-      }
-      
-      // Shooting stars occasionally
-      setInterval(() => {
-        if(Math.random() > 0.8) {
-          createShootingStar();
-        }
-      }, 5000);
-      
-      // Other effects
-      setInterval(() => { 
-        createConfetti(); 
-        createFloatingHearts(); 
-      }, 3000);
-      
-      setTimeout(() => { 
-        memoriesButton.style.display = 'inline-block'; 
-        createHeartPulse();
-      }, 1000);
+      for(let i = 0; i < 8; i++) createCakeSparkle();
+      setInterval(() => { if(Math.random() > 0.8) createShootingStar(); }, 5000);
+      setInterval(() => { createConfetti(); createFloatingHearts(); }, 3000);
+      setTimeout(() => { memoriesButton.style.display = 'inline-block'; createHeartPulse(); }, 1000);
     }
 
     function createCakeSparkle() {
@@ -1436,59 +1485,18 @@
           element.textContent += text.charAt(i);
           i++;
           setTimeout(typeNext, speed);
-        } else if (callback) {
-          callback();
-        }
+        } else if (callback) callback();
       }
       typeNext();
     }
 
-    function fadeInTumHiHo() {
-      console.log("Starting Tum Hi Ho fade in...");
-      
-      // Reset and prepare Tum Hi Ho
-      tumHiHoMusic.currentTime = 0;
-      tumHiHoMusic.volume = 0;
-      
-      const playTumHiHo = () => {
-        tumHiHoMusic.play().then(() => {
-          console.log("Tum Hi Ho started successfully");
-          
-          // Fade in Tum Hi Ho gradually
-          let volume = 0;
-          const fadeInInterval = setInterval(() => {
-            volume += 0.02;
-            if (volume >= 0.6) {
-              volume = 0.6;
-              clearInterval(fadeInInterval);
-              console.log("Tum Hi Ho fade in complete");
-            }
-            tumHiHoMusic.volume = volume;
-          }, 150);
-          
-        }).catch(error => {
-          console.log("Tum Hi Ho play failed:", error);
-          // Retry after user interaction
-          document.addEventListener('click', function retryTumHiHo() {
-            tumHiHoMusic.play();
-            document.removeEventListener('click', retryTumHiHo);
-          }, { once: true });
-        });
-      };
-      
-      // Start playing
-      playTumHiHo();
-    }
-
-    // 3-Wish limit functionality
+    // 3-Wish functionality
     submitWish.addEventListener('click', function() {
       const wish = wishText.value.trim();
       if (wish && wishCount > 0) {
         const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
         const chatId = '6643918586';
         const message = `💌 Wish ${4 - wishCount} from Prasansha:\n"${wish}"`;
-        
-        // Show loading state
         const originalText = submitWish.textContent;
         submitWish.textContent = 'Sending...';
         submitWish.disabled = true;
@@ -1496,34 +1504,25 @@
         fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ 
-            chat_id: chatId, 
-            text: message
-          })
+          body: JSON.stringify({ chat_id: chatId, text: message })
         })
         .then(response => response.json())
         .then(data => {
-          console.log('Telegram response:', data);
           wishCount--;
-          
           if (wishCount > 0) {
             wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
             submitWish.textContent = `Send Your Wish (${wishCount} left)`;
             wishMessage.style.display = 'block';
             wishText.value = '';
-            
             for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
             createHeartPulse();
           } else {
-            // ALL WISHES COMPLETED - This part should trigger the final message
             wishMessage.textContent = "All your wishes have been sent to the universe ✨\n\nYour wishes are now traveling among the stars...";
             submitWish.style.display = 'none';
             wishText.disabled = true;
             wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
             wishMessage.style.display = 'block';
             wishText.value = '';
-            
-            // Create erasing overlay
             const erasingOverlay = document.createElement('div');
             erasingOverlay.style.position = 'fixed';
             erasingOverlay.style.top = '0';
@@ -1534,55 +1533,24 @@
             erasingOverlay.style.zIndex = '1999';
             erasingOverlay.style.transition = 'height 3s ease-in-out';
             document.body.appendChild(erasingOverlay);
-            
-            // Start erasing effect and music fade out after 2 seconds
             setTimeout(() => {
-              // Start music fade out
-              let volume = 0.5;
-              const fadeAudio = setInterval(() => {
-                volume -= 0.05;
-                if (volume <= 0) {
-                  bgMusic.volume = 0;
-                  bgMusic.pause(); // Stop the birthday music
-                  clearInterval(fadeAudio);
-                  
-                  // Start fading in Tum Hi Ho when birthday music fades out
-                  setTimeout(fadeInTumHiHo, 500);
-                } else {
-                  bgMusic.volume = volume;
-                }
-              }, 300);
-              
-              // Start erasing from top to bottom
               erasingOverlay.style.height = '100%';
-              
-              // After erasing completes, show final message
               setTimeout(() => {
-                // Hide everything
                 document.querySelector('.container').style.display = 'none';
                 balloonsContainer.style.display = 'none';
                 partyOverlay.style.display = 'none';
                 erasingOverlay.style.display = 'none';
-                
-                // Show final message with beautiful animation
                 createFloatingHearts('hearts-1');
                 showFinalMessage(finalMessage);
                 createHeartPulse();
-                
-                // Final celebration
                 for (let i = 0; i < 100; i++) setTimeout(() => createConfetti(), i * 50);
                 for (let i = 0; i < 20; i++) setTimeout(() => createFloatingHearts(), i * 200);
-                
-              }, 3000); // Erasing duration
-              
-            }, 2000); // Initial delay before erasing starts
+              }, 3000);
+            }, 2000);
           }
         })
         .catch(error => {
-          console.error('Error:', error);
-          // Even if there's an error, still continue with the flow
           wishCount--;
-          
           if (wishCount > 0) {
             wishMessage.textContent = `✨ Your wish has been sent to the universe! ${wishCount} wish${wishCount > 1 ? 'es' : ''} remaining.`;
             submitWish.textContent = `Send Your Wish (${wishCount} left)`;
@@ -1591,8 +1559,6 @@
             submitWish.style.display = 'none';
             wishText.disabled = true;
             wishText.placeholder = "Your 3 wishes have been sent to the universe ✨";
-            
-            // Trigger final message sequence even if Telegram fails
             setTimeout(() => {
               const erasingOverlay = document.createElement('div');
               erasingOverlay.style.position = 'fixed';
@@ -1604,29 +1570,13 @@
               erasingOverlay.style.zIndex = '1999';
               erasingOverlay.style.transition = 'height 3s ease-in-out';
               document.body.appendChild(erasingOverlay);
-              
               setTimeout(() => {
-                let volume = 0.5;
-                const fadeAudio = setInterval(() => {
-                  volume -= 0.05;
-                  if (volume <= 0) {
-                    bgMusic.volume = 0;
-                    bgMusic.pause();
-                    clearInterval(fadeAudio);
-                    setTimeout(fadeInTumHiHo, 500);
-                  } else {
-                    bgMusic.volume = volume;
-                  }
-                }, 300);
-                
                 erasingOverlay.style.height = '100%';
-                
                 setTimeout(() => {
                   document.querySelector('.container').style.display = 'none';
                   balloonsContainer.style.display = 'none';
                   partyOverlay.style.display = 'none';
                   erasingOverlay.style.display = 'none';
-                  
                   createFloatingHearts('hearts-1');
                   showFinalMessage(finalMessage);
                   createHeartPulse();
@@ -1638,7 +1588,6 @@
           }
           wishMessage.style.display = 'block';
           wishText.value = '';
-          
           for (let i = 0; i < 20; i++) setTimeout(() => createConfetti(), i * 100);
           createHeartPulse();
         })
@@ -1650,17 +1599,14 @@
 
     giftButton.addEventListener('click', openGift);
     cakeContainer.addEventListener('click', () => {
-      if (!flame.classList.contains('burning')) {
-        lightCandle();
-      }
+      if (!flame.classList.contains('burning')) lightCandle();
     });
 
     memoriesButton.addEventListener('click', () => {
       memoriesButton.style.display = 'none';
       birthdayMessage.style.display = 'block';
       birthdayMessage.textContent = '';
-      const message = "Happy Birthday Prasansha! 🎉💖\n\nTum hamesha khush raho, healthy raho, aur waise hi pyaari aur adorable chubby doll jeysa bane raho jaise tum ho. Tum waise hi perfect ho.\n\nMujhe pata hai, maine pehle immature behave kiya jo zyada ho gaya tha — reels, messages, comments… sab kuch. Sayad mere iye sab bhi jyada hi ho rahahey.\n\nFor that, I'm truly sorry.\n\nPlease maaf kar dena.\n\n Take care. Dua karta hu khus raho hamesha.... 🌑";
-
+      const message = "Happy Birthday Prasansha! 🎉💖\n\nTum hamesha khush raho, healthy raho, aur chubby hi raho.  \n\nMujhe afsos hai, Prasansha. Dil se afsos hai. Tumhare saamne main woh banda nahi ban paya jeysa tum chate the.  Tumhare liye respect aur care ke alawa kuch nahi tha mere dil mein. Agar mera koi harkat tumhe uncomfortable kiya hey to, I'm truly sorry.\n\nPrasansha, ekbaar aur Please maaf kar dena.\n\n Take care. 💟🌑";
       typeText(birthdayMessage, message, 40, () => {
         showMemoriesButton.style.display = 'inline-block';
         createHeartPulse();
@@ -1671,12 +1617,9 @@
       birthdayMessage.style.display = 'block';
       birthdayMessage.textContent = '';
       memoryGallery.style.display = 'none';
-      
-      const treasureMessage = "Maine ye photos ab tak sambhal ke rakhi hain. Na ki isliye ki kuch badal sakun, par kyunki ye tumhara ek hissa hain jo main bhool nahi sakta. Ab bhi, rooj inhe dekhta hu. Pura din accha jaata hey tumhe yaad karke 💛";
-      
+      const treasureMessage = "Maine ye photos ab tak sambhal ke rakhi hain. Ye tumhara ek hissa hain jo main bhool nahi sakta.Tumhari muskurahat, tumhari aankhein...Inhe dekhkar lagta hai jaise tum yahin ho mere paas 🌸";
       birthdayMessage.textContent = '';
       birthdayMessage.style.display = 'block';
-      
       typeText(birthdayMessage, treasureMessage, 40, () => {
         memoryGallery.style.display = 'flex';
         loadMemories();
@@ -1690,13 +1633,243 @@
       star.style.top = Math.random() * 30 + 'vh';
       star.style.animationDuration = (Math.random() * 2 + 2) + 's';
       document.body.appendChild(star);
-      
       setTimeout(() => {
-        if (document.body.contains(star)) {
-          document.body.removeChild(star);
-        }
+        if (document.body.contains(star)) document.body.removeChild(star);
       }, 3000);
     }
+
+    // Stop music when leaving site
+    window.addEventListener('beforeunload', function() {
+      if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }
+    });
+
+    window.addEventListener('unload', function() {
+      if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }
+    });
+
+
+
+    // Night Changes Lyrics with timestamps (in seconds)
+const nightChangesLyrics = [
+  { time: 8, text: "Going out tonight..." },
+  { time: 10, text: "Changes into something red" },
+  { time: 12, text: "Her mother doesn't like that kind of dress" },
+  { time: 16, text: "Everything she never had she's showing off" },
+  { time: 24, text: "Driving too fast..." },
+  { time: 26, text: "Moon is breaking through her hair" },
+  { time: 28, text: "She's heading for something that she won't forget" },
+  { time: 32, text: "Having no regrets is all that she really wants" },
+  { time: 40, text: "We're only getting older, baby" },
+  { time: 44, text: "And I've been thinking about it lately" },
+  { time: 48, text: "Does it ever drive you crazy" },
+  { time: 52, text: "Just how fast the night changes?" },
+  { time: 56, text: "Everything that you've ever dreamed of" },
+  { time: 60, text: "Disappearing when you wake up" },
+  { time: 64, text: "But there's nothing to be afraid of" },
+  { time: 68, text: "Even when the night changes" },
+  { time: 73, text: "It will never change me and you" },
+  { time: 80, text: "Chasing her tonight..." },
+  { time: 82, text: "Doubts are running 'round her head" },
+  { time: 84, text: "He's waiting, hides behind a cigarette" },
+  { time: 88, text: "Heart is beating loud and she doesn't want it to stop" },
+  { time: 95, text: "Moving too fast..." },
+  { time: 98, text: "Moon is lighting up her skin" },
+  { time: 100, text: "She's falling, doesn't even know it yet" },
+  { time: 104, text: "Having no regrets is all that she really wants" },
+  { time: 112, text: "We're only getting older, baby" },
+  { time: 117, text: "And I've been thinking about it lately" },
+  { time: 120, text: "Does it ever drive you crazy" },
+  { time: 124, text: "Just how fast the night changes?" },
+  { time: 128, text: "Everything that you've ever dreamed of" },
+  { time: 133, text: "Disappearing when you wake up" },
+  { time: 136, text: "But there's nothing to be afraid of" },
+  { time: 140, text: "Even when the night changes" },
+  { time: 144, text: "It will never change me and you" },
+  { time: 160, text: "Going out tonight..." },
+  { time: 162, text: "Changes into something red" },
+  { time: 164, text: "Her mother doesn't like that kind of dress" },
+  { time: 168, text: "Reminds her of the missing piece of innocence she lost" },
+  { time: 174, text: "We're only getting older, baby" },
+  { time: 178, text: "And I've been thinking about it lately" },
+  { time: 182, text: "Does it ever drive you crazy" },
+  { time: 186, text: "Just how fast the night changes?" },
+  { time: 190, text: "Everything that you've ever dreamed of" },
+  { time: 194, text: "Disappearing when you wake up" },
+  { time: 198, text: "But there's nothing to be afraid of" },
+  { time: 202, text: "Even when the night changes" },
+  { time: 206, text: "It will never change Baby" },
+  { time: 210, text: "It will never change Baby" },
+  { time: 214, text: "It will never change Me and You 💖" },
+
+];
+
+let currentLyricIndex = 0;
+let lyricsActive = false;
+let lyricsElement = null;
+
+// Function to create lyrics display
+function createLyricsDisplay() {
+  lyricsElement = document.createElement('div');
+  lyricsElement.className = 'live-lyrics';
+  document.body.appendChild(lyricsElement);
+}
+
+// Function to update lyrics based on current music time
+function updateLyrics() {
+  if (!lyricsActive || !lyricsElement || !bgMusic) return;
+  
+  const currentTime = bgMusic.currentTime;
+  
+  // Find the current lyric based on time
+  let newLyricIndex = currentLyricIndex;
+  
+  // Check if we should move to next lyric
+  if (currentLyricIndex < nightChangesLyrics.length - 1 && 
+      currentTime >= nightChangesLyrics[currentLyricIndex + 1].time) {
+    newLyricIndex = currentLyricIndex + 1;
+  }
+  
+  // Check if we should go back (if user seeked backwards)
+  if (currentLyricIndex > 0 && currentTime < nightChangesLyrics[currentLyricIndex].time) {
+    newLyricIndex = currentLyricIndex - 1;
+  }
+  
+  // Update if lyric changed
+  if (newLyricIndex !== currentLyricIndex) {
+    currentLyricIndex = newLyricIndex;
+    
+    // Hide current lyric
+    lyricsElement.classList.remove('show');
+    lyricsElement.classList.add('hide');
+    
+    // Update text after hide animation
+    setTimeout(() => {
+      lyricsElement.textContent = nightChangesLyrics[currentLyricIndex].text;
+      lyricsElement.classList.remove('hide');
+      lyricsElement.classList.add('show');
+    }, 500);
+  }
+}
+
+// Function to start lyrics synchronization
+function startLyrics() {
+  lyricsActive = true;
+  
+  // Create lyrics display if it doesn't exist
+  if (!lyricsElement) {
+    createLyricsDisplay();
+  }
+  
+  // Find current position in song and set appropriate lyric
+  const currentTime = bgMusic.currentTime;
+  let startIndex = 0;
+  
+  // Find which lyric should be showing based on current music time
+  for (let i = nightChangesLyrics.length - 1; i >= 0; i--) {
+    if (currentTime >= nightChangesLyrics[i].time) {
+      startIndex = i;
+      break;
+    }
+  }
+  
+  currentLyricIndex = startIndex;
+  
+  // Set initial lyric
+  lyricsElement.textContent = nightChangesLyrics[currentLyricIndex].text;
+  lyricsElement.classList.add('show');
+  
+  // Start updating lyrics
+  window.lyricsInterval = setInterval(updateLyrics, 100);
+}
+
+// Function to stop lyrics
+function stopLyrics() {
+  lyricsActive = false;
+  if (window.lyricsInterval) {
+    clearInterval(window.lyricsInterval);
+  }
+  if (lyricsElement) {
+    lyricsElement.classList.remove('show');
+    lyricsElement.classList.add('hide');
+  }
+}
+
+// Function to hide all site elements for blank screen
+function hideAllSiteElements() {
+  const elementsToHide = [
+    '.container',
+    '#balloons-container',
+    '#party-overlay',
+    '.cake-container',
+    '#gift-button',
+    '#memories-button',
+    '#show-memories-button',
+    '#wish-container',
+    '.birthday-message',
+    '.memory-gallery'
+  ];
+  
+  elementsToHide.forEach(selector => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.style.display = 'none';
+    }
+  });
+}
+
+
+
+
+// Sync lyrics when music time updates
+bgMusic.addEventListener('timeupdate', updateLyrics);
+
+// Reset lyrics when music ends and restarts
+bgMusic.addEventListener('ended', function() {
+  stopLyrics();
+  setTimeout(() => {
+    currentLyricIndex = 0;
+    if (lyricsActive) {
+      startLyrics();
+    }
+  }, 100);
+});
+
+bgMusic.addEventListener('play', function() {
+  if (lyricsActive && !window.lyricsInterval) {
+    startLyrics();
+  }
+});
+
+// Stop lyrics when page is hidden
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    stopLyrics();
+  } else if (lyricsActive && window.lyricsInterval === null) {
+    startLyrics();
+  }
+});
+
+
+
+// Add this to your existing JavaScript
+function adjustLyricsForScreen() {
+  if (!lyricsElement) return;
+  
+  // Force reflow to ensure proper sizing
+  lyricsElement.style.display = 'none';
+  setTimeout(() => {
+    lyricsElement.style.display = 'block';
+  }, 10);
+}
+
+// Call this when showing lyrics
+window.addEventListener('resize', adjustLyricsForScreen);
   </script>
 </body>
 </html>
