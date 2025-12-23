@@ -959,12 +959,55 @@
   }
 }
 
+/* NEW: Happy Birthday typing text container */
+.happy-birthday-typing {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 50; /* Reduced from 9999 */
+  padding: 0 20px;
+  display: none;
+}
+
+.happy-birthday-typing h1 {
+  font-family: 'Winky Rough', cursive; 
+  font-size: 2.2em; 
+  color: #e84393;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .happy-birthday-typing h1 {
+    font-size: 1.8em;
+    min-height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .happy-birthday-typing h1 {
+    font-size: 1.5em;
+    min-height: 40px;
+  }
+}
+
 </style>
 </head>
 <body>
   <div id="start-overlay">Tap to Start. Use headphone for better sound 🎉</div>
+  
+  <!-- NEW: Happy Birthday typing text container -->
+  <div id="happy-birthday-text" class="happy-birthday-typing">
+    <h1 id="typing-text"></h1>
+  </div>
+  
   <div class="container">
-    <h1 id="typing-text">👸 Happy Birthday Prasansha!</h1>
+    <!-- REMOVED the original h1 from here -->
     <div class="cake-container" id="cake-container" title="Click the cake to light the candle">
       <div class="candle"><div class="flame"></div></div>
       <div class="cake"></div>
@@ -1052,8 +1095,8 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
       <div class="message-content">
         <div class="message-title">❤️</div>
         <div class="message-body">Kaash tumhe pehela jeysa bina daare message kar pata... <br>Haar raat gooodnightt aur subha goood morninggg keh pata...</div>
-        <div class="message-highlight">Jo kuch bhi ho,Take care my chubby doll... Love you forever. <br>Tumhara bina ek ek din ek ek saal jeysa lagta hey, Prasansha. <br><br>Kaash mera jindegi ka aakhri time pe tumhe dekh pata 🌄🎐 ✨</div>
-        <div class="message-body" style="font-style: italic; margin-top: 20px;">And once again, "Happy Birthday madam jii"</div>
+        <div class="message-highlight">Jo kuch bhi ho,Take care my chubby doll... Love you forever. <br>Tumhara bina ek ek din ek ek saal jeysa lagta hey, Prasansha🎐✨</div>
+        <div class="message-body" style="font-style: italic; margin-top: 20px;">After all once again, "Happy Birthday madam jiii"</div>
       </div>
     </div>
     <div class="floating-hearts" id="hearts-5"></div>
@@ -1110,6 +1153,9 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
     const wishText = document.getElementById('wish-text');
     const submitWish = document.getElementById('submit-wish');
     const wishMessage = document.getElementById('wish-message');
+    const happyBirthdayText = document.getElementById('happy-birthday-text');
+    const typingText = document.getElementById('typing-text');
+    
     const welcomeMessages = [
       document.getElementById('welcome-message-1'),
       document.getElementById('welcome-message-2'),
@@ -1182,6 +1228,8 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
     }
 
     function showFinalMessage(messageElement) {
+      // Hide Happy Birthday text when showing final messages
+      hideHappyBirthdayText();
       messageElement.style.display = 'flex';
       setTimeout(() => {
         const messageBox = messageElement.querySelector('.message-box');
@@ -1196,6 +1244,16 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
         messageElement.style.display = 'none';
         if (callback) callback();
       }, 800);
+    }
+
+    // NEW: Function to hide Happy Birthday text
+    function hideHappyBirthdayText() {
+      happyBirthdayText.style.display = 'none';
+    }
+
+    // NEW: Function to show Happy Birthday text
+    function showHappyBirthdayText() {
+      happyBirthdayText.style.display = 'block';
     }
 
     // Page flow
@@ -1239,12 +1297,6 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
   });
 });
 
-
-
- 
-
-
-
     // Blurred text
     document.addEventListener('DOMContentLoaded', function() {
       const blurredText = document.querySelector('.blurred-text');
@@ -1270,8 +1322,11 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
       }, 2000);
     }
 
-    // Lightbox functions
+    // MODIFIED: Lightbox functions to hide Happy Birthday text
     function openLightbox(index) {
+      // Hide Happy Birthday text when opening lightbox
+      hideHappyBirthdayText();
+      
       currentIndex = index;
       showMedia(currentIndex);
       lightboxModal.style.display = 'flex';
@@ -1283,6 +1338,9 @@ lekin block karogey iye sochke message karne ka himaate nehi hota hey mera.
       lightboxContent.innerHTML = '';
       document.body.style.overflow = '';
       bgMusic.volume = 0.5;
+      
+      // Show Happy Birthday text again after closing lightbox
+      showHappyBirthdayText();
     }
 
     function showMedia(index) {
@@ -1391,38 +1449,34 @@ function nextMedia() {
 
     const balloonsContainer = document.getElementById('balloons-container');
     const partyOverlay = document.getElementById('party-overlay');
-    const typingText = document.getElementById('typing-text');
     const fullText = '👑 Happy Birthday Prasansha! ✨💓';
     let charIndex = 0;
 
-    // Start overlay
-    startOverlay.onclick = () => {
-      if (started) return;
-      started = true;
-      startOverlay.style.display = 'none';
-      const playAudio = () => {
-        bgMusic.volume = 0;
-        bgMusic.play().then(() => {
-          let volume = 0;
-          const fadeInInterval = setInterval(() => {
-            volume += 0.05;
-            if (volume >= 0.5) {
-              volume = 0.5;
-              clearInterval(fadeInInterval);
-            }
-            bgMusic.volume = volume;
-          }, 50);
-        }).catch(error => {
-          document.addEventListener('click', function retryPlay() {
-            bgMusic.play();
-            document.removeEventListener('click', retryPlay);
-          }, { once: true });
-        });
-      };
-      playAudio();
-      showWelcomeMessages();
-    };
+    // NEW: Typewriter function for Happy Birthday text
+    function typeWriter() {
+      charIndex = 0;
+      typingText.textContent = '';
+      showHappyBirthdayText();
+      
+      function typeNext() {
+        if (charIndex < fullText.length) {
+          typingText.textContent = fullText.slice(0, charIndex + 1);
+          charIndex++;
+          setTimeout(typeNext, 120);
+        } else {
+          typingText.style.borderRight = 'none';
+          // Show memories button after typing completes
+          setTimeout(() => {
+            memoriesButton.style.display = 'inline-block';
+            createHeartPulse();
+          }, 1000);
+        }
+      }
+      
+      typeNext();
+    }
 
+    // NEW: Show welcome messages
     function showWelcomeMessages() {
       document.querySelector('.container').style.opacity = '0';
       welcomeMessages.forEach((message, index) => {
@@ -1433,25 +1487,13 @@ function nextMedia() {
             if (index === welcomeMessages.length - 1) {
               setTimeout(() => {
                 document.querySelector('.container').style.opacity = '1';
-                typeWriter();
+                // Show gift button immediately
+                giftButton.classList.add('show');
               }, 1000);
             }
           }, 1000);
         }, index * 1500);
       });
-    }
-
-    function typeWriter() {
-      if (charIndex < fullText.length) {
-        typingText.textContent = fullText.slice(0, charIndex + 1);
-        charIndex++;
-        setTimeout(typeWriter, 120);
-      } else {
-        typingText.style.borderRight = 'none';
-        setTimeout(() => {
-          giftButton.classList.add('show');
-        }, 1000);
-      }
     }
 
     function createBalloons(count) {
@@ -1490,6 +1532,7 @@ function nextMedia() {
       }, 4000);
     }
 
+    // NEW: Modified openGift function
     function openGift() {
       document.body.style.backgroundColor = '#1a1a1a';
       giftButton.style.display = 'none';
@@ -1501,7 +1544,7 @@ function nextMedia() {
       for(let i = 0; i < 8; i++) createCakeSparkle();
       setInterval(() => { if(Math.random() > 0.8) createShootingStar(); }, 5000);
       setInterval(() => { createConfetti(); createFloatingHearts(); }, 3000);
-      setTimeout(() => { memoriesButton.style.display = 'inline-block'; createHeartPulse(); }, 1000);
+      // Don't show memories button yet - will show after cake click
     }
 
     function createCakeSparkle() {
@@ -1514,9 +1557,14 @@ function nextMedia() {
       document.body.appendChild(sparkle);
     }
 
+    // NEW: Modified lightCandle function
     function lightCandle() {
       flame.classList.add('burning');
       createConfetti();
+      // Start typing animation after lighting candle
+      setTimeout(() => {
+        typeWriter();
+      }, 500);
     }
 
     function typeText(element, text, speed, callback) {
@@ -1640,9 +1688,41 @@ function nextMedia() {
       }
     });
 
+    // NEW: Start overlay click handler
+    startOverlay.onclick = () => {
+      if (started) return;
+      started = true;
+      startOverlay.style.display = 'none';
+      const playAudio = () => {
+        bgMusic.volume = 0;
+        bgMusic.play().then(() => {
+          let volume = 0;
+          const fadeInInterval = setInterval(() => {
+            volume += 0.05;
+            if (volume >= 0.5) {
+              volume = 0.5;
+              clearInterval(fadeInInterval);
+            }
+            bgMusic.volume = volume;
+          }, 50);
+        }).catch(error => {
+          document.addEventListener('click', function retryPlay() {
+            bgMusic.play();
+            document.removeEventListener('click', retryPlay);
+          }, { once: true });
+        });
+      };
+      playAudio();
+      showWelcomeMessages();
+    };
+
     giftButton.addEventListener('click', openGift);
+    
+    // NEW: Cake click handler
     cakeContainer.addEventListener('click', () => {
-      if (!flame.classList.contains('burning')) lightCandle();
+      if (!flame.classList.contains('burning')) {
+        lightCandle();
+      }
     });
 
     memoriesButton.addEventListener('click', () => {
@@ -1653,10 +1733,9 @@ function nextMedia() {
 
       You deserve all the happiness in the world today and always! 
       May this year bring you endless joy.
-      Tum koi cylinder nehi ho. You are Charming, Cute, Curvy, Cream soft,Cuddly and Incredibly special 🌷💟. 
-      You're perfect just the way you are! 🌸
-
-      Tumse milne ka baad mujhe life pe aasli connnection ka pata chala.
+      
+      Tum ho hi itna special ki 2 saal tak aur kisi ka baaremey soch hi nehi paya  🙂
+      
       Wishing you the most wonderful birthday filled with laughter, love, and everything that makes you smile! ✨
 
       Enjoy your special day to the fullest! 🎂🎁`;
@@ -1866,7 +1945,8 @@ function hideAllSiteElements() {
     '#show-memories-button',
     '#wish-container',
     '.birthday-message',
-    '.memory-gallery'
+    '.memory-gallery',
+    '#happy-birthday-text'
   ];
   
   elementsToHide.forEach(selector => {
