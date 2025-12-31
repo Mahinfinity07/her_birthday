@@ -705,8 +705,8 @@
 <body>
     <!-- START SCREEN -->
     <div id="start-overlay">
-        <div>🎀 For Prasansha ✨</div>
-        <div style="font-size: 1.2em; margin-top: 20px;">Tap to begin...</div>
+        <div>🎀 For the One Who Matters most ✨</div>
+        <div style="font-size: 1.2em; margin-top: 20px;"> Ek tap karo Prasansha🎐✨ <br></div>
     </div>
     
     <!-- FIXED HEADER -->
@@ -722,9 +722,9 @@
                 <div class="candle"><div class="flame"></div></div>
                 <div class="cake"></div>
             </div>
-            <button id="memories-button">If You Want To 💌</button>
+            <button id="memories-button">If You Ever Want To 💌</button>
             <div class="birthday-message" id="birthday-message"></div>
-            <button id="show-memories-button" Left Behind, Not Gone... 🌸</button>
+            <button id="show-memories-button">Pieces of You.... 🌸</button>
             <div class="memory-gallery" id="memory-gallery"></div>
             
             <!-- VOICE MESSAGES SECTION -->
@@ -819,7 +819,7 @@
                 <div class="message-title">❤️</div>
                 <div class="message-body">Kaash tumhe pehela jeysa bina daare message kar pata... <br>Haar raat gooodnightt aur subha goood morninggg keh pata...</div>
                 <div class="message-highlight">Jo kuch bhi ho,Take care my chubby doll... Love you forever. <br>Tumhara bina ek ek din ek ek saal jeysa lagta hey, Prasansha🎐✨</div>
-                <div class="message-body" style="font-style: italic; margin-top: 20px;">After all once again, "Happy Birthday madam jiii"</div>
+                <div class="message-body" style="font-style: italic; margin-top: 20px;"></div>
             </div>
         </div>
     </div>
@@ -832,11 +832,11 @@
                 <div class="message-body">
                     <div class="message-highlight">Merry Christmas, Prasansha 🎄✨<br>And Happy New Year too 🎉</div>
                     <div class="message-body" style="margin-top: 25px;">
-                        Maine socha agar itna saath-saath November december me ye dono messages bhej diye,<br>
+                        Maine socha agar itna saath-saath November December me ye dono messages bhej diye,<br>
                         toh shayad tumhe lage ki main tumhe message karne ka koi bahana dhoond raha hoon,<br>
                         aur kahin tum mujhe block na kar do—<br>
                         isliye main keh nahi paaya.<br><br>
-                        Sorry again jii…
+                        After all once again, "Happy Birthday madam jiii". Bohot miss krta hu tumhe Prasansha...
                     </div>
                 </div>
             </div>
@@ -1046,13 +1046,16 @@
             
             const message = `Happy Birthday Prasansha! 🎉💖
 
-You deserve all the happiness in the world today and always!
-May this year bring you endless joy.
+Aaj ka din sirf tumhara hai.
+Ye saal tumhare liye naye sapne, pyaar aur khushiyan laaye.
+Har pal tumhare liye khaas ho, aur tum hamesha itni hi roshni aur sundarta lekar jeeti raho.
 
-Tum ho hi itna special ki 2 saal tak aur kisi ka baaremey soch hi nehi paya 🙂
 
-Wishing you the most wonderful birthday filled with laughter, love, and everything that makes you smile! ✨
-Enjoy your special day to the fullest! 🎂🎁`;
+Tumhari muskaan duniya mein sabse alag hai, aur tumhari khushi sabse important.
+Main sirf door se dekh sakta hoon, par phir bhi ye chahta hoon ki tumhara har pal khaas ho, jaise tum sach mein anmol ho.
+
+Apne din ka poora maza lo, Prasansha,
+Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             
             typeMessage(message, () => {
                 showMemoriesButton.style.display = 'block';
@@ -1080,7 +1083,7 @@ Enjoy your special day to the fullest! 🎂🎁`;
             this.style.display = 'none';
             birthdayMessage.style.display = 'block';
             
-            const memoryText = "Maine ye Little universes ab tak sambhal ke rakhi hain. Ye tumhara ek hissa hain jo main bhool nahi sakta.Tumhari muskurahat, tumhari aankhein, tum...Inhe dekhkar lagta hai jaise tum yahin ho mere paas 🌸";
+            const memoryText = "Maine ye Little universes ab tak sambhal ke rakhi hain. Ye tumhara ek hissa hain jo main bhool nahi sakta. Tumhari muskurahat, tumhari aankhein, tum...Inhe dekhkar lagta hai jaise tum yahin ho. Mere saath mere paas 🌸";
             
             typeMessage(memoryText, () => {
                 memoryGallery.style.display = 'grid';
@@ -1114,122 +1117,136 @@ Enjoy your special day to the fullest! 🎂🎁`;
             });
             
             setTimeout(() => {
-                voiceMessagesContainer.style.display = 'block';
-                loadVoiceMessages();
-            }, 800);
+    voiceMessagesContainer.style.display = 'block';
+    loadVoiceMessages();
+}, 800);
         }
         
         // === LOAD VOICE MESSAGES ===
-        function loadVoiceMessages() {
-            voiceMessagesList.innerHTML = '';
-            
-            voiceMessages.forEach((voice, index) => {
-                const voiceItem = document.createElement('div');
-                voiceItem.className = 'voice-message-item';
-                voiceItem.dataset.index = index;
-                
-                const audio = new Audio();
-                audio.src = voice.url;
-                
-                const voiceItemHTML = `
-                    <div class="voice-player">
-                        <button class="voice-play-btn" data-index="${index}">▶</button>
-                        <div class="voice-progress">
-                            <div class="voice-progress-bar" style="width: 0%"></div>
-                        </div>
-                        <div class="voice-time">0:00</div>
-                    </div>
-                    <textarea class="voice-caption-input" placeholder="${voice.placeholder}" rows="3"></textarea>
-                `;
-                
-                voiceItem.innerHTML = voiceItemHTML;
-                voiceMessagesList.appendChild(voiceItem);
-                
-                // Setup audio player
-                const playBtn = voiceItem.querySelector('.voice-play-btn');
-                const progressBar = voiceItem.querySelector('.voice-progress-bar');
-                const timeDisplay = voiceItem.querySelector('.voice-time');
-                
-                audio.addEventListener('loadedmetadata', () => {
-                    timeDisplay.textContent = formatTime(0) + ' / ' + formatTime(audio.duration);
-                });
-                
-                audio.addEventListener('timeupdate', () => {
-                    if (audio.duration) {
-                        const progress = (audio.currentTime / audio.duration) * 100;
-                        progressBar.style.width = `${progress}%`;
-                        timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
-                    }
-                });
-                
-                audio.addEventListener('ended', () => {
-    playBtn.classList.remove('playing');
-    playBtn.textContent = '▶';
-    progressBar.style.width = '0%';
-    timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+        // === LOAD VOICE MESSAGES ===
+function loadVoiceMessages() {
+    voiceMessagesList.innerHTML = '';
     
-    // FIX: Resume background music after voice message ends
-    if (bgMusicPaused && !isVideoPlaying) {
-        setTimeout(() => {
-            bgMusic.play().catch(e => console.log('Could not resume music'));
-            bgMusicPaused = false;
-        }, 300);
-    }
-});
-                
-                audio.addEventListener('pause', () => {
-                    playBtn.classList.remove('playing');
-                    playBtn.textContent = '▶';
-                });
-                
-                playBtn.addEventListener('click', () => {
-                    if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
-                        currentlyPlayingAudio.pause();
-                        currentlyPlayingAudio.currentTime = 0;
-                        const previousBtn = document.querySelector('.voice-play-btn.playing');
-                        if (previousBtn) {
-                            previousBtn.classList.remove('playing');
-                            previousBtn.textContent = '▶';
-                        }
-                    }
-                    
-                    if (audio.paused) {
-                        // Stop background music when voice message plays
-                        if (!bgMusic.paused) {
-                            bgMusic.pause();
-                            bgMusicPaused = true;
-                        }
-                        
-                        audio.play();
-                        playBtn.classList.add('playing');
-                        playBtn.textContent = '⏸';
-                        currentlyPlayingAudio = audio;
-                    } else {
-                        audio.pause();
-                        playBtn.classList.remove('playing');
-                        playBtn.textContent = '▶';
-                        
-                        // Resume background music if it was paused
-                        if (bgMusicPaused && !isVideoPlaying) {
-                            bgMusic.play().catch(e => console.log('Could not resume music'));
-                            bgMusicPaused = false;
-                        }
-                    }
-                });
-                
-                // Update caption when user types
-                const captionInput = voiceItem.querySelector('.voice-caption-input');
-                captionInput.addEventListener('input', () => {
-                    // Save caption to localStorage or state if needed
-                    console.log(`Caption for voice ${index}:`, captionInput.value);
-                });
-            });
+    let loadedAudioCount = 0;
+    
+    voiceMessages.forEach((voice, index) => {
+        const voiceItem = document.createElement('div');
+        voiceItem.className = 'voice-message-item';
+        voiceItem.dataset.index = index;
+        
+        const audio = new Audio();
+        audio.src = voice.url;
+        
+        const voiceItemHTML = `
+            <div class="voice-player">
+                <button class="voice-play-btn" data-index="${index}">▶</button>
+                <div class="voice-progress">
+                    <div class="voice-progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="voice-time">0:00</div>
+            </div>
+            <textarea class="voice-caption-input" placeholder="${voice.placeholder}" rows="3"></textarea>
+        `;
+        
+        voiceItem.innerHTML = voiceItemHTML;
+        voiceMessagesList.appendChild(voiceItem);
+        
+        // Setup audio player
+        const playBtn = voiceItem.querySelector('.voice-play-btn');
+        const progressBar = voiceItem.querySelector('.voice-progress-bar');
+        const timeDisplay = voiceItem.querySelector('.voice-time');
+        
+        audio.addEventListener('loadedmetadata', () => {
+            timeDisplay.textContent = formatTime(0) + ' / ' + formatTime(audio.duration);
             
-            setTimeout(() => {
-                wishContainer.style.display = 'block';
-                updateWishButton();
-            }, 500);
+            // Track loaded audio
+            loadedAudioCount++;
+            if (loadedAudioCount === voiceMessages.length) {
+                setTimeout(() => {
+                    wishContainer.style.display = 'block';
+                    updateWishButton();
+                }, 300);
+            }
+        });
+        
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+                timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            playBtn.classList.remove('playing');
+            playBtn.textContent = '▶';
+            progressBar.style.width = '0%';
+            timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+            
+            // FIX: Resume background music after voice message ends
+            if (bgMusicPaused && !isVideoPlaying) {
+                setTimeout(() => {
+                    bgMusic.play().catch(e => console.log('Could not resume music'));
+                    bgMusicPaused = false;
+                }, 300);
+            }
+        });
+        
+        audio.addEventListener('pause', () => {
+            playBtn.classList.remove('playing');
+            playBtn.textContent = '▶';
+        });
+        
+        playBtn.addEventListener('click', () => {
+            if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+                currentlyPlayingAudio.pause();
+                currentlyPlayingAudio.currentTime = 0;
+                const previousBtn = document.querySelector('.voice-play-btn.playing');
+                if (previousBtn) {
+                    previousBtn.classList.remove('playing');
+                    previousBtn.textContent = '▶';
+                }
+            }
+            
+            if (audio.paused) {
+                // Stop background music when voice message plays
+                if (!bgMusic.paused) {
+                    bgMusic.pause();
+                    bgMusicPaused = true;
+                }
+                
+                audio.play();
+                playBtn.classList.add('playing');
+                playBtn.textContent = '⏸';
+                currentlyPlayingAudio = audio;
+            } else {
+                audio.pause();
+                playBtn.classList.remove('playing');
+                playBtn.textContent = '▶';
+                
+                // Resume background music if it was paused
+                if (bgMusicPaused && !isVideoPlaying) {
+                    bgMusic.play().catch(e => console.log('Could not resume music'));
+                    bgMusicPaused = false;
+                }
+            }
+        });
+        
+        // Update caption when user types
+        const captionInput = voiceItem.querySelector('.voice-caption-input');
+        captionInput.addEventListener('input', () => {
+            console.log(`Caption for voice ${index}:`, captionInput.value);
+        });
+    });
+    
+    // Safety timeout in case audio loading fails
+    setTimeout(() => {
+        if (!wishContainer.style.display || wishContainer.style.display === 'none') {
+            wishContainer.style.display = 'block';
+            updateWishButton();
         }
+    }, 4000);
+}
         
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
@@ -1572,5 +1589,3 @@ Enjoy your special day to the fullest! 🎂🎁`;
     </script>
 </body>
 </html>
-
-
