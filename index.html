@@ -4,709 +4,735 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>For Prasansha 💖</title>
-   <style>
-    /* === MOBILE FIRST - NO SHAKES === */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    html, body {
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-    }
-    
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(145deg, #fff0f5, #fff5f7);
-        color: #5a3d5c;
-        min-height: 100vh;
-        padding: 20px;
-        position: relative;
-    }
-    
-    #happy-birthday-text {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 15px 20px;
-        text-align: center;
-        z-index: 1000;
-        border-bottom: 2px solid #ffb6c1;
-        box-shadow: 0 4px 20px rgba(232, 67, 147, 0.1);
-        display: none;
-    }
-    
-    #typing-text {
-        font-size: 1.8em;
-        color: #e84393;
-        font-weight: 700;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
-    
-    /* === CENTER CONTAINER === */
-    .center-vertically {
-        width: 100%;
-        min-height: calc(100vh - 40px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 0;
-    }
-    
-    .content-wrapper {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 40px;
-    }
-    
-    /* === GIFT BUTTON - CENTERED === */
-    #gift-button {
-        display: none;
-        padding: 18px 40px;
-        border: none;
-        border-radius: 50px;
-        background: linear-gradient(135deg, #ff85a2, #e84393);
-        color: white;
-        font-size: 1.3em;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 10px 30px rgba(232, 67, 147, 0.3);
-        margin: 30px 0;
-        width: 90%;
-        max-width: 300px;
-        transition: transform 0.2s ease;
-    }
-    
-    #gift-button:active {
-        transform: scale(0.98);
-    }
-    
-    #gift-button.show {
-        display: block;
-        animation: popIn 0.5s ease forwards;
-    }
-    
-    @keyframes popIn {
-        from { opacity: 0; transform: scale(0.8); }
-        to { opacity: 1; transform: scale(1); }
-    }
-    
-    /* === CAKE - CENTERED === */
-    .cake-container {
-        display: none;
-        margin: 30px 0;
-        position: relative;
-        cursor: pointer;
-        touch-action: manipulation;
-    }
-    
-    .cake {
-        width: 180px;
-        height: 90px;
-        background: linear-gradient(to bottom, #fff5f7, #ffb6c1);
-        border-radius: 15px 15px 0 0;
-        position: relative;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    .cake::before {
-        content: '';
-        position: absolute;
-        top: -12px;
-        left: -8px;
-        width: 196px;
-        height: 20px;
-        background: linear-gradient(to right, #ff85a2, #dda0dd);
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .candle {
-        width: 8px;
-        height: 40px;
-        background: linear-gradient(to bottom, white, #fff9c4);
-        position: absolute;
-        top: -45px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 4px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    .flame {
-        width: 12px;
-        height: 25px;
-        background: radial-gradient(circle, #ffd700 20%, orange 70%);
-        position: absolute;
-        top: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        border-radius: 50% 50% 20% 20%;
-        filter: blur(1px);
-        transition: opacity 0.3s ease;
-    }
-    
-    .flame.burning {
-        opacity: 1;
-        animation: flicker 0.5s infinite alternate;
-    }
-    
-    @keyframes flicker {
-        0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
-        50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
-    }
-    
-    /* === ACTION BUTTONS === */
-    #memories-button,
-    #show-memories-button {
-        display: none;
-        padding: 16px 35px;
-        border: none;
-        border-radius: 50px;
-        background: linear-gradient(135deg, #dda0dd, #b19cd9);
-        color: white;
-        font-size: 1.1em;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 8px 25px rgba(177, 156, 217, 0.3);
-        margin: 15px 0;
-        width: 90%;
-        max-width: 280px;
-        transition: transform 0.2s ease;
-    }
-    
-    #memories-button:active,
-    #show-memories-button:active {
-        transform: scale(0.98);
-    }
-    
-    /* === VOICE MESSAGES SECTION === */
-    #voice-messages-container {
-        display: none;
-        width: 100%;
-        max-width: 350px;
-        margin: 25px 0;
-        background: white;
-        border-radius: 20px;
-        padding: 20px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        border: 2px solid rgba(255, 182, 193, 0.3);
-    }
-    
-    .voice-messages-title {
-        text-align: center;
-        color: #e84393;
-        font-size: 1.3em;
-        font-weight: 600;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid rgba(232, 67, 147, 0.2);
-    }
-    
-    .voice-message-item {
-        margin-bottom: 25px;
-        background: rgba(255, 245, 247, 0.5);
-        border-radius: 15px;
-        padding: 15px;
-        border: 1px solid rgba(255, 182, 193, 0.2);
-    }
-    
-    .voice-player {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 10px;
-    }
-    
-    .voice-play-btn {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: none;
-        background: linear-gradient(135deg, #ff85a2, #e84393);
-        color: white;
-        font-size: 1.2em;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: transform 0.2s ease;
-    }
-    
-    .voice-play-btn:active {
-        transform: scale(0.95);
-    }
-    
-    .voice-play-btn.playing {
-        background: linear-gradient(135deg, #4CAF50, #2E7D32);
-    }
-    
-    .voice-progress {
-        flex: 1;
-        height: 6px;
-        background: rgba(232, 67, 147, 0.2);
-        border-radius: 3px;
-        overflow: hidden;
-    }
-    
-    .voice-progress-bar {
-        height: 100%;
-        background: linear-gradient(to right, #ff85a2, #e84393);
-        width: 0%;
-        transition: width 0.1s linear;
-    }
-    
-    .voice-time {
-        font-size: 0.85em;
-        color: #888;
-        min-width: 50px;
-        text-align: right;
-    }
-    
-    .voice-caption-input {
-        width: 100%;
-        padding: 12px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 182, 193, 0.5);
-        background: white;
-        font-family: inherit;
-        font-size: 0.95em;
-        color: #5a3d5c;
-        resize: none;
-        min-height: 60px;
-        outline: none;
-        transition: border-color 0.3s ease;
-    }
-    
-    .voice-caption-input:focus {
-        border-color: #ff85a2;
-    }
-    
-    /* === MESSAGE BOX === */
-    .birthday-message {
-        display: none;
-        background: white;
-        padding: 25px 20px;
-        border-radius: 20px;
-        margin: 20px 0;
-        width: 95%;
-        max-width: 350px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        border: 2px solid rgba(255, 182, 193, 0.3);
-        line-height: 1.6;
-        text-align: left;
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-        animation: slideUp 0.4s ease;
-    }
-    
-    @keyframes slideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* === MEMORIES GALLERY === */
-    .memory-gallery {
-        display: none;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin: 20px 0;
-        width: 100%;
-        max-width: 350px;
-    }
-    
-    .memory-item {
-        width: 100%;
-        aspect-ratio: 1;
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        border: 3px solid white;
-        position: relative;
-    }
-    
-    .memory-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 12px;
-        padding: 3px;
-        background: linear-gradient(135deg, #ff85a2, #dda0dd);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-    }
-    
-    .memory-item img,
-    .memory-item video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-    }
-    
-    /* === WISH SECTION === */
-    #wish-container {
-        display: none;
-        width: 100%;
-        max-width: 350px;
-        margin: 25px 0;
-    }
-    
-    #wish-text {
-        width: 100%;
-        padding: 18px;
-        border-radius: 15px;
-        border: 2px solid rgba(255, 182, 193, 0.5);
-        background: rgba(255, 255, 255, 0.95);
-        color: #5a3d5c;
-        font-family: inherit;
-        font-size: 1em;
-        margin-bottom: 15px;
-        resize: none;
-        min-height: 120px;
-        outline: none;
-    }
-    
-    .wish-buttons {
-        display: flex;
-        gap: 10px;
-        width: 100%;
-    }
-    
-    #submit-wish {
-        flex: 1;
-        padding: 16px;
-        border: none;
-        border-radius: 15px;
-        background: linear-gradient(135deg, #4CAF50, #2E7D32);
-        color: white;
-        font-size: 1.1em;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
-        transition: transform 0.2s ease;
-    }
-    
-    #submit-wish:active {
-        transform: scale(0.98);
-    }
-    
-    #wish-message {
-        display: none;
-        color: #e84393;
-        font-weight: 600;
-        margin-top: 15px;
-        text-align: center;
-        font-size: 1em;
-    }
-    
-    /* === LIGHTBOX === */
-    #lightbox-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 2000;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    
-    .lightbox-media-container {
-        width: 100%;
-        max-height: 60vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    
-    #lightbox-media {
-        max-width: 100%;
-        max-height: 60vh;
-        border-radius: 15px;
-        object-fit: contain;
-    }
-    
-    #lightbox-prev,
-    #lightbox-next {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        font-size: 2.5em;
-        cursor: pointer;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2001;
-        backdrop-filter: blur(10px);
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    #lightbox-prev {
-        left: 15px;
-    }
-    
-    #lightbox-next {
-        right: 15px;
-    }
-    
-    #lightbox-close {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        font-size: 1.8em;
-        cursor: pointer;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2001;
-        backdrop-filter: blur(10px);
-    }
-    
-    /* SCROLLABLE CAPTION */
-    .lightbox-caption {
-        color: white;
-        font-size: 1.1em;
-        text-align: center;
-        padding: 15px;
-        line-height: 1.4;
-        background: rgba(232, 67, 147, 0.2);
-        border-radius: 12px;
-        border: 1px solid rgba(232, 67, 147, 0.4);
-        width: 90%;
-        max-height: 20vh;
-        overflow-y: auto;
-        word-wrap: break-word;
-        margin-top: 10px;
-    }
-    
-    .lightbox-caption::-webkit-scrollbar {
-        width: 4px;
-    }
-    
-    .lightbox-caption::-webkit-scrollbar-thumb {
-        background: #e84393;
-        border-radius: 2px;
-    }
-    
-    /* === START OVERLAY === */
-    #start-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #ffb6c1, #dda0dd);
-        z-index: 3000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 30px;
-        text-align: center;
-        color: white;
-        font-size: 1.8em;
-        font-weight: 600;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    }
-    
-    /* === WELCOME MESSAGES === */
-    .welcome-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2.5em;
-        color: #e84393;
-        opacity: 0;
-        z-index: 100;
-        pointer-events: none;
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        font-weight: 700;
-    }
-    
-    /* === FINAL MESSAGES CONTAINER === */
-    .final-message-container {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 245, 247, 0.98);
-        z-index: 4000;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    
-    .message-box {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        width: 95%;
-        max-width: 350px;
-        box-shadow: 0 20px 50px rgba(232, 67, 147, 0.2);
-        border: 2px solid rgba(255, 182, 193, 0.4);
-        position: relative;
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.6s ease;
-    }
-    
-    .message-box.show {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-    .message-content {
-        color: #5a3d5c;
-        line-height: 1.6;
-        text-align: center;
-    }
-    
-    .message-title {
-        font-size: 1.4em;
-        color: #e84393;
-        margin-bottom: 15px;
-        font-weight: 600;
-    }
-    
-    .message-body {
-        font-size: 1em;
-        margin-bottom: 15px;
-    }
-    
-    .message-highlight {
-        font-size: 1.1em;
-        color: #e84393;
-        font-weight: 500;
-        margin: 15px 0;
-        line-height: 1.5;
-    }
-    
-    .close-btn {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(255, 182, 193, 0.2);
-        border: 1px solid rgba(255, 182, 193, 0.4);
-        color: #e84393;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        font-size: 1.2em;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-    
-    .close-btn:active {
-        transform: scale(0.95);
-    }
-    
-    .blurred-text {
-        filter: blur(5px);
-        transition: filter 0.3s ease;
-        cursor: pointer;
-        background: rgba(255, 245, 247, 0.7);
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px 0;
-        font-size: 0.95em;
-        line-height: 1.5;
-    }
-    
-    .blurred-text:active {
-        filter: blur(0);
-    }
-    
-    /* === MEDIA QUERIES === */
-    @media (max-width: 360px) {
+    <style>
+        /* === MOBILE FIRST - NO SHAKES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(145deg, #fff0f5, #fff5f7);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #5a3d5c;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* === START SCREEN === */
+        #start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffb6c1, #dda0dd);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            font-size: 1.8em;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        /* === FIXED HEADER === */
+        #happy-birthday-text {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #ffb6c1;
+            box-shadow: 0 4px 20px rgba(232, 67, 147, 0.1);
+            display: none;
+        }
+        
         #typing-text {
-            font-size: 1.5em;
+            font-size: 1.8em;
+            color: #e84393;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* === MAIN LAYOUT === */
+        .center-vertically {
+            width: 100%;
+            min-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .content-wrapper {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+        }
+        
+        /* === GIFT BUTTON === */
+        #gift-button {
+            display: none;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff85a2, #e84393);
+            color: white;
+            font-size: 1.3em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(232, 67, 147, 0.3);
+            margin: 30px 0;
+            width: 90%;
+            max-width: 300px;
+            transition: transform 0.2s ease;
+        }
+        
+        #gift-button.show {
+            display: block;
+            animation: popIn 0.5s ease forwards;
+        }
+        
+        #gift-button:active {
+            transform: scale(0.98);
+        }
+        
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* === CAKE === */
+        .cake-container {
+            display: none;
+            margin: 30px 0;
+            position: relative;
+            cursor: pointer;
+            touch-action: manipulation;
         }
         
         .cake {
-            width: 150px;
-            height: 75px;
+            width: 180px;
+            height: 90px;
+            background: linear-gradient(to bottom, #fff5f7, #ffb6c1);
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .cake::before {
-            width: 166px;
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -8px;
+            width: 196px;
+            height: 20px;
+            background: linear-gradient(to right, #ff85a2, #dda0dd);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .memory-gallery {
-            grid-template-columns: 1fr;
-            max-width: 280px;
+        .candle {
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(to bottom, white, #fff9c4);
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
-        #gift-button,
+        .flame {
+            width: 12px;
+            height: 25px;
+            background: radial-gradient(circle, #ffd700 20%, orange 70%);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            border-radius: 50% 50% 20% 20%;
+            filter: blur(1px);
+            transition: opacity 0.3s ease;
+        }
+        
+        .flame.burning {
+            opacity: 1;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+        }
+        
+        /* === ACTION BUTTONS === */
         #memories-button,
         #show-memories-button {
+            display: none;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #dda0dd, #b19cd9);
+            color: white;
             font-size: 1.1em;
-            padding: 14px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(177, 156, 217, 0.3);
+            margin: 15px 0;
+            width: 90%;
+            max-width: 280px;
+            transition: transform 0.2s ease;
+        }
+        
+        #memories-button:active,
+        #show-memories-button:active {
+            transform: scale(0.98);
+        }
+        
+        /* === SIMPLE MESSAGE BOX (White box for "If You Ever Want To") === */
+        .simple-message-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            margin: 20px 0;
+            width: 95%;
+            max-width: 350px;
+            border: 2px solid #e0e0e0;
+            line-height: 1.6;
+            text-align: left;
+            white-space: pre-wrap;
+            display: none;
+            
+            /* Scrolling with proper text display */
+            max-height: 200px;
+            height: 200px;
+            overflow-y: auto;
+            word-wrap: break-word;
+            
+            /* Simple styling */
+            color: #333;
+            font-size: 0.95em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .simple-message-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .simple-message-box::-webkit-scrollbar-track {
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .simple-message-box::-webkit-scrollbar-thumb {
+            background: #dda0dd;
+            border-radius: 10px;
+        }
+        
+        /* === WISH SECTION (For sending messages to Telegram) === */
+        #wish-container {
+            display: none;
+            width: 100%;
+            max-width: 350px;
+            margin: 25px 0;
+        }
+        
+        #wish-text {
+            width: 100%;
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 182, 193, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+            color: #5a3d5c;
+            font-family: inherit;
+            font-size: 1em;
+            margin-bottom: 15px;
+            resize: none;
+            min-height: 120px;
+            outline: none;
+        }
+        
+        #submit-wish {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #0088cc, #34b7f1);
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.3);
+            transition: transform 0.2s ease;
+            width: 100%;
+        }
+        
+        #submit-wish:active {
+            transform: scale(0.98);
+        }
+        
+        #submit-wish:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        #wish-message {
+            display: none;
+            color: #0088cc;
+            font-weight: 600;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1em;
+        }
+        
+        /* === VOICE MESSAGES SECTION === */
+        #voice-messages-container {
+            display: none;
+            width: 100%;
+            max-width: 350px;
+            margin: 25px 0;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+        }
+        
+        .voice-messages-title {
+            text-align: center;
+            color: #e84393;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(232, 67, 147, 0.2);
+        }
+        
+        .voice-message-item {
+            margin-bottom: 25px;
+            background: rgba(255, 245, 247, 0.5);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(255, 182, 193, 0.2);
         }
         
         .voice-player {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .voice-play-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff85a2, #e84393);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .voice-play-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .voice-play-btn.playing {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
         }
         
         .voice-progress {
-            width: 100%;
+            flex: 1;
+            height: 6px;
+            background: rgba(232, 67, 147, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
         }
-    }
-</style>
+        
+        .voice-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #ff85a2, #e84393);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .voice-time {
+            font-size: 0.85em;
+            color: #888;
+            min-width: 50px;
+            text-align: right;
+        }
+        
+        .voice-caption-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            background: white;
+            font-family: inherit;
+            font-size: 0.95em;
+            color: #5a3d5c;
+            resize: none;
+            min-height: 60px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .voice-caption-input:focus {
+            border-color: #ff85a2;
+        }
+        
+        /* === MEMORIES GALLERY === */
+        .memory-gallery {
+            display: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .memory-item {
+            width: 100%;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            position: relative;
+        }
+        
+        .memory-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ff85a2, #dda0dd);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        .memory-item img,
+        .memory-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        /* === LIGHTBOX === */
+        #lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .lightbox-media-container {
+            width: 100%;
+            max-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        #lightbox-media {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 15px;
+            object-fit: contain;
+        }
+        
+        #lightbox-prev,
+        #lightbox-next {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2.5em;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        #lightbox-prev {
+            left: 15px;
+        }
+        
+        #lightbox-next {
+            right: 15px;
+        }
+        
+        #lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.8em;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-caption {
+            color: white;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 15px;
+            line-height: 1.4;
+            background: rgba(232, 67, 147, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(232, 67, 147, 0.4);
+            width: 90%;
+            max-height: 20vh;
+            overflow-y: auto;
+            word-wrap: break-word;
+            margin-top: 10px;
+        }
+        
+        /* === WELCOME MESSAGES === */
+        .welcome-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            color: #e84393;
+            opacity: 0;
+            z-index: 100;
+            pointer-events: none;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+        
+        /* === FINAL MESSAGES CONTAINER === */
+        .final-message-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 245, 247, 0.98);
+            z-index: 4000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .message-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 95%;
+            max-width: 350px;
+            box-shadow: 0 20px 50px rgba(232, 67, 147, 0.2);
+            border: 2px solid rgba(255, 182, 193, 0.4);
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .message-box.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .message-content {
+            color: #5a3d5c;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .message-title {
+            font-size: 1.4em;
+            color: #e84393;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .message-body {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        
+        .message-highlight {
+            font-size: 1.1em;
+            color: #e84393;
+            font-weight: 500;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 182, 193, 0.2);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            color: #e84393;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .blurred-text {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+            cursor: pointer;
+            background: rgba(255, 245, 247, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .blurred-text:active {
+            filter: blur(0);
+        }
+        
+        /* === MEDIA QUERIES === */
+        @media (max-width: 480px) {
+            #typing-text {
+                font-size: 1.5em;
+            }
+            
+            .simple-message-box {
+                max-height: 180px;
+                height: 180px;
+                padding: 20px 15px;
+            }
+            
+            .cake {
+                width: 150px;
+                height: 75px;
+            }
+            
+            .cake::before {
+                width: 166px;
+            }
+            
+            .memory-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 320px;
+            }
+            
+            #gift-button,
+            #memories-button,
+            #show-memories-button {
+                font-size: 1.1em;
+                padding: 14px 25px;
+            }
+            
+            #submit-wish {
+                padding: 14px 20px;
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .memory-gallery {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+            
+            .voice-player {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .voice-progress {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- START SCREEN -->
     <div id="start-overlay">
         <div>🎀 For the One Who Matters most ✨</div>
-        <div style="font-size: 1.2em; margin-top: 20px;"> Ek tap karo Prasansha🎐✨ <br></div>
+        <div style="font-size: 1.2em; margin-top: 20px;">Ek tap karo Prasansha🎐✨</div>
     </div>
     
     <!-- FIXED HEADER -->
@@ -723,7 +749,12 @@
                 <div class="cake"></div>
             </div>
             <button id="memories-button">If You Ever Want To 💌</button>
-            <div class="birthday-message" id="birthday-message"></div>
+            
+            <!-- SIMPLE MESSAGE BOX (White box with text) -->
+            <div class="simple-message-box" id="simple-message-box" style="display: none;">
+                <!-- Text will be inserted here by JavaScript -->
+            </div>
+            
             <button id="show-memories-button">Pieces of You.... 🌸</button>
             <div class="memory-gallery" id="memory-gallery"></div>
             
@@ -735,24 +766,23 @@
                 </div>
             </div>
             
+            <!-- WISH SECTION (For sending messages to Telegram) -->
             <div id="wish-container">
-                <textarea id="wish-text" placeholder="Type your wish here... ✨"></textarea>
-                <div class="wish-buttons">
-                    <button id="submit-wish">Send Wish (3 left)</button>
-                </div>
+                <textarea id="wish-text" placeholder="Type your wish/message here... ✨"></textarea>
+                <button id="submit-wish">Send Wish to Universe</button>
                 <p id="wish-message"></p>
             </div>
         </div>
     </div>
     
-    <!-- WELCOME MESSAGES (MOVE THESE OUTSIDE) -->
+    <!-- WELCOME MESSAGES -->
     <div class="welcome-message" id="welcome-1">Hi Cutiepie</div>
     <div class="welcome-message" id="welcome-2">Gulumulu</div>
     <div class="welcome-message" id="welcome-3">Cupcake</div>
     <div class="welcome-message" id="welcome-4">Dumpling</div>
     <div class="welcome-message" id="welcome-5">I know it's unexpected</div>
     
-    <!-- LIGHTBOX (MOVE THIS OUTSIDE) -->
+    <!-- LIGHTBOX -->
     <div id="lightbox-modal">
         <button id="lightbox-close">✖</button>
         <button id="lightbox-prev">◀</button>
@@ -763,7 +793,7 @@
         <button id="lightbox-next">▶</button>
     </div>
     
-    <!-- FINAL MESSAGES (MOVE THESE OUTSIDE) -->
+    <!-- FINAL MESSAGES -->
     <div id="final-message-1" class="final-message-container">
         <button id="close-final-1" class="close-btn">✖</button>
         <div class="message-box">
@@ -819,7 +849,6 @@
                 <div class="message-title">❤️</div>
                 <div class="message-body">Kaash tumhe pehela jeysa bina daare message kar pata... <br>Haar raat gooodnightt aur subha goood morninggg keh pata...</div>
                 <div class="message-highlight">Jo kuch bhi ho,Take care my chubby doll... Love you forever. <br>Tumhara bina ek ek din ek ek saal jeysa lagta hey, Prasansha🎐✨</div>
-                <div class="message-body" style="font-style: italic; margin-top: 20px;"></div>
             </div>
         </div>
     </div>
@@ -845,27 +874,26 @@
     
     <!-- Audio -->
     <audio id="bg-music" loop>
-        <source src="https://www.dropbox.com/scl/fi/6h4jigjvixurrkd6s2pxf/One-Direction-Night-Changes-Audio.mp3?rlkey=nnzgpbygh9bpafpj9oo8e1gck&st=8thmkp47&dl=1" type="audio/mpeg">
-    </audio>    
-    <script>
-        // === MOBILE OPTIMIZED SCRIPT ===
+        <source src="https://dl.dropboxusercontent.com/scl/fi/6h4jigjvixurrkd6s2pxf/One-Direction-Night-Changes-Audio.mp3?rlkey=nnzgpbygh9bpafpj9oo8e1gck&st=8thmkp47&dl=1&raw=1" type="audio/mpeg">
+    </audio>
 
-        // State
+    <script>
+        // === STATE ===
         let currentIndex = 0;
-        let wishCount = 3;
         let started = false;
         let currentLightboxIndex = 0;
         let isVideoPlaying = false;
         let bgMusicPaused = false;
         let currentlyPlayingAudio = null;
+        let wishCount = 3; // Allow 3 wishes
         
-        // Elements
+        // === ELEMENTS ===
         const startOverlay = document.getElementById('start-overlay');
         const giftButton = document.getElementById('gift-button');
         const cakeContainer = document.getElementById('cake-container');
         const flame = document.querySelector('.flame');
         const memoriesButton = document.getElementById('memories-button');
-        const birthdayMessage = document.getElementById('birthday-message');
+        const simpleMessageBox = document.getElementById('simple-message-box');
         const showMemoriesButton = document.getElementById('show-memories-button');
         const memoryGallery = document.getElementById('memory-gallery');
         const voiceMessagesContainer = document.getElementById('voice-messages-container');
@@ -878,7 +906,7 @@
         const typingText = document.getElementById('typing-text');
         const bgMusic = document.getElementById('bg-music');
         
-        // Lightbox
+        // Lightbox elements
         const lightboxModal = document.getElementById('lightbox-modal');
         const lightboxMedia = document.getElementById('lightbox-media');
         const lightboxCaption = document.getElementById('lightbox-caption');
@@ -912,39 +940,39 @@
             document.getElementById('close-final-5')
         ];
         
-        // Voice Messages Data
+        // === VOICE MESSAGES DATA ===
         const voiceMessages = [
             {
-                url: 'https://www.dropbox.com/scl/fi/nje42x62vs4rtwghssq63/Itna-chata-marungi-kiss.mp3?rlkey=e8khfrgei0sbekhft1udcvr4v&st=xqp5l1y9&dl=1',
+                url: 'https://dl.dropboxusercontent.com/scl/fi/nje42x62vs4rtwghssq63/Itna-chata-marungi-kiss.mp3?rlkey=e8khfrgei0sbekhft1udcvr4v&st=xqp5l1y9&dl=1&raw=1',
                 placeholder: "Itna chata marungi… aur woh kiss—maine sach mein dil se chaha tha."
             },
             {
-                url: 'https://www.dropbox.com/scl/fi/z4moqjghnkuj683oyeotu/ghatiya-lag-rahahey-hoga-fir-bhi-aapko-bhej-diya.mp3?rlkey=ih9c1a9v1jzbcav2e49n6kqdv&st=fflln4cr&dl=1',
+                url: 'https://dl.dropboxusercontent.com/scl/fi/z4moqjghnkuj683oyeotu/ghatiya-lag-rahahey-hoga-fir-bhi-aapko-bhej-diya.mp3?rlkey=ih9c1a9v1jzbcav2e49n6kqdv&st=fflln4cr&dl=1&raw=1',
                 placeholder: "Tumhe baat karna nehi aata?? Tumhara purana msg dekhke aabhi bhi khus rehta hu mai. Aur tumhara voice ghatiya nehi tha, wo to koi jannat ka sound jeysa lagta tha mujhe."
             },
             {
-                url: 'https://www.dropbox.com/scl/fi/qyt9nm5me6xmvu292li2q/english-sunke-fiuse.mp3?rlkey=8tym6r9p0g4yfyo8uqxrwj4rn&st=3z53byjz&dl=1',
+                url: 'https://dl.dropboxusercontent.com/scl/fi/qyt9nm5me6xmvu292li2q/english-sunke-fiuse.mp3?rlkey=8tym6r9p0g4yfyo8uqxrwj4rn&st=3z53byjz&dl=1&raw=1',
                 placeholder: "Tumhari English sayad perfect nehi hai, par mere dil ke liye tum, tumhara wo non perfect word hi perfect tha"
             },
             {
-                url: 'https://www.dropbox.com/scl/fi/6c9giv94f2izxq9ctuon4/Awaz-hamesha-bura-hota-hy-lekin-hasna-maat.mp3?rlkey=29wjhreazob18pn75t12whhtv&st=c114yolu&dl=1',
+                url: 'https://dl.dropboxusercontent.com/scl/fi/6c9giv94f2izxq9ctuon4/Awaz-hamesha-bura-hota-hy-lekin-hasna-maat.mp3?rlkey=29wjhreazob18pn75t12whhtv&st=c114yolu&dl=1&raw=1',
                 placeholder: "Log kehte hain ek hi cheez baar-baar sunne se boring ho jaati hai. Main do saal se har raat wahi awaaz sunta hoon. Mujhe to kabhi boring nahi lagta. Kuch awaazein sirf sunne ke liye nahi hoti—woh saath reh jaati hain"
             }
         ];
         
-        // Data
+        // === MEMORIES DATA ===
         const memories = [
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1' },
-            { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/l8ypf8o3c02evlmk5p68u/IMG_20251101_235252_485.jpg?rlkey=xokyjg9396vral1r9wn26emq5&st=hjl3n27s&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/0j8dopua4x3qudgmb24d0/IMG_20251101_235246_563.jpg?rlkey=8c97s098e1gwyshwtld3am3nz&st=zrpvxok1&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uou6riqsfjpn6cgpaivd6/IMG_20251101_235243_458.jpg?rlkey=kp8e1sdvyjgvphv51pe6u06ga&st=h41ybcmv&dl=1' },
-            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/3hqion58o3t5s0q3e3y6b/IMG_20251101_235239_710.jpg?rlkey=eqspt6rb8hycotf7ilipg4ejc&st=ugeltzsp&dl=1' },
-            { type: 'video', url: 'https://www.dropbox.com/scl/fi/ehuy2s44g1ftv4a89ng1h/video_251231_195220.mp4?rlkey=lw03racky734kobk02eugtquy&st=l8vu9kxz&dl=1' }
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/jwr4vspirerbzz4dc74da/IMG-20250718-WA0060.jpg?rlkey=ji352spt12i6momseziz49080&st=zfss0noo&dl=1&raw=1' },
+            { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/05l3vcsvgebwen673ra27/VID-20250718-WA0018.mp4?rlkey=lkeuttwo68l2p7c48u8a72ykh&st=pu4hrzpa&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/603qdagaor5u3ek10tjs6/IMG-20250718-WA0061.jpg?rlkey=8ugmvmekjk2pwacynhwrw9lb9&st=87z4hskz&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/lngj4243ahoqeg750c46o/IMG-20250718-WA0059.jpg?rlkey=2h4e4nzzx57rivf42mo5ae44m&st=0mzb1ckf&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uiot74i488yuhwaq2p0jl/IMG-20250718-WA0058.jpg?rlkey=hj8rhkpxt7slzsy56i6b3r8no&st=fjetct7a&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/li3fvkj4z9ksea6w8ed8j/IMG-20250718-WA0057.jpg?rlkey=8s7z3eol4e3azvva48anjeybo&st=ybojoaie&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/l8ypf8o3c02evlmk5p68u/IMG_20251101_235252_485.jpg?rlkey=xokyjg9396vral1r9wn26emq5&st=hjl3n27s&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/0j8dopua4x3qudgmb24d0/IMG_20251101_235246_563.jpg?rlkey=8c97s098e1gwyshwtld3am3nz&st=zrpvxok1&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/uou6riqsfjpn6cgpaivd6/IMG_20251101_235243_458.jpg?rlkey=kp8e1sdvyjgvphv51pe6u06ga&st=h41ybcmv&dl=1&raw=1' },
+            { type: 'image', url: 'https://dl.dropboxusercontent.com/scl/fi/3hqion58o3t5s0q3e3y6b/IMG_20251101_235239_710.jpg?rlkey=eqspt6rb8hycotf7ilipg4ejc&st=ugeltzsp&dl=1&raw=1' },
+            { type: 'video', url: 'https://dl.dropboxusercontent.com/scl/fi/ehuy2s44g1ftv4a89ng1h/video_251231_195220.mp4?rlkey=lw03racky734kobk02eugtquy&st=l8vu9kxz&dl=1&raw=1' }
         ];
 
         const memoryCaptions = [
@@ -961,25 +989,27 @@
             "Tumhari har ek movement, har ek expression... sab kuch itna beautiful hai ki main bus dekhkar reh jaata hoon 💕"
         ];
         
-        // === START ===
+        // === START EXPERIENCE ===
         startOverlay.addEventListener('click', startExperience);
         
         function startExperience() {
             if (started) return;
             started = true;
             
+            // Fade out start overlay
             startOverlay.style.opacity = '0';
             startOverlay.style.transition = 'opacity 0.6s ease';
             setTimeout(() => {
                 startOverlay.style.display = 'none';
             }, 600);
             
-            // Start music
+            // Start background music
             bgMusic.volume = 0.3;
             bgMusic.play().catch(e => {
-                console.log('Audio autoplay blocked');
+                console.log('Audio autoplay blocked - user interaction needed');
             });
             
+            // Show welcome sequence
             showWelcomeSequence();
         }
         
@@ -1009,7 +1039,7 @@
             createBalloons(6);
         });
         
-        // === CAKE ===
+        // === CAKE INTERACTION ===
         cakeContainer.addEventListener('click', function() {
             if (!flame.classList.contains('burning')) {
                 flame.classList.add('burning');
@@ -1039,10 +1069,10 @@
             type();
         }
         
-        // === MESSAGE BUTTON ===
+        // === MEMORIES BUTTON (If You Ever Want To) ===
         memoriesButton.addEventListener('click', function() {
             this.style.display = 'none';
-            birthdayMessage.style.display = 'block';
+            simpleMessageBox.style.display = 'block';
             
             const message = `Happy Birthday Prasansha! 🎉💖
 
@@ -1050,25 +1080,27 @@ Aaj ka din sirf tumhara hai.
 Ye saal tumhare liye naye sapne, pyaar aur khushiyan laaye.
 Har pal tumhare liye khaas ho, aur tum hamesha itni hi roshni aur sundarta lekar jeeti raho.
 
-
 Tumhari muskaan duniya mein sabse alag hai, aur tumhari khushi sabse important.
 Main sirf door se dekh sakta hoon, par phir bhi ye chahta hoon ki tumhara har pal khaas ho, jaise tum sach mein anmol ho.
 
 Apne din ka poora maza lo, Prasansha,
 Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             
-            typeMessage(message, () => {
-                showMemoriesButton.style.display = 'block';
+            // Type the message in the simple box
+            typeSimpleMessage(message, () => {
+                setTimeout(() => {
+                    showMemoriesButton.style.display = 'block';
+                }, 300);
             });
         });
         
-        function typeMessage(text, callback) {
+        function typeSimpleMessage(text, callback) {
             let i = 0;
-            birthdayMessage.textContent = '';
+            simpleMessageBox.textContent = '';
             
             function type() {
                 if (i < text.length) {
-                    birthdayMessage.textContent += text.charAt(i);
+                    simpleMessageBox.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, 30);
                 } else if (callback) {
@@ -1078,14 +1110,14 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             type();
         }
         
-        // === MEMORIES BUTTON ===
+        // === SHOW MEMORIES BUTTON (Pieces of You) ===
         showMemoriesButton.addEventListener('click', function() {
             this.style.display = 'none';
-            birthdayMessage.style.display = 'block';
+            simpleMessageBox.style.display = 'block';
             
             const memoryText = "Maine ye Little universes ab tak sambhal ke rakhi hain. Ye tumhara ek hissa hain jo main bhool nahi sakta. Tumhari muskurahat, tumhari aankhein, tum...Inhe dekhkar lagta hai jaise tum yahin ho. Mere saath mere paas 🌸";
             
-            typeMessage(memoryText, () => {
+            typeSimpleMessage(memoryText, () => {
                 memoryGallery.style.display = 'grid';
                 loadMemories();
             });
@@ -1101,6 +1133,7 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
                     const img = document.createElement('img');
                     img.src = mem.url;
                     img.loading = 'lazy';
+                    img.alt = `Memory ${index + 1}`;
                     item.appendChild(img);
                 } else {
                     const video = document.createElement('video');
@@ -1117,136 +1150,132 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             });
             
             setTimeout(() => {
-    voiceMessagesContainer.style.display = 'block';
-    loadVoiceMessages();
-}, 800);
+                voiceMessagesContainer.style.display = 'block';
+                loadVoiceMessages();
+            }, 800);
         }
         
         // === LOAD VOICE MESSAGES ===
-        // === LOAD VOICE MESSAGES ===
-function loadVoiceMessages() {
-    voiceMessagesList.innerHTML = '';
-    
-    let loadedAudioCount = 0;
-    
-    voiceMessages.forEach((voice, index) => {
-        const voiceItem = document.createElement('div');
-        voiceItem.className = 'voice-message-item';
-        voiceItem.dataset.index = index;
-        
-        const audio = new Audio();
-        audio.src = voice.url;
-        
-        const voiceItemHTML = `
-            <div class="voice-player">
-                <button class="voice-play-btn" data-index="${index}">▶</button>
-                <div class="voice-progress">
-                    <div class="voice-progress-bar" style="width: 0%"></div>
-                </div>
-                <div class="voice-time">0:00</div>
-            </div>
-            <textarea class="voice-caption-input" placeholder="${voice.placeholder}" rows="3"></textarea>
-        `;
-        
-        voiceItem.innerHTML = voiceItemHTML;
-        voiceMessagesList.appendChild(voiceItem);
-        
-        // Setup audio player
-        const playBtn = voiceItem.querySelector('.voice-play-btn');
-        const progressBar = voiceItem.querySelector('.voice-progress-bar');
-        const timeDisplay = voiceItem.querySelector('.voice-time');
-        
-        audio.addEventListener('loadedmetadata', () => {
-            timeDisplay.textContent = formatTime(0) + ' / ' + formatTime(audio.duration);
+        function loadVoiceMessages() {
+            voiceMessagesList.innerHTML = '';
             
-            // Track loaded audio
-            loadedAudioCount++;
-            if (loadedAudioCount === voiceMessages.length) {
-                setTimeout(() => {
+            let loadedAudioCount = 0;
+            
+            voiceMessages.forEach((voice, index) => {
+                const voiceItem = document.createElement('div');
+                voiceItem.className = 'voice-message-item';
+                voiceItem.dataset.index = index;
+                
+                const audio = new Audio();
+                audio.src = voice.url;
+                audio.preload = 'metadata';
+                
+                const voiceItemHTML = `
+                    <div class="voice-player">
+                        <button class="voice-play-btn" data-index="${index}">▶</button>
+                        <div class="voice-progress">
+                            <div class="voice-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="voice-time">0:00</div>
+                    </div>
+                    <textarea class="voice-caption-input" placeholder="${voice.placeholder}" rows="3"></textarea>
+                `;
+                
+                voiceItem.innerHTML = voiceItemHTML;
+                voiceMessagesList.appendChild(voiceItem);
+                
+                // Setup audio player
+                const playBtn = voiceItem.querySelector('.voice-play-btn');
+                const progressBar = voiceItem.querySelector('.voice-progress-bar');
+                const timeDisplay = voiceItem.querySelector('.voice-time');
+                
+                audio.addEventListener('loadedmetadata', () => {
+                    timeDisplay.textContent = formatTime(0) + ' / ' + formatTime(audio.duration);
+                    
+                    loadedAudioCount++;
+                    if (loadedAudioCount === voiceMessages.length) {
+                        setTimeout(() => {
+                            wishContainer.style.display = 'block';
+                            updateWishButton();
+                        }, 300);
+                    }
+                });
+                
+                audio.addEventListener('timeupdate', () => {
+                    if (audio.duration) {
+                        const progress = (audio.currentTime / audio.duration) * 100;
+                        progressBar.style.width = `${progress}%`;
+                        timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+                    }
+                });
+                
+                audio.addEventListener('ended', () => {
+                    playBtn.classList.remove('playing');
+                    playBtn.textContent = '▶';
+                    progressBar.style.width = '0%';
+                    timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+                    
+                    if (bgMusicPaused && !isVideoPlaying) {
+                        setTimeout(() => {
+                            bgMusic.play().catch(e => console.log('Could not resume music'));
+                            bgMusicPaused = false;
+                        }, 300);
+                    }
+                });
+                
+                audio.addEventListener('pause', () => {
+                    playBtn.classList.remove('playing');
+                    playBtn.textContent = '▶';
+                });
+                
+                playBtn.addEventListener('click', () => {
+                    if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+                        currentlyPlayingAudio.pause();
+                        currentlyPlayingAudio.currentTime = 0;
+                        const previousBtn = document.querySelector('.voice-play-btn.playing');
+                        if (previousBtn) {
+                            previousBtn.classList.remove('playing');
+                            previousBtn.textContent = '▶';
+                        }
+                    }
+                    
+                    if (audio.paused) {
+                        if (!bgMusic.paused) {
+                            bgMusic.pause();
+                            bgMusicPaused = true;
+                        }
+                        
+                        audio.play();
+                        playBtn.classList.add('playing');
+                        playBtn.textContent = '⏸';
+                        currentlyPlayingAudio = audio;
+                    } else {
+                        audio.pause();
+                        playBtn.classList.remove('playing');
+                        playBtn.textContent = '▶';
+                        
+                        if (bgMusicPaused && !isVideoPlaying) {
+                            bgMusic.play().catch(e => console.log('Could not resume music'));
+                            bgMusicPaused = false;
+                        }
+                    }
+                });
+                
+                // Update caption when user types
+                const captionInput = voiceItem.querySelector('.voice-caption-input');
+                captionInput.addEventListener('input', () => {
+                    console.log(`Caption for voice ${index}:`, captionInput.value);
+                });
+            });
+            
+            // Safety timeout in case audio loading fails
+            setTimeout(() => {
+                if (!wishContainer.style.display || wishContainer.style.display === 'none') {
                     wishContainer.style.display = 'block';
                     updateWishButton();
-                }, 300);
-            }
-        });
-        
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progress}%`;
-                timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
-            }
-        });
-        
-        audio.addEventListener('ended', () => {
-            playBtn.classList.remove('playing');
-            playBtn.textContent = '▶';
-            progressBar.style.width = '0%';
-            timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
-            
-            // FIX: Resume background music after voice message ends
-            if (bgMusicPaused && !isVideoPlaying) {
-                setTimeout(() => {
-                    bgMusic.play().catch(e => console.log('Could not resume music'));
-                    bgMusicPaused = false;
-                }, 300);
-            }
-        });
-        
-        audio.addEventListener('pause', () => {
-            playBtn.classList.remove('playing');
-            playBtn.textContent = '▶';
-        });
-        
-        playBtn.addEventListener('click', () => {
-            if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
-                currentlyPlayingAudio.pause();
-                currentlyPlayingAudio.currentTime = 0;
-                const previousBtn = document.querySelector('.voice-play-btn.playing');
-                if (previousBtn) {
-                    previousBtn.classList.remove('playing');
-                    previousBtn.textContent = '▶';
                 }
-            }
-            
-            if (audio.paused) {
-                // Stop background music when voice message plays
-                if (!bgMusic.paused) {
-                    bgMusic.pause();
-                    bgMusicPaused = true;
-                }
-                
-                audio.play();
-                playBtn.classList.add('playing');
-                playBtn.textContent = '⏸';
-                currentlyPlayingAudio = audio;
-            } else {
-                audio.pause();
-                playBtn.classList.remove('playing');
-                playBtn.textContent = '▶';
-                
-                // Resume background music if it was paused
-                if (bgMusicPaused && !isVideoPlaying) {
-                    bgMusic.play().catch(e => console.log('Could not resume music'));
-                    bgMusicPaused = false;
-                }
-            }
-        });
-        
-        // Update caption when user types
-        const captionInput = voiceItem.querySelector('.voice-caption-input');
-        captionInput.addEventListener('input', () => {
-            console.log(`Caption for voice ${index}:`, captionInput.value);
-        });
-    });
-    
-    // Safety timeout in case audio loading fails
-    setTimeout(() => {
-        if (!wishContainer.style.display || wishContainer.style.display === 'none') {
-            wishContainer.style.display = 'block';
-            updateWishButton();
+            }, 4000);
         }
-    }, 4000);
-}
         
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
@@ -1254,31 +1283,43 @@ function loadVoiceMessages() {
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
         
-        // === WISH SECTION ===
+        // === WISH SECTION - TELEGRAM FUNCTIONALITY ===
         function updateWishButton() {
-            submitWish.textContent = `Send Wish (${wishCount} left)`;
+            submitWish.textContent = `Send Wish to Universe (${wishCount} left)`;
             submitWish.disabled = wishCount <= 0;
         }
         
+        // Enter key support for wish
         wishText.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !e.shiftKey && wishCount > 0) {
                 e.preventDefault();
-                sendWish();
+                sendWishToTelegram();
             }
         });
         
-        submitWish.addEventListener('click', sendWish);
+        submitWish.addEventListener('click', sendWishToTelegram);
         
-        function sendWish() {
+        function sendWishToTelegram() {
             const wish = wishText.value.trim();
             if (!wish || wishCount <= 0) return;
             
             submitWish.textContent = 'Sending...';
             submitWish.disabled = true;
             
-            setTimeout(() => {
+            // Your Telegram bot details
+            const botToken = '8233623504:AAHOce1na68q9d8IZNnA8WE_Ca_eL19CTSs';
+            const chatId = '6643918586'; // Your Telegram chat ID
+            const telegramMessage = `🎂 New Birthday Wish from Prasansha:\n\n"${wish}"`;
+            
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ chat_id: chatId, text: telegramMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
                 wishCount--;
-                wishMessage.textContent = `✨ Wish sent! ${wishCount} wish${wishCount !== 1 ? 'es' : ''} left.`;
+                wishMessage.textContent = `✅ Wish sent successfully! ${wishCount} wish${wishCount !== 1 ? 'es' : ''} left.`;
                 wishMessage.style.display = 'block';
                 wishText.value = '';
                 
@@ -1286,7 +1327,7 @@ function loadVoiceMessages() {
                 
                 if (wishCount <= 0) {
                     wishText.disabled = true;
-                    wishText.placeholder = "All wishes sent! ✨";
+                    wishText.placeholder = "All wishes sent! Thank you! ✨";
                     
                     setTimeout(() => {
                         document.querySelector('.content-wrapper').style.opacity = '0';
@@ -1296,14 +1337,28 @@ function loadVoiceMessages() {
                     }, 2000);
                 }
                 
+                // Celebration effects
                 createConfetti();
-            }, 800);
+                createHeartPulse();
+            })
+            .catch(error => {
+                wishMessage.textContent = '⚠️ Failed to send. Please try again.';
+                wishMessage.style.display = 'block';
+                console.error('Telegram error:', error);
+            })
+            .finally(() => {
+                submitWish.disabled = false;
+                updateWishButton();
+                
+                setTimeout(() => {
+                    wishMessage.style.display = 'none';
+                }, 3000);
+            });
         }
         
         // === FINAL MESSAGES FLOW ===
         function showFinalMessage(index) {
             if (index >= finalMessages.length) {
-                // All messages shown
                 return;
             }
             
@@ -1337,7 +1392,7 @@ function loadVoiceMessages() {
             });
         });
         
-        // === LIGHTBOX WITH VIDEO SOUND CONTROL ===
+        // === LIGHTBOX ===
         function openLightbox(index) {
             currentLightboxIndex = index;
             showLightboxMedia(index);
@@ -1370,7 +1425,6 @@ function loadVoiceMessages() {
                         bgMusicPaused = true;
                     }
                     
-                    // Pause voice message if playing
                     if (currentlyPlayingAudio) {
                         currentlyPlayingAudio.pause();
                         const playingBtn = document.querySelector('.voice-play-btn.playing');
@@ -1464,7 +1518,6 @@ function loadVoiceMessages() {
                     }
                 }
                 
-                // Pause voice messages if playing
                 if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
                     currentlyPlayingAudio.pause();
                     const playingBtn = document.querySelector('.voice-play-btn.playing');
@@ -1569,7 +1622,35 @@ function loadVoiceMessages() {
             document.head.appendChild(style);
         }
         
-        // Initialize
+        function createHeartPulse() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                font-size: 3em;
+                z-index: 9999;
+                animation: heartPulse 1s ease-out forwards;
+                pointer-events: none;
+            `;
+            document.body.appendChild(heart);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes heartPulse {
+                    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+                    70% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.7; }
+                    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => heart.remove(), 1000);
+        }
+        
+        // === INITIALIZE ===
         updateWishButton();
         
         // Mobile optimizations
@@ -1585,6 +1666,12 @@ function loadVoiceMessages() {
                 e.preventDefault();
             }
             lastTap = currentTime;
+        });
+        
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('Page error:', e.error);
+            return true;
         });
     </script>
 </body>
