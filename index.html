@@ -1058,15 +1058,20 @@
         });
         
         // === CAKE INTERACTION ===
-        cakeContainer.addEventListener('click', function() {
-            if (!flame.classList.contains('burning')) {
-                flame.classList.add('burning');
-                
-                setTimeout(() => {
-                    showBirthdayText();
-                }, 600);
-            }
-        });
+        // === SCREEN CLICK TO LIGHT CANDLE ===
+document.addEventListener('click', function(event) {
+    // Only trigger if candle is not already burning AND cake is visible
+    if (!flame.classList.contains('burning') && cakeContainer.style.display === 'block') {
+        // Don't trigger if clicking on gift button (to avoid double trigger)
+        if (event.target !== giftButton && !giftButton.contains(event.target)) {
+            flame.classList.add('burning');
+            
+            setTimeout(() => {
+                showBirthdayText();
+            }, 600);
+        }
+    }
+});
         
         function showBirthdayText() {
             happyBirthdayText.style.display = 'block';
@@ -1744,3 +1749,4 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
     </script>
 </body>
 </html>
+
