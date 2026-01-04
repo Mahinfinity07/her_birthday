@@ -49,6 +49,20 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
         
+        /* === BLACK SCREEN === */
+        .black-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 5000;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
         /* === FIXED HEADER === */
         #happy-birthday-text {
             position: fixed;
@@ -872,10 +886,13 @@
         </div>
     </div>
     
+    <!-- BLACK SCREEN -->
+    <div class="black-screen" id="black-screen"></div>
+    
     <!-- Audio -->
     <audio id="bg-music" loop>
-        <source src="https://dl.dropboxusercontent.com/scl/fi/6h4jigjvixurrkd6s2pxf/One-Direction-Night-Changes-Audio.mp3?rlkey=nnzgpbygh9bpafpj9oo8e1gck&st=8thmkp47&dl=1&raw=1" type="audio/mpeg">
-    </audio>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/zualk8fuf5x4rjf2ehj12/Tu_Jaane_Na_Lyrical_-_Ajab_Prem_Ki_Ghazab_Kahani_Atif_Aslam_Ranbir_Kapoor_Katrina_Kaif_Pritam_256KBPS.webm?rlkey=ekswmld5wb9mv6usng7mbgfpq&dl=1" type="audio/webm">
+</audio>
 
     <script>
         // === STATE ===
@@ -905,6 +922,7 @@
         const happyBirthdayText = document.getElementById('happy-birthday-text');
         const typingText = document.getElementById('typing-text');
         const bgMusic = document.getElementById('bg-music');
+        const blackScreen = document.getElementById('black-screen');
         
         // Lightbox elements
         const lightboxModal = document.getElementById('lightbox-modal');
@@ -1369,6 +1387,49 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             }, 100);
         }
         
+        // === FUNCTION TO SHOW BLACK SCREEN (WITH AUDIO CONTINUING) ===
+        function showBlackScreen() {
+            // KEEP background music playing - DON'T pause it
+            // Only pause voice messages if playing
+            if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
+                currentlyPlayingAudio.pause();
+                const playingBtn = document.querySelector('.voice-play-btn.playing');
+                if (playingBtn) {
+                    playingBtn.classList.remove('playing');
+                    playingBtn.textContent = '▶';
+                }
+            }
+            
+            // Pause any video
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                if (!video.paused) video.pause();
+            });
+            
+            // Fade out all content except the black screen
+            const allElements = document.querySelectorAll('body > *:not(.black-screen)');
+            allElements.forEach(el => {
+                if (el.style.display !== 'none') {
+                    el.style.opacity = '0';
+                    el.style.transition = 'opacity 1s ease';
+                }
+            });
+            
+            // Show black screen after a delay
+            setTimeout(() => {
+                blackScreen.style.display = 'block';
+                setTimeout(() => {
+                    blackScreen.style.transition = 'opacity 2s ease';
+                    blackScreen.style.opacity = '1';
+                    
+                    // Ensure background music continues to play
+                    if (bgMusic.paused) {
+                        bgMusic.play().catch(e => console.log('Could not resume music'));
+                    }
+                }, 100);
+            }, 1000);
+        }
+        
         closeButtons.forEach((btn, index) => {
             btn.addEventListener('click', () => {
                 const messageBox = finalMessages[index].querySelector('.message-box');
@@ -1376,7 +1437,14 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
                 
                 setTimeout(() => {
                     finalMessages[index].style.display = 'none';
-                    showFinalMessage(index + 1);
+                    
+                    // Check if this is the last message
+                    if (index === finalMessages.length - 1) {
+                        // Show black screen after last message (audio continues)
+                        showBlackScreen();
+                    } else {
+                        showFinalMessage(index + 1);
+                    }
                 }, 500);
             });
         });
