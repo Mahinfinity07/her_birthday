@@ -61,6 +61,13 @@
             z-index: 5000;
             pointer-events: none;
             opacity: 0;
+            transition: opacity 5s ease-in-out;
+        }
+        
+        .black-screen.final-fade {
+            display: block;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
         }
         
         /* === FIXED HEADER === */
@@ -602,6 +609,10 @@
             padding: 20px;
         }
         
+        #final-message-6.final-message-container {
+            background: #000000 !important;
+        }
+        
         .message-box {
             background: white;
             border-radius: 20px;
@@ -616,6 +627,29 @@
             transition: all 0.6s ease;
         }
         
+        #final-message-6 .message-box {
+            background: #000000;
+            border: 2px solid #ff6b8b;
+            color: white;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        #final-message-6 .message-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #final-message-6 .message-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        #final-message-6 .message-box::-webkit-scrollbar-thumb {
+            background: #ff6b8b;
+            border-radius: 10px;
+        }
+        
         .message-box.show {
             transform: translateY(0);
             opacity: 1;
@@ -627,6 +661,10 @@
             text-align: center;
         }
         
+        #final-message-6 .message-content {
+            color: white;
+        }
+        
         .message-title {
             font-size: 1.4em;
             color: #e84393;
@@ -634,9 +672,24 @@
             font-weight: 600;
         }
         
+        #final-message-6 .message-title {
+            color: #ff6b8b;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 107, 139, 0.3);
+        }
+        
         .message-body {
             font-size: 1em;
             margin-bottom: 15px;
+        }
+        
+        #final-message-6 .message-body {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         
         .message-highlight {
@@ -645,6 +698,18 @@
             font-weight: 500;
             margin: 15px 0;
             line-height: 1.5;
+        }
+        
+        #final-message-6 .message-highlight {
+            background: rgba(255, 107, 139, 0.1);
+            border: 2px solid #ff6b8b;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #ff6b8b;
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-weight: 500;
         }
         
         .close-btn {
@@ -665,6 +730,13 @@
             transition: all 0.3s ease;
         }
         
+        #final-message-6 .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            z-index: 10;
+        }
+        
         .close-btn:active {
             transform: scale(0.95);
         }
@@ -683,6 +755,18 @@
         
         .blurred-text:active {
             filter: blur(0);
+        }
+        
+        /* === SMOOTH FADE EFFECT === */
+        .fade-out-all {
+            animation: fadeOutSlowly 5s ease-in-out forwards;
+        }
+        
+        @keyframes fadeOutSlowly {
+            0% { opacity: 1; }
+            30% { opacity: 0.7; }
+            70% { opacity: 0.3; }
+            100% { opacity: 0; }
         }
         
         /* === MEDIA QUERIES === */
@@ -721,6 +805,11 @@
             #submit-wish {
                 padding: 14px 20px;
                 font-size: 1em;
+            }
+            
+            #final-message-6 .message-box {
+                max-height: 75vh;
+                padding: 15px;
             }
         }
         
@@ -807,110 +896,127 @@
         <button id="lightbox-next">▶</button>
     </div>
     
+    <!-- FINAL MESSAGES -->
     <div id="final-message-1" class="final-message-container">
-    <button id="close-final-1" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content">
-            <div class="message-title">Jahan bhi life tumhe le jaye...</div>
-            <div class="message-body">Kitni bhi dooriyan aaye, time beet jaye...</div>
-            <div class="message-highlight">Tum mere liye hamesha woh 18 March 2024 , 8:22 pm wala Prasansha bane rahoge💟</div>
-            <div class="message-body" style="font-style: italic; margin-top: 20px;">- foreverrr...</div>
-        </div>
-    </div>
-</div>
-
-<div id="final-message-2" class="final-message-container">
-    <button id="close-final-2" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content">
-            <div class="message-title">Mujhe pata hai hamare beech dooriyan thi, alag duniya thi...</div>
-            <div class="message-body">...aur pichle 649 din se main ek sawal pakda hua tha<br>Kya ho sakta tha hamara?<br><br>Par ab samajh gaya hoon. Mere ehsaas mere apne safar the. Ab 'kyun' matter nahi karta.</div>
-            <div class="message-highlight">Tumhari har khushi ki dua hai. Tumhe bhi aapni life jeene ka pura haq hey.</div>
-        </div>
-    </div>
-</div>
-
-<div id="final-message-3" class="final-message-container">
-    <button id="close-final-3" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content">
-            <div class="message-title"> Kuch aur kehni thi tumhe</div>
-            <div class="message-body">
-                <span class="blurred-text">
-                    Un yaadon ke liye shukriya jo kabhi meri zindagi ka hissa thi.  
-                    Woh baatein, woh hasi, woh tum jo us waqt thi.  
-
-                    <br><br>
-                    Tumhe leke maine jo sapne dekhi thi, aaj unko bhi jaane de rahahu.
-                    Sayad maine sandar sakal ke race pe haar geya tumhara samne.
-                    Dua karta hu tumhara life pe eisa koi aaye jo tumhara kheyal rakhega. 
-                    Hamesha, mere se bhi kahi huna behetar..
-                    Lekin mere liye tum hamesha perfect hi thi jo maine kabhi tumjhe samjha nehi paya. 
-                </span>
+        <button id="close-final-1" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">For all the places life will take you...</div>
+                <div class="message-body">Through all the changes, distances, and time that will pass...</div>
+                <div class="message-highlight">You will always be a person I once cared for deeply. 💟</div>
+                <div class="message-body" style="font-style: italic; margin-top: 20px;">- With peace</div>
             </div>
         </div>
     </div>
-</div>
-
-<div id="final-message-4" class="final-message-container">
-    <button id="close-final-4" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content">
-            <div class="message-title">❤️</div>
-            <div class="message-body">Haar raat ko goodnight, subha good morning keh pana mere life ka sabse accha part tha... <br>Par woh chapter ab khatam ho gaya.</div>
-            <div class="message-highlight">Hamesha khayal rakhna aapna Prasansha. Khush rahna. ✨<br>Tum kabhi moti nehi thi mere aakhon mey. Tum thi mere jinda rehne ka ek light jo aab off hogeya ✨</div>
+    
+    <div id="final-message-2" class="final-message-container">
+        <button id="close-final-2" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">I know there was distance between us, different worlds...</div>
+                <div class="message-body">...and for the last 649 days, I held onto a question:<br>What could have been?<br><br>But I understand now. My feelings were my own journey. The 'why' doesn't matter anymore.</div>
+                <div class="message-highlight">I wish you every happiness. I release the hope, and with it, I release you.</div>
+            </div>
         </div>
     </div>
-</div>
+    
+    <div id="final-message-3" class="final-message-container">
+        <button id="close-final-3" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">One last thing to say...</div>
+                <div class="message-body">
+                    <span class="blurred-text">
+                        Thank you for the memories I once treasured.  
+                        The conversations, the laughs, the person you were to me then.  
+                        I am keeping the lessons and letting go of the rest.  
 
-<div id="final-message-5" class="final-message-container">
-    <button id="close-final-5" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content">
-            <div class="message-title"></div>
-            <div class="message-body">
-                <div class="message-highlight">Ek late si Merry Christmas 🎄✨<br>Aur Happy New Year 🎉</div>
-                <div class="message-body" style="margin-top: 25px;">
-                    Mujhe hamesha darr tha ki koi bhi message disturbance hoga,<br>
-                    ek aisi awaaz jo tumhare purane past se aa rahi ho jise tum bhool chuki ho.<br><br>
-                    Isliye yeh message tumhari zindagi mein wapas aane ke liye nahi,<br>
-                    balki hamesha keliye yahan se jaane ke liye hai.<br>
-                    Yeh website, yeh logs, mera ek-tarfa pyaar—main kitaab band kar raha hoon.<br><br>
-                    Itne sab ke baad, ek aakhri baar: "Happy Birthday Madam jiii.....".
+                        <br><br>
+                        The dreams I built around you—  
+                        I will gently take them down, piece by piece,  
+                        and make space for new ones.  
+                        My heart is learning to dream for itself again.
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div id="final-message-6" class="final-message-container">
-    <button id="close-final-6" class="close-btn">✖</button>
-    <div class="message-box">
-        <div class="message-content" style="background-color: #000; color: #fff; padding: 20px; border-radius: 15px;">
-            <div class="message-title" style="color: #fff;">Tumhara birthday hai, isliye</div>
-            <div class="message-body" style="font-size: 1.2em; margin: 30px 0; line-height: 1.6;">
-                Tumhe jaane dena aur tumhe waisi zindagi jeene dena jaisi tum jeena chahti ho<br>
-                Yeh sabse bada gift hai jo main tumhe de sakta hoon.
-            </div>
-            <div class="message-highlight" style="font-size: 1.4em; color: #ff6b8b; border-color: #ff6b8b; padding: 15px; border: 2px solid #ff6b8b; border-radius: 10px; margin: 20px 0;">
-                Mahi aab is zindagi mein tumhe kabhi disturb nahi karega.<br>
-                Aazad raho. Khush raho. Mujhe itna bhool jaao jeyse tum acche se jii sako aur mey tumhe itna yaad rkahunga jisse mai jii saku.
-            </div>
-            <div class="message-body" style="margin-top: 40px; font-style: italic; opacity: 0.8; font-size: 0.9em;">
-                Yeh site, aur yeh pyaar, ab mai bohot tierd ho chuke hoon.<br>
-                Kabhi akela feel ho to yaad kar lena ki eisa koi bhi tha jo tumhe aapna pura life se chata tha sirf jo uske haat me nehi tha uskeliye kho diya.<br>
-                Good byeee Prasansha... Tumhara haan jiii bohot miss karunga 🙂
+    
+    <div id="final-message-4" class="final-message-container">
+        <button id="close-final-4" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">❤️</div>
+                <div class="message-body">I wish I could have said goodnight without fear, and good morning without hope... <br>But that chapter is complete.</div>
+                <div class="message-highlight">Take care, always. Be happy. <br>This is the final message. Goodbye, Prasansha. ✨</div>
             </div>
         </div>
     </div>
-</div>
+    
+    <div id="final-message-5" class="final-message-container">
+        <button id="close-final-5" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">Sorry for the late wishes…</div>
+                <div class="message-body">
+                    <div class="message-highlight">Ek late si Merry Christmas 🎄✨<br>Aur Happy New Year 🎉</div>
+                    <div class="message-body" style="margin-top: 25px;">
+                        Mujhe hamesha darr tha ki koi bhi message disturbance hoga,<br>
+                        ek aisi awaaz jo tumhare purane past se aa rahi ho jise tum bhool chuki ho.<br><br>
+                        Isliye yeh message tumhari zindagi mein wapas aane ke liye nahi,<br>
+                        balki hamesha keliye yahan se jaane ke liye hai.<br>
+                        Yeh website, yeh logs, mera ek-tarfa pyaar—main kitaab band kar raha hoon.<br><br>
+                        Itne sab ke baad, ek aakhri baar: "Happy Birthday Madam jiii....."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FINAL RELEASE MESSAGE -->
+    <div id="final-message-6" class="final-message-container">
+        <button id="close-final-6" class="close-btn">✖</button>
+        <div class="message-box">
+            <div class="message-content">
+                <div class="message-title">Tumhara birthday hai, isliye</div>
+                <div class="message-body">
+                    Tumhe jaane dena aur tumhe waisi zindagi jeene dena<br>
+                    jaisi tum jeena chahti ho<br>
+                    <strong>Yeh sabse bada gift hai jo main tumhe de sakta hoon.</strong>
+                </div>
+                <div class="message-highlight">
+                    Mahi aab is zindagi mein tumhe kabhi disturb nahi karega.<br><br>
+                    Aazad raho. Khush raho.<br><br>
+                    Mujhe itna bhool jaao jeyse tum acche se jii sako<br>
+                    aur mey tumhe itna yaad rkahunga jisse mai jii saku.
+                </div>
+                <div class="message-body" style="
+                    color: rgba(255, 255, 255, 0.8);
+                    font-style: italic;
+                    margin-top: 25px;
+                    padding: 20px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 10px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                    Yeh site, aur yeh pyaar, ab mai bohot tierd ho chuke hoon.<br><br>
+                    Kabhi akela feel ho to yaad kar lena ki eisa koi bhi tha<br>
+                    jo tumhe aapna pura life se chata tha<br>
+                    sirf jo uske haat me nehi tha uskeliye kho diya.<br><br>
+                    <strong style="color: #ff6b8b;">Good byeee Prasansha...</strong><br>
+                    Tumhara haan jiii bohot miss karunga 🙂
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- BLACK SCREEN -->
     <div class="black-screen" id="black-screen"></div>
     
     <!-- Audio -->
     <audio id="bg-music" loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/zualk8fuf5x4rjf2ehj12/Tu_Jaane_Na_Lyrical_-_Ajab_Prem_Ki_Ghazab_Kahani_Atif_Aslam_Ranbir_Kapoor_Katrina_Kaif_Pritam_256KBPS.webm?rlkey=ekswmld5wb9mv6usng7mbgfpq&dl=1" type="audio/webm">
-</audio>
+        <source src="https://dl.dropboxusercontent.com/scl/fi/zualk8fuf5x4rjf2ehj12/Tu_Jaane_Na_Lyrical_-_Ajab_Prem_Ki_Ghazab_Kahani_Atif_Aslam_Ranbir_Kapoor_Katrina_Kaif_Pritam_256KBPS.webm?rlkey=ekswmld5wb9mv6usng7mbgfpq&dl=1" type="audio/webm">
+    </audio>
 
     <script>
         // === STATE ===
@@ -959,25 +1065,24 @@
             document.getElementById('welcome-5')
         ];
         
-        // Final messages
-     // Final messages
-const finalMessages = [
-    document.getElementById('final-message-1'),
-    document.getElementById('final-message-2'),
-    document.getElementById('final-message-3'),
-    document.getElementById('final-message-4'),
-    document.getElementById('final-message-5'),
-    document.getElementById('final-message-6')  // Added this
-];
+        // Final messages - UPDATED TO INCLUDE ALL 6 MESSAGES
+        const finalMessages = [
+            document.getElementById('final-message-1'),
+            document.getElementById('final-message-2'),
+            document.getElementById('final-message-3'),
+            document.getElementById('final-message-4'),
+            document.getElementById('final-message-5'),
+            document.getElementById('final-message-6')  // ADDED THIS
+        ];
 
-const closeButtons = [
-    document.getElementById('close-final-1'),
-    document.getElementById('close-final-2'),
-    document.getElementById('close-final-3'),
-    document.getElementById('close-final-4'),
-    document.getElementById('close-final-5'),
-    document.getElementById('close-final-6')  // Added this
-];
+        const closeButtons = [
+            document.getElementById('close-final-1'),
+            document.getElementById('close-final-2'),
+            document.getElementById('close-final-3'),
+            document.getElementById('close-final-4'),
+            document.getElementById('close-final-5'),
+            document.getElementById('close-final-6')  // ADDED THIS
+        ];
         
         // === VOICE MESSAGES DATA ===
         const voiceMessages = [
@@ -1078,20 +1183,20 @@ const closeButtons = [
             createBalloons(6);
         });
         
-       // === SCREEN CLICK TO LIGHT CANDLE ===
-document.addEventListener('click', function(event) {
-    // Only trigger if candle is not already burning AND cake is visible
-    if (!flame.classList.contains('burning') && cakeContainer.style.display === 'block') {
-        // Don't trigger if clicking on gift button (to avoid double trigger)
-        if (event.target !== giftButton && !giftButton.contains(event.target)) {
-            flame.classList.add('burning');
-            
-            setTimeout(() => {
-                showBirthdayText();
-            }, 600);
-        }
-    }
-});
+        // === SCREEN CLICK TO LIGHT CANDLE ===
+        document.addEventListener('click', function(event) {
+            // Only trigger if candle is not already burning AND cake is visible
+            if (!flame.classList.contains('burning') && cakeContainer.style.display === 'block') {
+                // Don't trigger if clicking on gift button (to avoid double trigger)
+                if (event.target !== giftButton && !giftButton.contains(event.target)) {
+                    flame.classList.add('burning');
+                    
+                    setTimeout(() => {
+                        showBirthdayText();
+                    }, 600);
+                }
+            }
+        });
         
         function showBirthdayText() {
             happyBirthdayText.style.display = 'block';
@@ -1412,49 +1517,76 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
             }, 100);
         }
         
-        // === FUNCTION TO SHOW BLACK SCREEN (WITH AUDIO CONTINUING) ===
-        function showBlackScreen() {
-            // KEEP background music playing - DON'T pause it
-            // Only pause voice messages if playing
-            if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
-                currentlyPlayingAudio.pause();
-                const playingBtn = document.querySelector('.voice-play-btn.playing');
-                if (playingBtn) {
-                    playingBtn.classList.remove('playing');
-                    playingBtn.textContent = '▶';
-                }
+        // === SMOOTH BLACK SCREEN TRANSITION ===
+        function showSmoothBlackScreen() {
+            // First fade out the current message
+            const currentMessage = finalMessages[finalMessages.length - 1];
+            const messageBox = currentMessage.querySelector('.message-box');
+            
+            if (messageBox) {
+                messageBox.style.opacity = '0';
+                messageBox.style.transform = 'translateY(20px)';
+                messageBox.style.transition = 'all 2s ease';
             }
             
-            // Pause any video
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                if (!video.paused) video.pause();
-            });
-            
-            // Fade out all content except the black screen
-            const allElements = document.querySelectorAll('body > *:not(.black-screen)');
-            allElements.forEach(el => {
-                if (el.style.display !== 'none') {
-                    el.style.opacity = '0';
-                    el.style.transition = 'opacity 1s ease';
-                }
-            });
-            
-            // Show black screen after a delay
+            // Start slow fade to black
             setTimeout(() => {
-                blackScreen.style.display = 'block';
+                // Fade out the message container
+                currentMessage.style.opacity = '0';
+                currentMessage.style.transition = 'opacity 3s ease';
+                
+                // Start the black screen fade in
                 setTimeout(() => {
-                    blackScreen.style.transition = 'opacity 2s ease';
-                    blackScreen.style.opacity = '1';
-                    
-                    // Ensure background music continues to play
-                    if (bgMusic.paused) {
-                        bgMusic.play().catch(e => console.log('Could not resume music'));
-                    }
-                }, 100);
+                    blackScreen.style.display = 'block';
+                    setTimeout(() => {
+                        blackScreen.classList.add('final-fade');
+                        
+                        // Keep the music playing
+                        if (bgMusic.paused) {
+                            bgMusic.play().catch(e => console.log('Music already playing'));
+                        }
+                        
+                        // Add final text on black screen after 3 seconds
+                        setTimeout(() => {
+                            addFinalTextOnBlackScreen();
+                        }, 3000);
+                    }, 100);
+                }, 1000);
             }, 1000);
         }
         
+        function addFinalTextOnBlackScreen() {
+            const finalText = document.createElement('div');
+            finalText.innerHTML = `
+                <div style="
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: rgba(255, 107, 139, 0.8);
+                    text-align: center;
+                    font-size: 1.2em;
+                    line-height: 1.6;
+                    padding: 20px;
+                    max-width: 300px;
+                    opacity: 0;
+                    transition: opacity 3s ease;
+                ">
+                    "Be free. Be happy. Forever."<br><br>
+                    <span style="font-size: 0.9em; color: rgba(255, 255, 255, 0.6);">
+                        The journey ends here.<br>
+                        The music continues...
+                    </span>
+                </div>
+            `;
+            blackScreen.appendChild(finalText);
+            
+            setTimeout(() => {
+                finalText.style.opacity = '1';
+            }, 500);
+        }
+        
+        // === UPDATED CLOSE BUTTONS HANDLER ===
         closeButtons.forEach((btn, index) => {
             btn.addEventListener('click', () => {
                 const messageBox = finalMessages[index].querySelector('.message-box');
@@ -1463,14 +1595,13 @@ Kyuki tum har pal, har nazar mein, beintehaa khaas ho. ✨🎂🎁`;
                 setTimeout(() => {
                     finalMessages[index].style.display = 'none';
                     
-                    // Check if this is the last message
-                   // Check if this is the last message
-if (index === finalMessages.length - 1) {
-    // Show black screen after last message
-    showBlackScreen();
-} else {
-    showFinalMessage(index + 1);
-}
+                    // Check if this is the last message (message 6)
+                    if (index === finalMessages.length - 1) {
+                        // Show smooth black screen transition
+                        showSmoothBlackScreen();
+                    } else {
+                        showFinalMessage(index + 1);
+                    }
                 }, 500);
             });
         });
